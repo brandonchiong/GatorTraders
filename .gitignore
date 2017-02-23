@@ -14,9 +14,5 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-<<<<<<< HEAD
-.idea/
+.idea/*
 .DS_Store
-=======
-/.idea/
->>>>>>> 4eafecfd7eefa4e68d5970f4909b0fe145a2095b
