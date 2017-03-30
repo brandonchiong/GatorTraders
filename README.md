@@ -1,4 +1,4 @@
-#GatorTraders
+# Gator Traders
 
 ## Overview
 
