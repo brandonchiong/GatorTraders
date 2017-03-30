@@ -32,14 +32,14 @@ This specific web application based project is to provide a source for San Franc
 
 ## Contributors
 
-Please read [CONTRIBUTING.md](https://gist.github.com/gatortraders/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gist.github.com/gatortraders/blob/dev/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Change Logs
-Please read [CHANGELOG.md](https://gist.github.com/gatortraders/CHANGELOG.md) for details on each branch's development.
+Please read [CHANGELOG.md](https://github.com/evanterry/gatortraders/blob/dev/CHANGELOG.md) for details on each branch's development.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://gist.github.com/evanterry/gatortraders/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://gist.github.com/evanterry/gatortraders/blob/dev/LICENSE) file for details.
 
 ## Code of Conduct
-Please review the [CONTRIBUTING.md](https://gist.github.com/evanterry/gatortraders/CONTRIBUTING.md)
+Please review the [CONTRIBUTING.md](https://gist.github.com/evanterry/gatortraders/blob/dev/CONTRIBUTING.md)
