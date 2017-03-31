@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ResultController extends Controller
 {
+    //
     /**
      * @Route("/results")
      */

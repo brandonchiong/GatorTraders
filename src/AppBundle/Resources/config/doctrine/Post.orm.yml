@@ -1,0 +1,57 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: Post
+    indexes:
+        studentEmail_idx:
+            columns:
+                - studentEmail
+    id:
+        postid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: postId
+            generator:
+                strategy: IDENTITY
+    fields:
+        posttitle:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: postTitle
+        date:
+            type: datetime
+            nullable: false
+        price:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        description:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        category:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+    manyToOne:
+        studentemail:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                studentEmail:
+                    referencedColumnName: studentEmail
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
