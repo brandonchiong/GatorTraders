@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/register", name="registration")
+     * @Route("/register", name="register")
      */
     public function indexAction(Request $request)
     {
