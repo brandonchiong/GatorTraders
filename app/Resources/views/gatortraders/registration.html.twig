@@ -1,8 +1,9 @@
 {% extends "base.html.twig" %}
+
     {% block head %}
         {{ parent() }}
-        <title>{% block title %}Registration{% endblock title %}</title>
 
+        <title>{% block title %}Registration{% endblock title %}</title>
         <style>
             body {
                 padding-top: 90px;
@@ -13,9 +14,9 @@
         </style>
     {% endblock head %}
 
+
 {% block body %}
     <body>
-
     <h1 align="center">Registration Page</h1>
 
     <div class="container">
@@ -67,27 +68,25 @@
             </div>
         </form>
     </div>
-
-    {% block javascripts %}
-        {{ parent() }}
-        <script type="text/javascript">
-
-            var list = ["mail.sfsu.edu"];
-            function validateForm() {
-                var emailValue = document.forms["regForm"]["inputEmail"].value;
-                var split = emailValue.split('@');
-
-                if (list.indexOf(split[1]) >= 0) {
-                    return true;
-                }
-                else {
-                    alert("Not a valid SFSU email");
-                    return false;
-                }
-            }
-        </script>
-
-    {% endblock javascripts %}
-
     </body>
 {% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        var list = ["mail.sfsu.edu"];
+        function validateForm() {
+            var emailValue = document.forms["regForm"]["inputEmail"].value;
+            var split = emailValue.split('@');
+
+            if (list.indexOf(split[1]) >= 0) {
+                return true;
+            }
+            else {
+                alert("Not a valid SFSU email");
+                return false;
+            }
+        }
+    </script>
+{% endblock javascripts %}
