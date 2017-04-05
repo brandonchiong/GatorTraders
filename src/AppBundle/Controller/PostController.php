@@ -21,7 +21,7 @@ class PostController extends Controller
         // replace this example code with whatever you need
         return $this->render('gatortraders/postview.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
+        ]); Hello
         */
 
 
