@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Users;
+use Symfony\Component\HttpFoundation\Response;
 
 class RegistrationController extends Controller
 {
@@ -13,17 +15,31 @@ class RegistrationController extends Controller
      */
     public function indexAction(Request $request)
     {
+            //$username = $_GET["email"];
+            $first_name = $_GET["first_name"];
+            $last_name = $_GET["last_name"];
+            $password = $_GET["password"];
+
+
+            $users = new Users();
+
+            $users->setFirstName($first_name);
+            $users->setLastName($last_name);
+            $users->setPassword($password);
+
+
+            $em = $this->getDoctrine()
+                //     ->getRepository('AppBundle:Users')
+                ->getManager();
+
+            $em->persist($users);
+            $em->flush();
+
 
         // replace this example code with whatever you need
         return $this->render('gatortraders/registration.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
-    }
-
-
-    public function showAction() {
-
-        return new \HttpResponse("Hello!");
     }
 
 }

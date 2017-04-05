@@ -37,6 +37,20 @@ class Users
      */
     private $verification;
 
+    /**
+     * Set studentemail
+     *
+     * @param string $studentemail
+     *
+     * @return Users
+     */
+    public function setStudentemail($studentemail)
+    {
+        $this->studentemail = $studentemail;
+
+        return $this;
+    }
+
 
     /**
      * Get studentemail
