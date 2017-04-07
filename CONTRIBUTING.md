@@ -5,7 +5,51 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
-## Pull Request Process
+## How to Contribute
+
+### Cloning
+
+To clone a branch the easiest solution is to use [SSH keys](https://help.github.com/articles/connecting-to-github-with-ssh/). 
+
+After generating and adding go ahead and clone the repository into the ~/public_html folder of you personal account on the AWS.
+
+
+### Branch Creation
+
+The main branch that will be keeping changes and displayed for deployment purpouses is the dev branch. This branch will be the one that you create new branches from.
+
+To create and switch to a new branch:
+`git checkout -b follow_guidelines_below_for_branch_nomenclature`
+
+Branch naming will be simple. It begins with choosing the MVC structure that will be worked on. Followed by the file name that is created in the project. Followed by the overall feature created or modified.
+
+Example:
+
+`git checkout -b View_welcome_creating_intial_layouts`
+
+After creating please push the branch to GitHub.
+
+`git 
+
+
+
+### Branch Progression
+
+
+
+
+
+### Branch Finalization
+
+
+
+
+
+
+
+
+
+
 
 This will eventually be updated to reflect process of pull requests, push requests and merge conflicts.
 
