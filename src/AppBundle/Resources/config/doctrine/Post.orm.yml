@@ -4,7 +4,7 @@ AppBundle\Entity\Post:
     indexes:
         studentEmail_idx:
             columns:
-                - studentEmail
+                - studentID
     id:
         postid:
             type: integer
@@ -44,14 +44,14 @@ AppBundle\Entity\Post:
             options:
                 fixed: false
     manyToOne:
-        studentemail:
+        studentid:
             targetEntity: Users
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                studentEmail:
-                    referencedColumnName: studentEmail
+                studentID:
+                    referencedColumnName: studentID
             orphanRemoval: false
     lifecycleCallbacks: {  }

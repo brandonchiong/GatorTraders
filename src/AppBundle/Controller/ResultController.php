@@ -19,6 +19,7 @@ class ResultController extends Controller
 
         $itemid = $_GET["name"];
 
+
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Table1')
             ->findAll();

@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
+<div>
+    {% for key in viewUserDets %}
+
+        <div>
+            {{ key.getStudentemail }}
+            {{ key.getPassword }}
+        </div>
+
+    {% endfor %}
+</div>
+
     <form class="form-horizontal" action='' method="get">
         <fieldset>
             <div id="legend">

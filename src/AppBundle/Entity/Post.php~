@@ -196,33 +196,5 @@ class Post
     {
         return $this->studentemail;
     }
-    /**
-     * @var \AppBundle\Entity\Users
-     */
-    private $studentid;
-
-
-    /**
-     * Set studentid
-     *
-     * @param \AppBundle\Entity\Users $studentid
-     *
-     * @return Post
-     */
-    public function setStudentid(\AppBundle\Entity\Users $studentid = null)
-    {
-        $this->studentid = $studentid;
-
-        return $this;
-    }
-
-    /**
-     * Get studentid
-     *
-     * @return \AppBundle\Entity\Users
-     */
-    public function getStudentid()
-    {
-        return $this->studentid;
-    }
 }
+
