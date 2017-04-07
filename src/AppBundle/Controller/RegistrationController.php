@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Users;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class RegistrationController extends Controller
 {
@@ -15,26 +18,14 @@ class RegistrationController extends Controller
      */
     public function indexAction(Request $request)
     {
-            //$username = $_GET["email"];
-            $first_name = $_GET["first_name"];
-            $last_name = $_GET["last_name"];
-            $password = $_GET["password"];
+        $username = $_GET["email"];
+        $first_name = $_GET["first_name"];
+        $last_name = $_GET["last_name"];
+        $password = $_GET["password"];
 
 
-            $users = new Users();
-
-            $users->setFirstName($first_name);
-            $users->setLastName($last_name);
-            $users->setPassword($password);
-
-
-            $em = $this->getDoctrine()
-                //     ->getRepository('AppBundle:Users')
-                ->getManager();
-
-            $em->persist($users);
-            $em->flush();
-
+        print("Hello!!");
+        print($first_name. "\n". $last_name. "\n". $password);
 
         // replace this example code with whatever you need
         return $this->render('gatortraders/registration.html.twig', [
