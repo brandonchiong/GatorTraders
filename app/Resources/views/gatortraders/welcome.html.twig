@@ -16,38 +16,44 @@
                 padding-bottom: 50px;
             }
 
-            #custom-search-input{
-                padding: 3px;
-                border: solid 1px #E4E4E4;
-                border-radius: 6px;
-                background-color: #fff;
+            #custom-search-input {
+                margin:0;
+                margin-top: 10px;
+                padding: 0;
             }
 
-            #custom-search-input input{
+            #custom-search-input .search-query {
+                padding-right: 3px;
+                padding-right: 4px \9;
+                padding-left: 3px;
+                padding-left: 4px \9;
+                /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+                margin-bottom: 0;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+            }
+
+            #custom-search-input button {
                 border: 0;
-                box-shadow: none;
-            }
-
-            #custom-search-input button{
-                margin: 2px 0 0 0;
                 background: none;
-                box-shadow: none;
-                border: 0;
-                color: #666666;
-                padding: 0 8px 0 10px;
-                border-left: solid 1px #ccc;
+                /** belows styles are working good */
+                padding: 2px 5px;
+                margin-top: 2px;
+                position: relative;
+                left: -28px;
+                /* IE7-8 doesn't have border-radius, so don't indent the padding */
+                margin-bottom: 0;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                color: rgba(7, 2, 4, 0.49);
             }
 
-            #custom-search-input button:hover{
-                border: 0;
-                box-shadow: none;
-                border-left: solid 1px #ccc;
+            .search-query:focus + button {
+                z-index: 3;
             }
-
-            #custom-search-input .glyphicon-search{
-                font-size: 23px;
-            }
-
             #categoryHeader {
                 padding-top: 120px;
             }
@@ -64,16 +70,16 @@
     <div class="container">
         <form name="regForm" action="something.php" id="searchForm" method="POST">
 
-            <div class="row">
-                <div class="col-md-6">
+            <div class="container">
+                <div class="row">
                     <div id="custom-search-input">
                         <div class="input-group col-md-12">
-                            <input type="text" class="form-control input-lg" placeholder="Search" />
+                            <input type="text" class="  search-query form-control" placeholder="Search" />
                             <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
                         </div>
                     </div>
                 </div>
