@@ -9,17 +9,20 @@
 
         <style>
             body {
-                padding-top: 90px;
+                padding-top: 70px;
             }
 
             h1 {
-                padding-bottom: 50px;
+                padding-bottom: 40px;
             }
 
             #custom-search-input {
                 margin:0;
                 margin-top: 10px;
                 padding: 0;
+                padding-left: 200px;
+                width: 975px;
+
             }
 
             #custom-search-input .search-query {
@@ -55,9 +58,59 @@
                 z-index: 3;
             }
             #categoryHeader {
-                padding-top: 120px;
+                padding-top: 15px;
+                padding-left: 90px;
             }
 
+            #regHeader {
+                padding-left: 600px;
+            }
+
+            .button {
+                background-color: #FFFFFF;
+                border: none;
+                color: black;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 10px;
+                cursor: pointer;
+            }
+
+            .button1 {padding: 14px 57px;}
+            .button2 {padding: 14px 52px;}
+            .button3 {padding: 14px 50px;}
+
+            .button4 {padding: 14px 40px;}
+            .button5 {padding: 14px 20px;}
+            .button6 {padding: 14px 40px;}
+
+            .button7 {padding: 14px 40px;}
+            .button8 {padding: 14px 49px;}
+            .button9 {padding: 14px 50px;}
+
+            .button10 {padding: 14px 47px;}
+            .button11 {padding: 14px 68px;}
+            .button12 {padding: 14px 40px;}
+
+            .button13 {padding: 14px 30px;}
+            .button14 {padding: 14px 70px;}
+            .button15 {padding: 14px 30px;}
+
+            .button-a {
+                background-color: #FFFFFF;
+                border: none;
+                color: black;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px;
+                cursor: pointer;
+            }
+
+            .button16 {padding: 10px;}
         </style>
     {% endblock head %}
 
@@ -88,9 +141,42 @@
         </form>
     </div>
 
-    <div id="categoryHeader">
     <h3 align="center">Categories</h3>
+
+    <div id="categoryHeader">
+
+
+            <button class="button button1">Books</button>
+            <button class="button button2">Supplies</button>
+            <button class="button button3">Arts</button>
+            <button class="button button4">Computers</button>
+            <button class="button button5">Gaming Consoles</button>
+            <button class="button button6">Hardware</button>
+            <button class="button button4">Computers</button>
+            <button class="button button5">Gaming Consoles</button>
+            <button class="button button6">Movies</button>
+            <button class="button button7">Electronics</button>
+            <button class="button button8">Free Stuff</button>
+            <button class="button button9">Music</button>
+            <button class="button button10">Furniture</button>
+            <button class="button button11">Cars</button>
+            <button class="button button12">Drinkware</button>
+            <button class="button button13">Home</button>
+            <button class="button button14">Pet supplies</button>
+            <button class="button button15">ETC</button>
+
     </div>
+
+    <div id="needHeader">
+        <h4 align="center">Need to post something?</h4>
+    </div>
+
+
+    <div id="regHeader">
+        <button class="button-a button16">Register</button>
+    </div>
+
+
 
 {% endblock body %}
 
