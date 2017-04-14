@@ -65,7 +65,7 @@
 
             #categoryHeader {
                 padding-left: 100px;
-                
+
             }
 
             .btn-group .button {
@@ -182,35 +182,36 @@
     <h3 align="center">Categories</h3>
 
     <div id="categoryHeader">
-        <div class="btn-group">
-            <button class="button">Arts</button>
-            <button class="button">Drinkware</button>
-            <button class="button">Gaming Consoles</button>
-            <button class="button">Music</button>
-        </div>
+        <form action="results" method="get">
+            <div class="btn-group">
+                <button type="submit" name="category" value="arts" class="button">Arts</button>
+                <button type="submit" name="category" value="drinkware" class="button">Drinkware</button>
+                <button type="submit" name="category" value="gaming-consoles" class="button">Gaming Consoles</button>
+                <button type="submit" name="category" value="music" class="button">Music</button>
+            </div>
 
-        <div class="btn-group">
-            <button class="button1">Books</button>
-            <button class="button1">Electronics</button>
-            <button class="button1">Hardware</button>
-            <button class="button1">Pet Supplies</button>
-        </div>
+            <div class="btn-group">
+                <button type="submit" name="category" value="books" class="button1">Books</button>
+                <button type="submit" name="category" value="electronics" class="button1">Electronics</button>
+                <button type="submit" name="category" value="hardware" class="button1">Hardware</button>
+                <button type="submit" name="category" value="pet-supplies" class="button1">Pet Supplies</button>
+            </div>
 
-        <div class="btn-group">
-            <button class="button2">Cars</button>
-            <button class="button2">Free Stuff</button>
-            <button class="button2">Home</button>
-            <button class="button2">Supplies</button>
-        </div>
+            <div class="btn-group">
+                <button type="submit" name="category" value="cars" class="button2">Cars</button>
+                <button type="submit" name="category" value="free-stuff" class="button2">Free Stuff</button>
+                <button type="submit" name="category" value="home" class="button2">Home</button>
+                <button type="submit" name="category" value="supplies" class="button2">Supplies</button>
+            </div>
 
-        <div class="btn-group">
-            <button class="button3">Computers</button>
-            <button class="button3">Furniture</button>
-            <button class="button3">Movies</button>
-            <button class="button3">ETC</button>
+            <div class="btn-group">
+                <button type="submit" name="category" value="computers" class="button3">Computers</button>
+                <button type="submit" name="category" value="furniture" class="button3">Furniture</button>
+                <button type="submit" name="category" value="movies" class="button3">Movies</button>
+                <button type="submit" name="category" value="etc" class="button3">ETC</button>
+            </div>
         </div>
-    </div>
-
+    </form>
     <div id="needHeader">
         <h4 align="center">Need to post something?</h4>
     </div>
