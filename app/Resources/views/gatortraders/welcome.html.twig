@@ -74,29 +74,15 @@
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;
-                margin: 4px 10px;
+                margin: auto;
                 cursor: pointer;
             }
 
-            .button1 {padding: 14px 57px;}
-            .button2 {padding: 14px 52px;}
-            .button3 {padding: 14px 50px;}
-
-            .button4 {padding: 14px 40px;}
-            .button5 {padding: 14px 20px;}
-            .button6 {padding: 14px 40px;}
-
-            .button7 {padding: 14px 40px;}
-            .button8 {padding: 14px 49px;}
-            .button9 {padding: 14px 50px;}
-
-            .button10 {padding: 14px 47px;}
-            .button11 {padding: 14px 68px;}
-            .button12 {padding: 14px 40px;}
-
-            .button13 {padding: 14px 30px;}
-            .button14 {padding: 14px 70px;}
-            .button15 {padding: 14px 30px;}
+            td, th {
+                width: 200px;
+                height: 80px;
+                text-align: center;
+            }
 
             .button-a {
                 background-color: #FFFFFF;
@@ -110,7 +96,8 @@
                 cursor: pointer;
             }
 
-            .button16 {padding: 10px;}
+            .button16 {
+                padding: 10px;}
         </style>
     {% endblock head %}
 
@@ -145,26 +132,35 @@
 
     <div id="categoryHeader">
 
+        <form action="results" method="get">
+            <table>
+                <tr>
+                    <td><button type="submit" name="category" value="books" class="button button1">Books</button></td>
+                    <td><button type="submit" name="category" value="supplies" class="button button2">Supplies</button></td>
+                    <td><button type="submit" name="category" value="arts" class="button button3">Arts</button></td>
+                    <td><button type="submit" name="category" value="computers" class="button button4">Computers</button></td>
+                    <td><button type="submit" name="category" value="gaming-consoles" class="button button5">Gaming Consoles</button></td>
+                    <td><button type="submit" name="category" value="hardward" class="button button6">Hardware</button></td>
 
-            <button class="button button1">Books</button>
-            <button class="button button2">Supplies</button>
-            <button class="button button3">Arts</button>
-            <button class="button button4">Computers</button>
-            <button class="button button5">Gaming Consoles</button>
-            <button class="button button6">Hardware</button>
-            <button class="button button4">Computers</button>
-            <button class="button button5">Gaming Consoles</button>
-            <button class="button button6">Movies</button>
-            <button class="button button7">Electronics</button>
-            <button class="button button8">Free Stuff</button>
-            <button class="button button9">Music</button>
-            <button class="button button10">Furniture</button>
-            <button class="button button11">Cars</button>
-            <button class="button button12">Drinkware</button>
-            <button class="button button13">Home</button>
-            <button class="button button14">Pet supplies</button>
-            <button class="button button15">ETC</button>
+                </tr>
 
+                <tr>
+                    <td><button type="submit" name="category" value="movies" class="button button6">Movies</button></td>
+                    <td><button type="submit" name="category" value="electronics" class="button button7">Electronics</button></td>
+                    <td><button type="submit" name="category" value="free-stuff" class="button button8">Free Stuff</button></td>
+                    <td><button type="submit" name="category" value="music" class="button button9">Music</button></td>
+                    <td><button type="submit" name="category" value="furniture" class="button button10">Furniture</button></td>
+                    <td><button type="submit" name="category" value="cars" class="button button11">Cars</button></td>
+                </tr>
+
+                <tr>
+                    <td><button type="submit" name="category" value="drinkware" class="button button12">Drinkware</button></td>
+                    <td><button type="submit" name="category" value="home" class="button button13">Home</button></td>
+                    <td><button type="submit" name="category" value="pet-supplies" class="button button14">Pet supplies</button></td>
+                    <td><button type="submit" name="category" value="etc" class="button button15">ETC</button></td>
+                </tr>
+            </table>
+        </form>
     </div>
 
     <div id="needHeader">
@@ -173,7 +169,9 @@
 
 
     <div id="regHeader">
-        <button class="button-a button16">Register</button>
+        <form action="register" method="POST">
+        <button type="submit" class="button-a button16">Register</button>
+        </form>
     </div>
 
 
