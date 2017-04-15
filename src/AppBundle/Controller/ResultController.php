@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ResultController extends Controller
 {
+    //
     /**
      * @Route("/results")
      */
@@ -17,6 +18,7 @@ class ResultController extends Controller
     {
 
         $itemid = $_GET["name"];
+
 
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Table1')

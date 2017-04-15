@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Login Page{% endblock %}
+
+{% block body %}
+    <h1>Login here: </h1>
+
+    {{ include('gatortraders/login.html.twig') }}
+        <div>
+            {% for key in viewUserDets %}
+
+                <div>
+                        {{ key.getStudentemail }}
+                        {{ key.getPassword }}
+                </div>
+
+            {% endfor %}
+        </div>
+
+{% endblock %}
