@@ -1,4 +1,56 @@
-<form action="results" method="get">
-    Name: <input type="text" name="name"><br>
-    <input type="submit">
-</form>
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+
+    <title>{% block title %}Search{% endblock title %}</title>
+
+    {% block stylesheets %}
+        {{ parent() }}
+
+        <style>
+            #imaginary_container{
+                margin-top:20%; /* Don't copy this */
+            }
+            .stylish-input-group .input-group-addon{
+                background: white !important;
+            }
+            .stylish-input-group .form-control{
+                border-right:0;
+                box-shadow:0 0 0;
+                border-color:#ccc;
+            }
+            .stylish-input-group button{
+                border:0;
+                background:transparent;
+            }
+        </style>
+    {% endblock stylesheets %}
+
+{% endblock head %}
+
+{% block body %}
+    <!--<form action="results" method="get">
+        <input type="text" name="name">
+        <input type="submit">
+    </form>-->
+    <div class="row">
+        <form action="results" method="get">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" name="name" placeholder="Search">
+                        <span class="input-group-addon">
+                        <button type="submit">
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock body %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock javascripts %}
