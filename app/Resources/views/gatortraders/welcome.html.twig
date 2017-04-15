@@ -9,7 +9,6 @@
 
         <style>
             body {
-                padding-top: 70px;
             }
 
             h1 {
@@ -21,7 +20,6 @@
                 margin-top: 10px;
                 padding: 0;
                 padding-left: 200px;
-                width: 975px;
 
             }
 
@@ -57,46 +55,78 @@
             .search-query:focus + button {
                 z-index: 3;
             }
-            #categoryHeader {
-                padding-top: 15px;
-                padding-left: 90px;
-            }
 
             #regHeader {
-                padding-left: 600px;
+                padding-left: 00px;
             }
 
-            .button {
-                background-color: #FFFFFF;
-                border: none;
+            #categoryHeader {
+                padding-left: 00px;
+
+            }
+
+            .btn-group .button {
+                background-color: #FFFFFF; /* Green */
+                border: 1px solid white;
                 color: black;
+                padding: 20px 27px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;
-                margin: 4px 10px;
                 cursor: pointer;
+                width: 300px;
+                display: block;
+
+
             }
 
-            .button1 {padding: 14px 57px;}
-            .button2 {padding: 14px 52px;}
-            .button3 {padding: 14px 50px;}
+            .btn-group .button1 {
+                background-color: #FFFFFF; /* Green */
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
 
-            .button4 {padding: 14px 40px;}
-            .button5 {padding: 14px 20px;}
-            .button6 {padding: 14px 40px;}
 
-            .button7 {padding: 14px 40px;}
-            .button8 {padding: 14px 49px;}
-            .button9 {padding: 14px 50px;}
+            }
 
-            .button10 {padding: 14px 47px;}
-            .button11 {padding: 14px 68px;}
-            .button12 {padding: 14px 40px;}
+            .btn-group .button2 {
+                background-color: #FFFFFF;
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+            }
 
-            .button13 {padding: 14px 30px;}
-            .button14 {padding: 14px 70px;}
-            .button15 {padding: 14px 30px;}
+            .btn-group .button3 {
+                background-color: #FFFFFF;
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+            }
+            .btn-group .button:not(:last-child) {
+                border-bottom: none; /* Prevent double borders */
+            }
 
             .button-a {
                 background-color: #FFFFFF;
@@ -104,13 +134,16 @@
                 color: black;
                 text-align: center;
                 text-decoration: none;
-                display: inline-block;
+                display: block;
                 font-size: 16px;
-                margin: 4px;
+                margin: auto;
                 cursor: pointer;
+                position: center;
+
             }
 
-            .button16 {padding: 10px;}
+
+            .button16 {padding: 0px;}
         </style>
     {% endblock head %}
 
@@ -144,38 +177,45 @@
     <h3 align="center">Categories</h3>
 
     <div id="categoryHeader">
+        <form action="results" method="get">
+            <div class="btn-group">
+                <button type="submit" name="category" value="arts" class="button">Arts</button>
+                <button type="submit" name="category" value="books" class="button">Books</button>
+                <button type="submit" name="category" value="cars" class="button">Cars</button>
+                <button type="submit" name="category" value="computers" class="button">Computers</button>
+            </div>
 
+            <div class="btn-group">
+                <button type="submit" name="category" value="drinkware" class="button1">Drinkware</button>
+                <button type="submit" name="category" value="electronics" class="button1">Electronics</button>
+                <button type="submit" name="category" value="free-stuff" class="button1">Free Stuff</button>
+                <button type="submit" name="category" value="furniture" class="button1">Furniture</button>
+            </div>
 
-            <button class="button button1">Books</button>
-            <button class="button button2">Supplies</button>
-            <button class="button button3">Arts</button>
-            <button class="button button4">Computers</button>
-            <button class="button button5">Gaming Consoles</button>
-            <button class="button button6">Hardware</button>
-            <button class="button button4">Computers</button>
-            <button class="button button5">Gaming Consoles</button>
-            <button class="button button6">Movies</button>
-            <button class="button button7">Electronics</button>
-            <button class="button button8">Free Stuff</button>
-            <button class="button button9">Music</button>
-            <button class="button button10">Furniture</button>
-            <button class="button button11">Cars</button>
-            <button class="button button12">Drinkware</button>
-            <button class="button button13">Home</button>
-            <button class="button button14">Pet supplies</button>
-            <button class="button button15">ETC</button>
+            <div class="btn-group">
+                <button type="submit" name="category" value="gaming-consoles" class="button2">Gaming Consoles</button>
+                <button type="submit" name="category" value="hardware" class="button2">Hardware</button>
+                <button type="submit" name="category" value="home" class="button2">home</button>
+                <button type="submit" name="category" value="movies" class="button2">Movies</button>
+            </div>
 
-    </div>
-
+            <div class="btn-group">
+                <button type="submit" name="category" value="usic" class="button3">Music</button>
+                <button type="submit" name="category" value="pet-supplies" class="button3">Pet Supplies</button>
+                <button type="submit" name="category" value="supplies" class="button3">Supplies</button>
+                <button type="submit" name="category" value="etc" class="button3">ETC</button>
+            </div>
+        </div>
+    </form>
     <div id="needHeader">
         <h4 align="center">Need to post something?</h4>
     </div>
 
 
     <div id="regHeader">
-	<button class="button-a button16">Register</button>
-
-
+        <form action="register" method="POST">
+        <button type="submit" class="button-a button16">Register</button>
+        </form>
     </div>
 
 

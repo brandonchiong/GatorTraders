@@ -1,19 +1,78 @@
-{% extends 'base.html.twig' %}
-{% block title %}Login Page{% endblock %}
+{% extends "base.html.twig" %}
+
+    {% block head %}
+        {{ parent() }}
+
+        <title>{% block title %}Post Item{% endblock title %}</title>
+
+        {% block stylesheets %}
+            {{ parent() }}
+        {% endblock stylesheets %}
+
+        <style>
+            body {
+                padding-top: 90px;
+            }
+
+            h1 {
+                padding-bottom: 50px;
+            }
+
+            .text-left-imp .form-group .control-label {
+                text-align: left !important;
+            }
+
+
+        </style>
+    {% endblock head %}
+
 
 {% block body %}
-    <h1>Login here: </h1>
 
-    {{ include('gatortraders/login.html.twig') }}
-        <div>
-            {% for key in viewUserDets %}
+    <body>
+    <h1 align="center">Post Item</h1>
 
-                <div>
-                        {{ key.getStudentemail }}
-                        {{ key.getPassword }}
+    <div class="container">
+        <form name="postForm" action="something.php" id="postForm" method="POST">
+
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-md-6 col-lg-6 control-label">Item Name: </label>
+                        <div class="col-md-6 col-lg-6">
+                            <input type="text" class="form-control" name="itemName" placeholder="Item Name"
+                                   required="true">
+                        </div>
+                    </div>
                 </div>
 
-            {% endfor %}
-        </div>
+                <div class="col-md-6 text-left-imp">
+                    <div class="form-group row">
+                        <label class="col-md-4 control-label">Price: </label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="price" placeholder="Price" required="true">
+                        </div>
+                    </div>
+                </div>
 
-{% endblock %}
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="comment">Description:</label>
+                    <textarea class="form-control" rows="5" id="description"></textarea>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div class="offset-sm-2 col-sm-10">
+                    <button type="submit" value="Submit" class="btn btn-primary">Post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </body>
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}
