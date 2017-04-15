@@ -197,4 +197,3 @@ class Table1
         return $this->itemsold;
     }
 }
-
