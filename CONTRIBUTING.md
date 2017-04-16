@@ -5,9 +5,76 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
-## Pull Request Process
+## How to Contribute
 
-This will eventually be updated to reflect process of pull requests, push requests and merge conflicts.
+### Cloning
+
+To clone a branch the easiest solution is to use [SSH keys](https://help.github.com/articles/connecting-to-github-with-ssh/). 
+
+After generating and adding go ahead and clone the repository into the ~/public_html folder of you personal account on the AWS.
+
+
+### Branch Creation
+
+The main branch that will be keeping changes and displayed for deployment purpouses is the dev branch. This branch will be the one that you create new branches from.
+
+**To create and switch to a new branch:**
+
+`git checkout -b follow_guidelines_below_for_branch_nomenclature`
+
+Branch naming will be simple. It begins with choosing the MVC structure that will be worked on. Followed by the file name that is created in the project. Followed by the overall feature created or modified.
+
+Example:
+
+`git checkout -b View_welcome_creating_intial_layouts`
+
+**After creating please push the branch to GitHub:**
+
+`git push --set-upstream origin [branch name]`
+
+Once the branch is created and pushed it is good to be edited.
+
+### Branch Progression
+
+**Beginning work on branches or starting for the day:**
+1. Check current branch:
+	`git status`
+
+2. Checkout or create branch if needed:
+	`git checkout [branch_name]`
+	or see [Branch Creation](#branch-creation)
+
+3. Update the branch from the current iteration of dev:
+	`git fetch`
+
+4. Resolve merge conflicts
+
+5. Start working on branch
+
+**During or after editing in a branch:**
+
+1. Modify to the CHANGELOG in the project root to reflect the changes you have made to the structure of the program.
+**Example:** 
+`* Added Navigation Bar to gatortraders/app/Resources/view/base.html.twig`
+
+2. Commit messages should be meaningful. 
+**Example:** 
+`git commit -m "Added a javascript action to accomodate contextual menu transitions."`
+
+3. Push your changes even if they are not complete when you're done for the day. **Example:** `git commit -m "EOD: Incomplete branch. Working on controller for docterine"
+
+### Branch Finalization
+
+Follow [Branch Progression](#branch-progression)
+
+After you have completed a branch. Have someone pull that branch to their server account and test it on their account.
+
+1. Pull the branch and deploy on personal server account. 'git checkout [branch_name]'
+
+2. Once completed add under CHANGELOG in the project root the user that verified the working branch.
+
+3. Create a pull request
+
 
 ## Code of Conduct
 

@@ -30,7 +30,6 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             if($em->getRepository('AppBundle\Entity\Users')->findOneBy(array('studentemail' => $userEmail)) != null) {
-                print("The email existed already");
 
                 return $this->render(
                     'gatortraders/registration.html.twig'
@@ -41,7 +40,7 @@ class RegistrationController extends Controller
 
 
             $em->persist($user);
-          //  $em->flush();
+            $em->flush();
 
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user

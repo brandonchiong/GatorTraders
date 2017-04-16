@@ -1,10 +1,19 @@
 {% extends 'base.html.twig' %}
-{% block title %}Results{% endblock %}
 
 {% block body %}
     <h1>Results: </h1>
 
-    {{ include('gatortraders/search.html.twig') }}
+        .search-result h3 {
+            font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
+        }
+    {% for key, entity in viewUserDets %}
+        {# ... #}
+        {{ images[key] }}
+        <img alt="Embedded Image" src="data:image/png;base64,{{ images[key] }}" />
+        {# ... #}
+    {% endfor %}
 
     {% for key, entity in viewUserDets %}
         {# ... #}
@@ -15,19 +24,86 @@
 
     {% for key in viewUserDets %}
 
-        <div>
+        .search-result p {
+            font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+        }
 
             {% if (searchkey == key.getCategory) %}
-            {{ key.getPosttitle }}
-            {{ key.getPrice }}
-            {{ key.getDescription }}
-            {{ key.getCategory }}
-            {{ key.getStudentemail}}
+                {{ key.getPosttitle }}
+                {{ key.getPrice }}
+                {{ key.getDescription }}
+                {{ key.getCategory }}
+                {{ key.getStudentemail}}
                 {{ key.getImage }}
                 <img alt="Error in Reading" src="data:image/png;base64,{{ images[key.getImage()] }}" />
             {% endif %}
 
+        /*SEARCH BAR*/
+
+    <style>
+            .stylish-input-group .input-group-addon {
+                background: white !important;
+            }
+
+            .stylish-input-group .form-control {
+                border-right: 0;
+                box-shadow: 0 0 0;
+                border-color: #ccc;
+            }
+
+            .stylish-input-group button {
+                border: 0;
+                background: transparent;
+            }
+
+            #search_placement {
+                margin-top: -100px;
+            }
+    </style>
+{% endblock head %}
+
+{% block body %}
+
+    <body>
+
+    <div class="container">
+        <div id="search_placement">
+            {{ include('gatortraders/search.html.twig') }}
         </div>
 
+        {% for key in viewUserDets %}
+
+        {% if (searchkey == key.category) %}
+
+        <hgroup class="mb20">
+            <h2 class="lead"><strong class="text-danger">number</strong> results were found for the search for item id:
+                <strong class="text-danger">{{ key.category }}</strong></h2>
+        </hgroup>
+
+        <section class="col-xs-12 col-sm-6 col-md-12">
+            <article class="search-result row">
+                <div class="col-xs-12 col-sm-12 col-md-3">
+                    <a href="#" title="Lorem ipsum" class="thumbnail"><img
+                                src="http://lorempixel.com/250/140/people" alt="Lorem ipsum"/></a>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2">
+                    <ul class="meta-search">
+                        <li><span>Post ID: {{ key.getPostid }}</span></li>
+                        <li><span>Price: {{ key.getPrice }}</span></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                    <h3><a href="#" title="">{{ key.getPosttitle }}</a></h3>
+                    <p>{{ key.getDescription }}</p>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    {% endif %}
+
     {% endfor %}
-{% endblock %}
+
+    </body>
+
+{% endblock body %}

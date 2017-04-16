@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -69,7 +68,6 @@
 <php
     echo $first_name;
     />
-=======
 {%  extends 'base.html.twig' %}
 
 {%  block body %}
@@ -91,7 +89,201 @@
         <a href="{{ path('post') }}">Already have an account? Log in.</a>
         {{ form_end(form) }}
 
-    </div>
+{% extends "base.html.twig" %}
 
-{%  endblock %}
->>>>>>> 15cfcfce601aac199c0b33299900395741b1494e
+    {% block head %}
+        {{ parent() }}
+
+        <title>{% block title %}Registration{% endblock title %}</title>
+
+        {% block stylesheets %}
+            {{ parent() }}
+
+
+        {% endblock stylesheets %}
+
+        <style>
+            body {
+                padding-top: 90px;
+            }
+
+            h1 {
+                padding-bottom: 50px;
+            }
+        </style>
+    {% endblock head %}
+
+
+{% block body %}
+    <body>
+    <h1 align="center">Registration</h1>
+
+    <div class="container">
+        <form name="regForm" id="regForm" onsubmit="return validateForm();" method="POST">
+
+            <div class="form-group row">
+                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputFirstName" placeholder="First Name">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputLastName" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-group row has-feedback">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="password" id="inputPassword"
+                           data-minLength="6" placeholder="Password" required/>
+                    <span class="glyphicon form-control-feedback"></span>
+                    <span class="help-block with-errors">minimum of 6 characters</span>
+                </div>
+            </div>
+
+            <div class="form-group row has-feedback">
+                <label for="inputConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control {$borderColor}" name="confirmPassword" id="inputConfirmPassword"
+                           data-match="#confirmPassword" data-minLength="6" placeholder="Confirm"
+                           data-match-error="Error" required/>
+                    <span class="glyphicon form-control-feedback"></span>
+                    <span class="help-block with-errors"></span>
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <div class="offset-sm-2 col-sm-10">
+                    <button type="submit" value="Submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </body>
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="/code_examples/passtest.js"></script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+
+
+    <script type="text/javascript">
+        var list = ["mail.sfsu.edu"];
+        function validateForm() {
+            var emailValue = document.forms["regForm"]["inputEmail"].value;
+            var split = emailValue.split('@');
+
+            if (list.indexOf(split[1]) >= 0) {
+                return true;
+            }
+            else {
+                alert("Not a valid SFSU email");
+                return false;
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('#regForm').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    password: {
+                        validators: {
+                            stringLength:{
+                                min: 6,
+                            },
+                            identical: {
+                                field: 'confirmPassword',
+                                message: 'Confirm your password below - type same password please'
+                            }
+                        }
+                    },
+                    confirmPassword: {
+                        validators: {
+                            identical: {
+                                field: 'password',
+                                message: 'Does not match password above'
+                            }
+                        }
+                    },
+
+
+                }
+            })
+
+                .on('success.form.bv', function(e) {
+                    $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+                    $('#regForm').data('bootstrapValidator').resetForm();
+
+                    // Prevent form submission
+                    e.preventDefault();
+
+                    // Get the form instance
+                    var $form = $(e.target);
+
+                    // Get the BootstrapValidator instance
+                    var bv = $form.data('bootstrapValidator');
+
+                    // Use Ajax to submit form data
+                    $.post($form.attr('action'), $form.serialize(), function(result) {
+                        console.log(result);
+                    }, 'json');
+                });
+        });
+
+    </script>
+
+{% endblock javascripts %}

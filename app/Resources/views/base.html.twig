@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+    {% block head %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,60 +9,83 @@
 
         {% block stylesheets %}
             <!-- Latest compiled and minified CSS -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        {% endblock %}}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                  crossorigin="anonymous">
+
+            <style>
+
+                .dropdown-menu {
+                    width: 245px;
+                }
+
+                .navbar-brand>img {
+                    height:49px;
+                    width: auto;
+                    margin-top: -14px;
+                }
+            </style>
+
+        {% endblock %}
         {# browswer favicon setting #}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    
-    <nav>
-        {% block nav %}
-            <!-- Fixed navbar -->
-            <nav class="navbar navbar-default navbar-fixed-top">
-              <div class="container">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% endblock head %}
+</head>
+
+<nav>
+    {% block nav %}
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
                 <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">GatorTraders</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="img/sfsu.jpg"></a>
+                    <a class="navbar-brand" href="#">GatorTraders</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         {# If the user is logged in the menu would change #}
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Login to Post <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                {# User Name and Password #}
-                                <li>
-                                    <div class="input-group">
-                                      <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-                                      <span class="input-group-addon" id="basic-addon2">@mail.sfsu.com</span>
-                                    </div>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Post something...</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#"></a>Register</li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-              </div>
-            </nav>
-        {% endblock %}
-    </nav>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"> Login to Post <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {# User Name and Password #}
+                            <li>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username"
+                                           aria-describedby="basic-addon2">
+                                    <span class="input-group-addon" id="basic-addon2">@mail.sfsu.com</span>
+                                </div>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Register</a></li>
+                            <li><a href="#">Post something...</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Log out</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+</nav>
 
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-            <!-- Latest compiled and minified JavaScript -->
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        {% endblock %}
-    </body>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+{% endblock %}
+</body>
 </html>
