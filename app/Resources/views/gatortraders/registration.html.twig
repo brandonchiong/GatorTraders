@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -68,3 +69,29 @@
 <php
     echo $first_name;
     />
+=======
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+    <br/>
+    <div class='container'>
+
+    <h1>Registration</h1>
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
+        {{ form_row(form._studentEmail) }}
+        {{ form_errors(form._studentEmail) }}
+        {{ form_row(form._password.first) }}
+        {{ form_row(form._password.second) }}
+        {{ form_row(form._firstName) }}
+        {{ form_row(form._lastName) }}
+
+        <button type="submit" class="btn btn-success">Register <span class="fa fa-lock"></span></button>
+        <br/>
+        <a href="{{ path('post') }}">Already have an account? Log in.</a>
+        {{ form_end(form) }}
+
+    </div>
+
+{%  endblock %}
+>>>>>>> 15cfcfce601aac199c0b33299900395741b1494e

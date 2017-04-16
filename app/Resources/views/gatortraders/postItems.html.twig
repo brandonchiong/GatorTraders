@@ -1,4 +1,6 @@
+{#
 {% extends "base.html.twig" %}
+
 
     {% block head %}
         {{ parent() }}
@@ -53,8 +55,9 @@
     <body>
     <h1 align="center">Post Item</h1>
 
+
     <div class="container">
-        <form name="postForm" action='postItems' id="postForm" method="GET">
+        <form name="postForm" enctype="multipart/form-data" action='postItems' id="postForm" method="post">
 
             <div class="col-md-6">
                 <div class="form-group row">
@@ -107,7 +110,7 @@
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                        <input type="file" accept="image/png, image/jpeg, image/jpg" name="input-file-preview"/>
                         <!-- rename it -->
                     </div>
                             </span>
@@ -117,8 +120,6 @@
 
             </div>
 
-            <!-- Button -->
-                <input type="file" name="image">
 
 
             <div class="col-md-11">
@@ -130,7 +131,7 @@
 
             <div class="text-center">
                 <div class="offset-sm-2 col-sm-12">
-                    <button type="submit" value="Submit" class="btn btn-primary">Post</button>
+                    <button type="submit" value="Submit" name="submit" class="btn btn-primary">Post</button>
                 </div>
             </div>
         </form>
@@ -202,3 +203,10 @@
     </script>
 
 {% endblock javascripts %}
+#}
+
+<form action="postItems" method="post" enctype="multipart/form-data">
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
