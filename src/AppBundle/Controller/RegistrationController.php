@@ -41,7 +41,7 @@ class RegistrationController extends Controller
 
 
             $em->persist($user);
-            $em->flush();
+          //  $em->flush();
 
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
