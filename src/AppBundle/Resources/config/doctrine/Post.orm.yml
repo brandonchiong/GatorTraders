@@ -14,18 +14,19 @@ AppBundle\Entity\Post:
     fields:
         posttitle:
             type: string
-            nullable: true
+            nullable: false
             length: 20
             options:
                 fixed: false
             column: postTitle
+        date:
+            type: datetime
+            nullable: false
         price:
-            type: decimal
-            nullable: true
+            type: float
+            nullable: false
             precision: 10
             scale: 0
-            options:
-                default: '0'
         description:
             type: string
             nullable: true
@@ -38,18 +39,15 @@ AppBundle\Entity\Post:
             length: 20
             options:
                 fixed: false
-        studentemail:
-            type: string
-            nullable: true
-            length: 20
-            options:
-                fixed: false
-            column: studentEmail
-        imagepath:
-            type: string
-            nullable: true
-            length: 60
-            options:
-                fixed: false
-            column: imagePath
+    manyToOne:
+        studentid:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                studentID:
+                    referencedColumnName: studentID
+            orphanRemoval: false
     lifecycleCallbacks: {  }
