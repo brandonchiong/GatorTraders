@@ -1,10 +1,6 @@
 AppBundle\Entity\Post:
     type: entity
     table: Post
-    indexes:
-        studentEmail_idx:
-            columns:
-                - studentID
     id:
         postid:
             type: integer
