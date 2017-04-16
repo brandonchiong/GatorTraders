@@ -15,6 +15,13 @@
         {# ... #}
     {% endfor %}
 
+    {% for key, entity in viewUserDets %}
+        {# ... #}
+        {{ images[key] }}
+        <img alt="Embedded Image" src="data:image/png;base64,{{ images[key] }}" />
+        {# ... #}
+    {% endfor %}
+
     {% for key in viewUserDets %}
 
         .search-result p {
@@ -33,25 +40,25 @@
 
         /*SEARCH BAR*/
 
-        .stylish-input-group .input-group-addon {
-            background: white !important;
-        }
+    <style>
+            .stylish-input-group .input-group-addon {
+                background: white !important;
+            }
 
-        .stylish-input-group .form-control {
-            border-right: 0;
-            box-shadow: 0 0 0;
-            border-color: #ccc;
-        }
+            .stylish-input-group .form-control {
+                border-right: 0;
+                box-shadow: 0 0 0;
+                border-color: #ccc;
+            }
 
-        .stylish-input-group button {
-            border: 0;
-            background: transparent;
-        }
+            .stylish-input-group button {
+                border: 0;
+                background: transparent;
+            }
 
-        #search_placement {
-            margin-top: -100px;
-        }
-
+            #search_placement {
+                margin-top: -100px;
+            }
     </style>
 {% endblock head %}
 
