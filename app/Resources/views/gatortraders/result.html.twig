@@ -6,18 +6,25 @@
 
     {{ include('gatortraders/search.html.twig') }}
 
+    {% for key, entity in viewUserDets %}
+        {# ... #}
+        {{ images[key] }}
+        <img alt="Embedded Image" src="data:image/png;base64,{{ images[key] }}" />
+        {# ... #}
+    {% endfor %}
+
     {% for key in viewUserDets %}
 
         <div>
 
-            {% if (searchkey == key.getItemid) %}
-            {{ key.getItemid }}
-            {{ key.getItemname }}
-            {{ key.getItemprice }}
-            {{ key.getItemdescription }}
-            {{ key.getImageid }}
-            {{ key.getStudentid }}
-            {{ key.getItemsold }}
+            {% if (searchkey == key.getCategory) %}
+            {{ key.getPosttitle }}
+            {{ key.getPrice }}
+            {{ key.getDescription }}
+            {{ key.getCategory }}
+            {{ key.getStudentemail}}
+                {{ key.getImage }}
+                <img alt="Error in Reading" src="data:image/png;base64,{{ images[key.getImage()] }}" />
             {% endif %}
 
         </div>
