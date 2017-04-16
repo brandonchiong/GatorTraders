@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Table1;
+use AppBundle\Entity\Post;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,10 +16,10 @@ class ResultController extends Controller
     public function showAction()
     {
 
-        $itemid = $_GET["name"];
+        $itemid = $_GET["category"];
 
         $userdets = $this->getDoctrine()
-            ->getRepository('AppBundle:Table1')
+            ->getRepository('AppBundle:Post')
             ->findAll();
 
         return $this->render('gatortraders/result.html.twig', array('viewUserDets' => $userdets, 'searchkey' => $itemid));

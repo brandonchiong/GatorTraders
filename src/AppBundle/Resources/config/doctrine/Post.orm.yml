@@ -1,51 +1,55 @@
-AppBundle\Entity\Table1:
+AppBundle\Entity\Post:
     type: entity
-    table: table1
+    table: Post
     id:
-        itemid:
+        postid:
             type: integer
             nullable: false
             options:
                 unsigned: false
             id: true
-            column: ItemID
+            column: postId
             generator:
                 strategy: IDENTITY
     fields:
-        itemname:
+        posttitle:
             type: string
             nullable: true
             length: 20
             options:
                 fixed: false
-            column: ItemName
-        itemprice:
-            type: float
+            column: postTitle
+        price:
+            type: decimal
             nullable: true
             precision: 10
             scale: 0
-            column: ItemPrice
-        itemdescription:
+            options:
+                default: '0'
+        description:
             type: string
             nullable: true
             length: 100
             options:
                 fixed: false
-            column: ItemDescription
-        imageid:
-            type: integer
+        category:
+            type: string
             nullable: true
+            length: 20
             options:
-                unsigned: false
-            column: ImageID
-        studentid:
-            type: integer
+                fixed: false
+        studentemail:
+            type: string
             nullable: true
+            length: 20
             options:
-                unsigned: false
-            column: StudentID
-        itemsold:
-            type: boolean
+                fixed: false
+            column: studentEmail
+        imagepath:
+            type: string
             nullable: true
-            column: ItemSold
+            length: 60
+            options:
+                fixed: false
+            column: imagePath
     lifecycleCallbacks: {  }

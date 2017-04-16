@@ -225,33 +225,4 @@ class Post
     {
         return $this->studentid;
     }
-    /**
-     * @var string
-     */
-    private $imagepath;
-
-
-    /**
-     * Set imagepath
-     *
-     * @param string $imagepath
-     *
-     * @return Post
-     */
-    public function setImagepath($imagepath)
-    {
-        $this->imagepath = $imagepath;
-
-        return $this;
-    }
-
-    /**
-     * Get imagepath
-     *
-     * @return string
-     */
-    public function getImagepath()
-    {
-        return $this->imagepath;
-    }
 }
