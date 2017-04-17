@@ -30,6 +30,7 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             if($em->getRepository('AppBundle\Entity\Users')->findOneBy(array('studentemail' => $userEmail)) != null) {
+                print("The email existed already");
 
                 return $this->render(
                     'gatortraders/registration.html.twig'
