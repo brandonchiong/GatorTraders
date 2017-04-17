@@ -9,7 +9,7 @@
 
         <style>
             body {
-                padding-top: 70px;
+                padding-top: 50px;
             }
 
             h1 {
@@ -21,7 +21,7 @@
                 margin-top: 10px;
                 padding: 0;
                 padding-left: 200px;
-                width: 975px;
+                padding-right: 200px;
 
             }
 
@@ -57,32 +57,80 @@
             .search-query:focus + button {
                 z-index: 3;
             }
-            #categoryHeader {
-                padding-top: 15px;
-                padding-left: 90px;
-            }
+
 
             #regHeader {
-                padding-left: 600px;
+                padding-left: 00px;
             }
 
-            .button {
-                background-color: #FFFFFF;
-                border: none;
+            #categoryHeader {
+                padding-left: 00px;
+
+            }
+
+            .btn-group .button {
+                background-color: #FFFFFF; /* Green */
+                border: 1px solid white;
                 color: black;
+                padding: 20px 27px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;
-                margin: auto;
                 cursor: pointer;
+                width: 300px;
+                display: block;
+
+
             }
 
-            td, th {
-                width: 200px;
-                height: 80px;
+            .btn-group .button1 {
+                background-color: #FFFFFF; /* Green */
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
                 text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+
+
             }
+
+            .btn-group .button2 {
+                background-color: #FFFFFF;
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+            }
+
+            .btn-group .button3 {
+                background-color: #FFFFFF;
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+            }
+            .btn-group .button:not(:last-child) {
+                border-bottom: none; /* Prevent double borders */
+            }
+
 
             .button-a {
                 background-color: #FFFFFF;
@@ -90,14 +138,16 @@
                 color: black;
                 text-align: center;
                 text-decoration: none;
-                display: inline-block;
+                display: block;
                 font-size: 16px;
-                margin: 4px;
+                margin: auto;
                 cursor: pointer;
+                position: center;
+
             }
 
-            .button16 {
-                padding: 10px;}
+
+            .button16 {padding: 0px;}
         </style>
     {% endblock head %}
 
@@ -105,15 +155,10 @@
 {% block body %}
 
     <body>
-    <br/>
-    <br/>
     <h1 align="center">GatorTraders</h1>
 
     <div class="container">
         <form name="regForm" action="something.php" id="searchForm" method="POST">
-
-            <br/>
-            <br/>
 
             <div class="container">
                 <div class="row">
@@ -136,38 +181,36 @@
     <h3 align="center">Categories</h3>
 
     <div id="categoryHeader">
-
         <form action="results" method="get">
-            <table>
-                <tr>
-                    <td><button type="submit" name="category" value="books" class="button button1">Books</button></td>
-                    <td><button type="submit" name="category" value="supplies" class="button button2">Supplies</button></td>
-                    <td><button type="submit" name="category" value="arts" class="button button3">Arts</button></td>
-                    <td><button type="submit" name="category" value="computers" class="button button4">Computers</button></td>
-                    <td><button type="submit" name="category" value="gaming-consoles" class="button button5">Gaming Consoles</button></td>
-                    <td><button type="submit" name="category" value="hardward" class="button button6">Hardware</button></td>
+            <div class="btn-group">
+                <button type="submit" name="category" value="arts" class="button">Arts</button>
+                <button type="submit" name="category" value="books" class="button">Books</button>
+                <button type="submit" name="category" value="cars" class="button">Cars</button>
+                <button type="submit" name="category" value="computers" class="button">Computers</button>
+            </div>
 
-                </tr>
+            <div class="btn-group">
+                <button type="submit" name="category" value="drinkware" class="button1">Drinkware</button>
+                <button type="submit" name="category" value="electronics" class="button1">Electronics</button>
+                <button type="submit" name="category" value="free-stuff" class="button1">Free Stuff</button>
+                <button type="submit" name="category" value="furniture" class="button1">Furniture</button>
+            </div>
 
-                <tr>
-                    <td><button type="submit" name="category" value="movies" class="button button6">Movies</button></td>
-                    <td><button type="submit" name="category" value="electronics" class="button button7">Electronics</button></td>
-                    <td><button type="submit" name="category" value="free-stuff" class="button button8">Free Stuff</button></td>
-                    <td><button type="submit" name="category" value="music" class="button button9">Music</button></td>
-                    <td><button type="submit" name="category" value="furniture" class="button button10">Furniture</button></td>
-                    <td><button type="submit" name="category" value="cars" class="button button11">Cars</button></td>
-                </tr>
+            <div class="btn-group">
+                <button type="submit" name="category" value="gaming-consoles" class="button2">Gaming Consoles</button>
+                <button type="submit" name="category" value="hardware" class="button2">Hardware</button>
+                <button type="submit" name="category" value="home" class="button2">home</button>
+                <button type="submit" name="category" value="movies" class="button2">Movies</button>
+            </div>
 
-                <tr>
-                    <td><button type="submit" name="category" value="drinkware" class="button button12">Drinkware</button></td>
-                    <td><button type="submit" name="category" value="home" class="button button13">Home</button></td>
-                    <td><button type="submit" name="category" value="pet-supplies" class="button button14">Pet supplies</button></td>
-                    <td><button type="submit" name="category" value="etc" class="button button15">ETC</button></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-
+            <div class="btn-group">
+                <button type="submit" name="category" value="usic" class="button3">Music</button>
+                <button type="submit" name="category" value="pet-supplies" class="button3">Pet Supplies</button>
+                <button type="submit" name="category" value="supplies" class="button3">Supplies</button>
+                <button type="submit" name="category" value="etc" class="button3">ETC</button>
+            </div>
+        </div>
+    </form>
     <div id="needHeader">
         <h4 align="center">Need to post something?</h4>
     </div>
