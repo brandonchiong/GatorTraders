@@ -25,7 +25,7 @@ class RegistrationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $user->setVerification(false);
-           /* $userEmail = $user->getStudentemail();
+            $userEmail = $user->getStudentemail();
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
 
@@ -46,7 +46,7 @@ class RegistrationController extends Controller
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
             print($user->getStudentemail());
-*/
+
             return $this->redirectToRoute('welcome');
         }
 
