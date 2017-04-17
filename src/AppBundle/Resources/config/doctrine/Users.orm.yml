@@ -1,0 +1,50 @@
+AppBundle\Entity\Users:
+    type: entity
+    table: Users
+    id:
+        studentid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: studentID
+            generator:
+                strategy: IDENTITY
+    fields:
+        studentemail:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: studentEmail
+        password:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+        firstname:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: firstName
+        lastname:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: lastName
+        rating:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        verification:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks: {  }

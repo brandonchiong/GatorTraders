@@ -1,0 +1,51 @@
+AppBundle\Entity\Table1:
+    type: entity
+    table: table1
+    id:
+        itemid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ItemID
+            generator:
+                strategy: IDENTITY
+    fields:
+        itemname:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: ItemName
+        itemprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: ItemPrice
+        itemdescription:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: ItemDescription
+        imageid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ImageID
+        studentid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: StudentID
+        itemsold:
+            type: boolean
+            nullable: true
+            column: ItemSold
+    lifecycleCallbacks: {  }

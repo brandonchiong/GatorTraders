@@ -1,0 +1,55 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: Post
+    id:
+        postid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: postId
+            generator:
+                strategy: IDENTITY
+    fields:
+        posttitle:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: postTitle
+        price:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+        description:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        category:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        studentemail:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: studentEmail
+        imagepath:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+            column: imagePath
+    lifecycleCallbacks: {  }
