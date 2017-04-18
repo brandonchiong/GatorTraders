@@ -1,30 +1,23 @@
-{% extends "base.html.twig" %}
 
+{% extends "base.html.twig" %}
     {% block head %}
         {{ parent() }}
-
         <title>{% block title %}Post Item{% endblock title %}</title>
-
         {% block stylesheets %}
             {{ parent() }}
         {% endblock stylesheets %}
-
         <style>
             body {
                 padding-top: 90px;
             }
-
             h1 {
                 padding-bottom: 50px;
             }
-
             .text-left-imp .form-group .control-label {
                 text-align: left !important;
             }
-
             <!--
             css for the button
-
             -->
             .image-preview-input {
                 position: relative;
@@ -34,7 +27,6 @@
                 background-color: #fff;
                 border-color: #ccc;
             }
-
             .image-preview-input input[type=file] {
                 position: absolute;
                 top: 0;
@@ -46,23 +38,16 @@
                 opacity: 0;
                 filter: alpha(opacity=0);
             }
-
             .image-preview-input-title {
                 margin-left: 2px;
             }
-
         </style>
     {% endblock head %}
-
-
 {% block body %}
-
     <body>
     <h1 align="center">Post Item</h1>
-
     <div class="container">
-        <form name="postForm" action="something.php" id="postForm" method="POST">
-
+        <form name="postForm" enctype="multipart/form-data" action='post' id="postForm" method="post">
             <div class="col-md-6">
                 <div class="form-group row">
                     <label class="col-md-6 col-lg-6 control-label">Item Name: </label>
@@ -72,7 +57,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 text-left-imp">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">Price: </label>
@@ -81,29 +65,27 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="form-group row">
                     <label class="col-md-6 col-lg-6 control-label" for="category">Category: </label>
                     <div class="col-md-6 col-lg-6">
-                        <select class="form-control" id="category" name="category">
-                            <option>Placeholder</option>
-                            <option>Placeholder</option>
-                            <option>Placeholder</option>
-                            <option>Placeholder</option>
+                        <select class="form-control" id="category" name="category" placeholder="Category" required="true">
+                            <option name="Birds">Birds</option>
+                            <option name = "Supplies">Supplies</option>
+                            <option name = "Clothing">Clothing</option>
+                            <option name = "Electronic">Electronic</option>
+                            <option name = "Books">Books</option>
                         </select>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 text-left-imp">
                 <div class="form-group row">
                     <label class="col-md-4 control-label">Upload Image: </label>
-
                     <div class="col-xs-12 col-md-6 col-sm-8 ">
                         <!-- image-preview-filename input [CUT FROM HERE]-->
                         <div class="input-group image-preview">
-                            <input type="text" class="form-control image-preview-filename" disabled="disabled" name="image">
+                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
                             <!-- don't give a name === doesn't send on POST/GET -->
                             <span class="input-group-btn">
                     <!-- image-preview-clear button -->
@@ -114,34 +96,29 @@
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                        <input type="file"  name="file"/>
                         <!-- rename it -->
                     </div>
                             </span>
                         </div><!-- /input-group image-preview [TO HERE]-->
                     </div>
-                    </div>
-
                 </div>
-
+            </div>
             <div class="col-md-11">
                 <div class="form-group">
                     <label for="comment">Description:</label>
-                    <textarea class="form-control" rows="10" id="description"></textarea>
+                    <textarea class="form-control" rows="10" name="description" id="description"></textarea>
                 </div>
             </div>
-
             <div class="text-center">
                 <div class="offset-sm-2 col-sm-12">
-                    <button type="submit" value="Submit" class="btn btn-primary">Post</button>
+                    <button type="submit" value="Submit" name="submit" class="btn btn-primary">Post</button>
                 </div>
             </div>
         </form>
     </div>
     </body>
-
 {% endblock body %}
-
 {% block javascripts %}
     {{ parent() }}
     <script>
@@ -157,7 +134,6 @@
                 }
             );
         });
-
         $(function () {
             // Create the close button
             var closebtn = $('<button/>', {
@@ -204,5 +180,10 @@
             });
         });
     </script>
-
 {% endblock javascripts %}
+{#
+<form action="postItems" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="upload">
+</form>
+#}

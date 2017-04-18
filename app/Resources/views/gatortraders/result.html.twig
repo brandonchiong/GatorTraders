@@ -135,11 +135,13 @@
                 <strong class="text-danger">{{ key.category }}</strong></h2>
         </hgroup>
 
+        <form action=viewpost method=“POST”>
         <section class="col-xs-12 col-sm-6 col-md-12">
             <article class="search-result row">
                 <div class="col-xs-12 col-sm-12 col-md-3">
-                    <a href="post/view" title="Lorem ipsum" class="thumbnail"><img
-                                src="http://lorempixel.com/250/140/people" alt="Lorem ipsum"/></a>
+                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail"
+                    value={{ key.getPostid }}><img
+                                src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-2">
                     <ul class="meta-search">
@@ -148,11 +150,12 @@
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                    <h3><a href="post/view" title="">{{ key.getPosttitle }}</a></h3>
+                    <h3><a href="viewpost" type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
                     <p>{{ key.getDescription }}</p>
                 </div>
             </article>
         </section>
+            </form>
     </div>
 
     {% endif %}
