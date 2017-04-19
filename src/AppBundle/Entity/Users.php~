@@ -181,6 +181,7 @@ class Users
     {
         return $this->verification;
     }
+<<<<<<< HEAD
     /**
      * @var integer
      */
@@ -197,3 +198,7 @@ class Users
         return $this->studentid;
     }
 }
+=======
+}
+
+>>>>>>> Front_End_Demo

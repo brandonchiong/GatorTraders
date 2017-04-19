@@ -18,9 +18,14 @@ class Post
     private $posttitle;
 
     /**
-     * @var string
+     * @var \DateTime
      */
-    private $price = '0';
+    private $date;
+
+    /**
+     * @var float
+     */
+    private $price;
 
     /**
      * @var string
@@ -30,17 +35,13 @@ class Post
     /**
      * @var string
      */
+
     private $category;
 
     /**
-     * @var string
+     * @var \AppBundle\Entity\Users
      */
     private $studentemail;
-
-    /**
-     * @var string
-     */
-    private $imagepath;
 
 
     /**
@@ -78,9 +79,33 @@ class Post
     }
 
     /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Post
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
      * Set price
      *
-     * @param string $price
+     * @param float $price
      *
      * @return Post
      */
@@ -94,7 +119,7 @@ class Post
     /**
      * Get price
      *
-     * @return string
+     * @return float
      */
     public function getPrice()
     {
@@ -152,11 +177,11 @@ class Post
     /**
      * Set studentemail
      *
-     * @param string $studentemail
+     * @param \AppBundle\Entity\Users $studentemail
      *
      * @return Post
      */
-    public function setStudentemail($studentemail)
+    public function setStudentemail(\AppBundle\Entity\Users $studentemail = null)
     {
         $this->studentemail = $studentemail;
 
@@ -166,12 +191,46 @@ class Post
     /**
      * Get studentemail
      *
-     * @return string
+     * @return \AppBundle\Entity\Users
      */
     public function getStudentemail()
     {
         return $this->studentemail;
     }
+
+    /**
+     * @var \AppBundle\Entity\Users
+     */
+    private $studentid;
+
+
+    /**
+     * Set studentid
+     *
+     * @param \AppBundle\Entity\Users $studentid
+     *
+     * @return Post
+     */
+    public function setStudentid(\AppBundle\Entity\Users $studentid = null)
+    {
+        $this->studentid = $studentid;
+
+        return $this;
+    }
+
+    /**
+     * Get studentid
+     *
+     * @return \AppBundle\Entity\Users
+     */
+    public function getStudentid()
+    {
+        return $this->studentid;
+    }
+    /**
+     * @var string
+     */
+    private $imagepath;
 
     /**
      * Set imagepath
@@ -197,4 +256,3 @@ class Post
         return $this->imagepath;
     }
 }
-

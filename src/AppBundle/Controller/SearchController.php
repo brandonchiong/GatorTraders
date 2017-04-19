@@ -2,6 +2,9 @@
 
 namespace AppBundle\Controller;
 
+
+use AppBundle\Entity\Post;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,11 +12,19 @@ use Symfony\Component\HttpFoundation\Response;
 class SearchController extends Controller
 {
     /**
-     * @Route("/search")
+     * @Route("/results")
      */
     public function showAction()
     {
-        return $this->render('gatortraders/search.html.twig');
+
+        $itemid = $_GET["category"];
+
+        $userdets = $this->getDoctrine()
+            ->getRepository('AppBundle:Post')
+            ->findAll();
+
+        return $this->render('gatortraders/result.html.twig', array('viewUserDets' => $userdets, 'searchkey' => $itemid));
+
     }
 
 }
