@@ -255,3 +255,4 @@ class Post
         return $this->imagepath;
     }
 }
+

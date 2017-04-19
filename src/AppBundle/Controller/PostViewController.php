@@ -23,5 +23,6 @@ class PostViewController extends Controller
 
 
         return $this->render('gatortraders/post.html.twig', array( 'viewUserDets' => $userdets, 'searchkey' => $postId));
+
     }
 }
