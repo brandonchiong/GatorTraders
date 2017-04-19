@@ -126,14 +126,15 @@
             {{ include('gatortraders/search.html.twig') }}
         </div>
 
+
+        {% set counter = 0 %}
+
         {% for key in viewUserDets %}
 
         {% if (searchkey == key.category) %}
 
-        <hgroup class="mb20">
-            <h2 class="lead"><strong class="text-danger">number</strong> results were found for the search for item id:
-                <strong class="text-danger">{{ key.category }}</strong></h2>
-        </hgroup>
+        {% set counter = counter + 1 %}
+
 
         <form action=viewpost method=“POST”>
         <section class="col-xs-12 col-sm-6 col-md-12">
@@ -161,6 +162,11 @@
     {% endif %}
 
     {% endfor %}
+
+    <hgroup class="mb20">
+        <h2 class="lead"><strong class="text-danger">{{ counter }}</strong> results were found for the search for item id:
+            <strong class="text-danger">{{ searchkey }}</strong></h2>
+    </hgroup>
 
     </body>
 
