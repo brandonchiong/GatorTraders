@@ -1,64 +1,118 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Results: </h1>
+{% block head %}
+    {{ parent() }}
+
+    <title>{% block title %}Results{% endblock title %}</title>
+
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock stylesheets %}
+
+    <style>
+        body {
+            padding-top: 90px;
+        }
+
+        @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+        .mb20 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        hgroup {
+            padding-left: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        hgroup h1 {
+            font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+            color: #2a3644;
+            margin-top: 0;
+            line-height: 1.15;
+        }
+
+        hgroup h2.lead {
+            font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+            color: #2a3644;
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        .search-result .thumbnail {
+            border-radius: 0 !important;
+        }
+
+        .search-result:first-child {
+            margin-top: 0 !important;
+        }
+
+        .search-result {
+            margin-top: 20px;
+        }
+
+        .search-result .col-md-2 {
+            border-right: 1px dotted #ccc;
+            min-height: 140px;
+        }
+
+        .search-result ul {
+            padding-left: 0 !important;
+            list-style: none;
+        }
+
+        .search-result ul li {
+            font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+            line-height: 30px;
+        }
+
+        .search-result ul li i {
+            padding-right: 5px;
+        }
+
+        .search-result .col-md-7 {
+            position: relative;
+        }
 
         .search-result h3 {
             font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
             margin-top: 0 !important;
             margin-bottom: 10px !important;
         }
-    {% for key, entity in viewUserDets %}
-        {# ... #}
-        {{ images[key] }}
-        <img alt="Embedded Image" src="data:image/png;base64,{{ images[key] }}" />
-        {# ... #}
-    {% endfor %}
 
-    {% for key, entity in viewUserDets %}
-        {# ... #}
-        {{ images[key] }}
-        <img alt="Embedded Image" src="data:image/png;base64,{{ images[key] }}" />
-        {# ... #}
-    {% endfor %}
-
-    {% for key in viewUserDets %}
+        .search-result h3 > a, .search-result i {
+            color: #248dc1 !important;
+        }
 
         .search-result p {
             font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
         }
-
-            {% if (searchkey == key.getCategory) %}
-                {{ key.getPosttitle }}
-                {{ key.getPrice }}
-                {{ key.getDescription }}
-                {{ key.getCategory }}
-                {{ key.getStudentemail}}
-                {{ key.getImage }}
-                <img alt="Error in Reading" src="data:image/png;base64,{{ images[key.getImage()] }}" />
-            {% endif %}
+        body {
+            padding-top: 90px;
+        }
 
         /*SEARCH BAR*/
 
-    <style>
-            .stylish-input-group .input-group-addon {
-                background: white !important;
-            }
+        .stylish-input-group .input-group-addon {
+            background: white !important;
+        }
 
-            .stylish-input-group .form-control {
-                border-right: 0;
-                box-shadow: 0 0 0;
-                border-color: #ccc;
-            }
+        .stylish-input-group .form-control {
+            border-right: 0;
+            box-shadow: 0 0 0;
+            border-color: #ccc;
+        }
 
-            .stylish-input-group button {
-                border: 0;
-                background: transparent;
-            }
+        .stylish-input-group button {
+            border: 0;
+            background: transparent;
+        }
 
-            #search_placement {
-                margin-top: -100px;
-            }
+        #search_placement {
+            margin-top: -100px;
+        }
+
     </style>
 {% endblock head %}
 
@@ -71,38 +125,47 @@
             {{ include('gatortraders/search.html.twig') }}
         </div>
 
+
+        {% set counter = 0 %}
+
         {% for key in viewUserDets %}
 
         {% if (searchkey == key.category) %}
 
-        <hgroup class="mb20">
-            <h2 class="lead"><strong class="text-danger">number</strong> results were found for the search for item id:
-                <strong class="text-danger">{{ key.category }}</strong></h2>
-        </hgroup>
+        {% set counter = counter + 1 %}
 
+
+        <form action=viewpost method=“POST”>
         <section class="col-xs-12 col-sm-6 col-md-12">
             <article class="search-result row">
                 <div class="col-xs-12 col-sm-12 col-md-3">
-                    <a href="#" title="Lorem ipsum" class="thumbnail"><img
-                                src="http://lorempixel.com/250/140/people" alt="Lorem ipsum"/></a>
+                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail"
+                    value={{ key.getPostid }}><img
+                                src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-2">
                     <ul class="meta-search">
                         <li><span>Post ID: {{ key.getPostid }}</span></li>
-                        <li><span>Price: {{ key.getPrice }}</span></li>
+                        <li><span>Price: ${{ key.getPrice }}</span></li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                    <h3><a href="#" title="">{{ key.getPosttitle }}</a></h3>
+                    <h3><a href="viewpost" type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
                     <p>{{ key.getDescription }}</p>
                 </div>
             </article>
         </section>
+            </form>
     </div>
 
     {% endif %}
 
     {% endfor %}
+
+    <hgroup class="mb20">
+        <h2 class="lead"><strong class="text-danger">{{ counter }}</strong> results were found for the search for item id:
+            <strong class="text-danger">{{ searchkey }}</strong></h2>
+    </hgroup>
 
     </body>
 
