@@ -14,52 +14,6 @@ class PostController extends Controller
     public function showAction()
     {
 
-        /* Old code
-namespace AppBundle\Controller;
-
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-
-class PostController extends Controller
-{
-    // We will need to append postID in URL /{{postid}}
-
-    /**
-     * @Route("/post", name="post")
-
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-
-
-        $username = $_GET["Studentemail"];
-        $password = $_GET["Password"];
-
-        $userdets = $this->getDoctrine()
-            ->getRepository('AppBundle:Users')
-            ->findAll();
-
-
-        foreach($userdets as $e)
-        {
-            if ($e->getStudentemail() == $username && $e->getPassword() == $password )
-               // if (1==2)
-                {
-
-                return $this->render('gatortraders/welcome.html.twig', [
-                    'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-                ]);
-
-                }
-        }
-
-
-        return $this->render('gatortraders/postview.html.twig', array('viewUserDets' => $userdets));
-    }
-
-}
-*/
         $post = new Post();
         //$post->setPosttitle("Stupid");
         //$username = $_GET["email"];
@@ -87,8 +41,8 @@ class PostController extends Controller
                     if($file_size <= 2097152)
                     {
                         $file_name_new = uniqid('', true) . '.' .  $file_ext;
-                        $file_destination = '/home/kkwok/public_html/gatortraders/' . $file_name_new;
-                        $file_upload = 'http://sfsuse.com/~kkwok/gatortraders/' . $file_name_new;
+                        $file_destination = '/home/sp17g07/public_html/gatortraders/images/' . $file_name_new;
+                        $file_upload = 'http://sfsuse.com/~sp17g07/gatortraders/images/' . $file_name_new;
                         if(move_uploaded_file($file_tmp, $file_destination))
                         {
                             echo 'file has been succesffuly uploaded';
