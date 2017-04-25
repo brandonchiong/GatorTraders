@@ -126,9 +126,10 @@
             {{ include('gatortraders/search.html.twig') }}
         </div>
 
-        {% for key in viewUserDets %}
+        <h1>Category = {{ category }}</h1>
+        <h1>Search term = {{ search_term }}</h1>
 
-        {% if (searchkey == key.category) %}
+        {% for key in viewUserDets %}
 
         <hgroup class="mb20">
             <h2 class="lead"><strong class="text-danger">number</strong> results were found for the search for item id:
@@ -157,12 +158,13 @@
             </article>
         </section>
 
-            </form>
+         </form>
+
+        {% endfor %}
+
     </div>
 
-    {% endif %}
 
-    {% endfor %}
 
     </body>
 
