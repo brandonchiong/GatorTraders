@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends template %}
 
 {% block head %}
     {{ parent() }}
@@ -152,6 +152,10 @@
                     <h3><a href="viewpost" type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
                     <p>{{ key.getDescription }}</p>
                 </div>
+
+                <button>
+                    Message seller
+                </button>
             </article>
         </section>
 

@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends template %}
 
     {% block head %}
         {{ parent() }}
@@ -170,7 +170,7 @@
 
     {{ include('gatortraders/search.html.twig') }}
 
-     <form action="results" method="get">
+    <form action="results" method="get">
             <div class="btn-group">
                 <button type="submit" name="category" value="Arts" class="button">Arts</button>
                 <button type="submit" name="category" value="Books" class="button">Books</button>
@@ -200,19 +200,6 @@
             </div>
     </form>
     </body>
-
-    {#
-    <div id="needHeader">
-        <h4 align="center">Need to post something?</h4>
-    </div>
-
-
-    <div id="regHeader">
-        <form action="register" method="POST">
-        <button type="submit" class="button-a button16">Register</button>
-        </form>
-    </div>
-#}
 
 
 {% endblock body %}

@@ -7,6 +7,7 @@ use AppBundle\Entity\Post;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class SearchController extends Controller
@@ -14,11 +15,12 @@ class SearchController extends Controller
     /**
      * @Route("/results")
      */
-    public function showAction()
+    public function showAction(Request $request)
     {
 
         $category = $_GET["category"];
         $search_term = $_GET["search_term"];
+        $session = $request->getSession();
 
 
         $userdets = $this->getDoctrine()
@@ -30,7 +32,7 @@ class SearchController extends Controller
                 ->where('p.category = :category')
                 ->setParameter('category', $category)
                 ->getQuery();
-        } else if ($category == null) {
+        } else if ($category == null || $category == 'All') {
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.posttitle LIKE :search_term')
                 ->setParameter('search_term', "%" . $search_term . "%")
@@ -47,8 +49,14 @@ class SearchController extends Controller
 
         $trainings = $query->getResult();
 
+        if($session->has('studentEmail')) {
+            $template = 'base_login.html.twig';
+        }else {
+            $template = 'base.html.twig';
+        }
+
         return $this->render('gatortraders/result.html.twig',
-            array('viewUserDets' => $trainings, 'category' => $category, 'search_term' => $search_term));
+            array('viewUserDets' => $trainings, 'category' => $category, 'search_term' => $search_term, 'template' => $template));
 
     }
 
