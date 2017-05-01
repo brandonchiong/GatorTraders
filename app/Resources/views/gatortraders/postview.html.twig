@@ -1,5 +1,6 @@
+{% extends template %}
 
-{% extends "base.html.twig" %}
+
     {% block head %}
         {{ parent() }}
         <title>{% block title %}Post Item{% endblock title %}</title>
@@ -10,6 +11,7 @@
             body {
                 padding-top: 90px;
             }
+
             h1 {
                 padding-bottom: 50px;
             }
@@ -44,6 +46,7 @@
         </style>
     {% endblock head %}
 {% block body %}
+
     <body>
     <h1 align="center">Post Item</h1>
     <div class="container">
@@ -118,6 +121,7 @@
         </form>
     </div>
     </body>
+
 {% endblock body %}
 {% block javascripts %}
     {{ parent() }}
@@ -181,9 +185,4 @@
         });
     </script>
 {% endblock javascripts %}
-{#
-<form action="postItems" method="post" enctype="multipart/form-data">
-    <input type="file" name="file">
-    <input type="submit" value="upload">
-</form>
-#}
+

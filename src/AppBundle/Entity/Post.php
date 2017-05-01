@@ -1,7 +1,5 @@
 <?php
-
 namespace AppBundle\Entity;
-
 /**
  * Post
  */
@@ -11,38 +9,30 @@ class Post
      * @var integer
      */
     private $postid;
-
     /**
      * @var string
      */
     private $posttitle;
-
     /**
      * @var \DateTime
      */
     private $date;
-
     /**
      * @var float
      */
     private $price;
-
     /**
      * @var string
      */
     private $description;
-
     /**
      * @var string
      */
     private $category;
-
     /**
      * @var \AppBundle\Entity\Users
      */
     private $studentemail;
-
-
     /**
      * Get postid
      *
@@ -52,7 +42,6 @@ class Post
     {
         return $this->postid;
     }
-
     /**
      * Set posttitle
      *
@@ -63,10 +52,8 @@ class Post
     public function setPosttitle($posttitle)
     {
         $this->posttitle = $posttitle;
-
         return $this;
     }
-
     /**
      * Get posttitle
      *
@@ -76,7 +63,6 @@ class Post
     {
         return $this->posttitle;
     }
-
     /**
      * Set date
      *
@@ -87,10 +73,8 @@ class Post
     public function setDate($date)
     {
         $this->date = $date;
-
         return $this;
     }
-
     /**
      * Get date
      *
@@ -100,7 +84,6 @@ class Post
     {
         return $this->date;
     }
-
     /**
      * Set price
      *
@@ -111,10 +94,8 @@ class Post
     public function setPrice($price)
     {
         $this->price = $price;
-
         return $this;
     }
-
     /**
      * Get price
      *
@@ -124,7 +105,6 @@ class Post
     {
         return $this->price;
     }
-
     /**
      * Set description
      *
@@ -135,10 +115,8 @@ class Post
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * Get description
      *
@@ -148,7 +126,6 @@ class Post
     {
         return $this->description;
     }
-
     /**
      * Set category
      *
@@ -159,10 +136,8 @@ class Post
     public function setCategory($category)
     {
         $this->category = $category;
-
         return $this;
     }
-
     /**
      * Get category
      *
@@ -172,7 +147,6 @@ class Post
     {
         return $this->category;
     }
-
     /**
      * Set studentemail
      *
@@ -183,10 +157,8 @@ class Post
     public function setStudentemail(\AppBundle\Entity\Users $studentemail = null)
     {
         $this->studentemail = $studentemail;
-
         return $this;
     }
-
     /**
      * Get studentemail
      *
@@ -200,8 +172,6 @@ class Post
      * @var \AppBundle\Entity\Users
      */
     private $studentid;
-
-
     /**
      * Set studentid
      *
@@ -212,10 +182,8 @@ class Post
     public function setStudentid(\AppBundle\Entity\Users $studentid = null)
     {
         $this->studentid = $studentid;
-
         return $this;
     }
-
     /**
      * Get studentid
      *
@@ -229,8 +197,6 @@ class Post
      * @var string
      */
     private $imagepath;
-
-
     /**
      * Set imagepath
      *
@@ -241,10 +207,8 @@ class Post
     public function setImagepath($imagepath)
     {
         $this->imagepath = $imagepath;
-
         return $this;
     }
-
     /**
      * Get imagepath
      *
@@ -255,4 +219,3 @@ class Post
         return $this->imagepath;
     }
 }
-
