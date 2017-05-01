@@ -35,7 +35,6 @@ class Post
     /**
      * @var string
      */
-
     private $category;
 
     /**
@@ -197,7 +196,6 @@ class Post
     {
         return $this->studentemail;
     }
-
     /**
      * @var \AppBundle\Entity\Users
      */

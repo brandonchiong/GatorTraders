@@ -11,7 +11,6 @@ class PostViewController extends Controller
     // We will need to append postID in URL /{{postid}}
     
     /**
-
      * @Route("viewpost", name="viewpost")
      */
     public function indexAction(Request $request)

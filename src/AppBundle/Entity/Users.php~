@@ -181,24 +181,5 @@ class Users
     {
         return $this->verification;
     }
-<<<<<<< HEAD
-    /**
-     * @var integer
-     */
-    private $studentid;
-
-
-    /**
-     * Get studentid
-     *
-     * @return integer
-     */
-    public function getStudentid()
-    {
-        return $this->studentid;
-    }
-}
-=======
 }
 
->>>>>>> Front_End_Demo

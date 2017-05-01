@@ -28,4 +28,3 @@ class ResultController extends Controller
 
 }
 
-
