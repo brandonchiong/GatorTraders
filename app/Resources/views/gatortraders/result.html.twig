@@ -137,9 +137,8 @@
         <section class="col-xs-12 col-sm-6 col-md-12">
             <article class="search-result row">
                 <div class="col-xs-12 col-sm-12 col-md-3">
-                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail"
-                    value={{ key.getPostid }}><img
-                                src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></a>
+                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                        <img src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-2">
                     <ul class="meta-search">
@@ -149,7 +148,7 @@
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                    <h3><a href="viewpost" type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
+                    <h3><a type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
                     <p>{{ key.getDescription }}</p>
                 </div>
 

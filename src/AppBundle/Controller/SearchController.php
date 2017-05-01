@@ -27,7 +27,7 @@ class SearchController extends Controller
             ->getRepository('AppBundle:Post');
 
 
-        if ($search_term == null) {
+        if ($search_term == null && $category != 'All') {
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.category = :category')
                 ->setParameter('category', $category)
