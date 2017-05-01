@@ -1,4 +1,4 @@
-{% extends template %}
+{% extends "base.html.twig" %}
 
     {% block head %}
         {{ parent() }}
@@ -57,7 +57,6 @@
             .search-query:focus + button {
                 z-index: 3;
             }
-
 
             #regHeader {
                 padding-left: 00px;
@@ -126,7 +125,6 @@
                 border-bottom: none; /* Prevent double borders */
             }
 
-
             .button-a {
                 background-color: #FFFFFF;
                 border: none;
@@ -168,9 +166,27 @@
     <body>
     <h1 align="center">GatorTraders</h1>
 
-    {{ include('gatortraders/search.html.twig') }}
+    <div class="container">
 
-    <form action="results" method="get">
+        <div class="row">
+            <form action="results" method="get">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div id="imaginary_container">
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" name="category" placeholder="Search">
+                            <span class="input-group-addon">
+                        <button type="submit">
+                        </button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h3 align="center">Categories</h3>
+        <form action="results" method="get">
             <div class="btn-group">
                 <button type="submit" name="category" value="Arts" class="button">Arts</button>
                 <button type="submit" name="category" value="Books" class="button">Books</button>
@@ -200,6 +216,18 @@
             </div>
     </form>
     </body>
+
+    <div id="needHeader">
+        <h4 align="center">Need to post something?</h4>
+    </div>
+
+
+    <div id="regHeader">
+        <form action="register" method="POST">
+        <button type="submit" class="button-a button16">Register</button>
+        </form>
+    </div>
+
 
 
 {% endblock body %}
