@@ -1,12 +1,17 @@
 <?php
 
 namespace AppBundle\Entity;
-use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Users
  */
 class Users
 {
+    /**
+     * @var integer
+     */
+    private $studentid;
+
     /**
      * @var string
      */
@@ -37,6 +42,17 @@ class Users
      */
     private $verification;
 
+
+    /**
+     * Get studentid
+     *
+     * @return integer
+     */
+    public function getStudentid()
+    {
+        return $this->studentid;
+    }
+
     /**
      * Set studentemail
      *
@@ -50,7 +66,6 @@ class Users
 
         return $this;
     }
-
 
     /**
      * Get studentemail
@@ -181,19 +196,5 @@ class Users
     {
         return $this->verification;
     }
-    /**
-     * @var integer
-     */
-    private $studentid;
-
-
-    /**
-     * Get studentid
-     *
-     * @return integer
-     */
-    public function getStudentid()
-    {
-        return $this->studentid;
-    }
 }
+

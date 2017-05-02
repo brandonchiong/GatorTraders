@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\User\User;
 
+use AppBundle\Entity\Post;
+
 class WelcomeController extends Controller
 {
     /**
@@ -20,6 +22,8 @@ class WelcomeController extends Controller
        // $session = $this->get('session');
 
         $session = $request->getSession();
+        $userdets = $this->getDoctrine()
+            ->getRepository('AppBundle:Post');
 
         if(isset($_GET["logout"]))
         {
@@ -35,8 +39,17 @@ class WelcomeController extends Controller
             $template = 'base.html.twig';
         }
 
+        $query = $userdets->createQueryBuilder('p')
+            ->orderBy('p.date')
+            ->setMaxResults(5)
+            ->getQuery();
+
+        $trainings = $query->getResult();
 
         // replace this example code with whatever you need
-        return $this->render('gatortraders/welcome.html.twig', array('template' => $template));
+        return $this->render('gatortraders/welcome.html.twig',
+            array(
+                'viewUserDets' => $trainings,
+                'template' => $template));
     }
 }

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Post;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class PostController extends Controller
 {
@@ -18,6 +19,8 @@ class PostController extends Controller
 
         $post = new Post();
 
+        $isUploaded = false;
+
         $posttitle = $_POST["itemName"];
         $price = $_POST["price"];
         $description = $_POST["description"];
@@ -26,13 +29,10 @@ class PostController extends Controller
         if(isset($_FILES['file']))
         {
             $file = $_FILES['file'];
-            //print_r($file);
-            // File properties
             $file_name = $file['name'];
             $file_tmp = $file['tmp_name'];
             $file_size = $file['size'];
             $file_error = $file['error'];
-            //Working out the file extentions
             $file_ext = explode('.', $file_name);
             $file_ext = strtolower(end($file_ext));
             $allowed = array('jpg', 'png', 'jpeg');
@@ -43,38 +43,49 @@ class PostController extends Controller
                     if($file_size <= 2097152)
                     {
                         $file_name_new = uniqid('', true) . '.' .  $file_ext;
-                        $file_destination = '/home/sp17g07/public_html/gatortraders/images/' . $file_name_new;
-                        $file_upload = 'http://sfsuse.com/~sp17g07/gatortraders/images/' . $file_name_new;
+                        $file_destination = '/home/ckim4/public_html/gatortraders/images/' . $file_name_new;
+                        $file_upload = 'http://sfsuse.com/~ckim4/gatortraders/images/' . $file_name_new;
                         if(move_uploaded_file($file_tmp, $file_destination))
                         {
-                            echo 'file has been succesffuly uploaded';
+                            $isUploaded = true;
                         }
                     }
                 }
             }
         }
 
+
+        $session = $request->getSession();
+        $studentEmail = $session->get('studentEmail');
+
+        $mysqlDate = date('Y-m-d H:i:s');
+
+
         $post->setPosttitle($posttitle);
         $post->setDescription($description);
         $post->setCategory($category);
         $post->setPrice($price);
         $post->setImagepath($file_upload);
+        $post->setDate(new \DateTime($mysqlDate));
+        $post->setStudentemail($studentEmail);
 
 
         //$post->upload();
         $em = $this->getDoctrine()->getManager();
-// $em = $this->getDoctrine()->getRepository('AppBundle:Users');
-// tells Doctrine you want to (eventually) save the Product (no queries yet)
         $em->persist($post);
-// actually executes the queries (i.e. the INSERT query)
         $em->flush($post);
+
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
 
         $template = 'base_login.html.twig';
 
-        // return $this->render('gatortraders/postedFiles.html.twig');
-        return $this->render('gatortraders/postview.html.twig', array('template' => $template));
+        if($isUploaded) {
+            return $this->render('gatortraders/welcome.html.twig', array('template' => $template));
+
+        }else {
+            return $this->render('gatortraders/postview.html.twig', array('template' => $template));
+        }
     }
 }

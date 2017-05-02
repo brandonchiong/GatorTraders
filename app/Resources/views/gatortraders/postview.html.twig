@@ -1,6 +1,5 @@
 {% extends template %}
 
-
     {% block head %}
         {{ parent() }}
         <title>{% block title %}Post Item{% endblock title %}</title>
@@ -11,7 +10,6 @@
             body {
                 padding-top: 90px;
             }
-
             h1 {
                 padding-bottom: 50px;
             }
@@ -121,7 +119,6 @@
         </form>
     </div>
     </body>
-
 {% endblock body %}
 {% block javascripts %}
     {{ parent() }}

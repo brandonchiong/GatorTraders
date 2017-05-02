@@ -6,6 +6,7 @@ use AppBundle\UserInfo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Users;
 
 class LoginController extends Controller
 {
