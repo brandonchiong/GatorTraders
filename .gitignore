@@ -14,5 +14,6 @@
 !var/SymfonyRequirements.php
 /web/bundles/
 /images/*
+/uploads/*
 .idea/*
 .DS_Store
