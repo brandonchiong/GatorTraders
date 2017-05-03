@@ -71,11 +71,9 @@
                     <label class="col-md-6 col-lg-6 control-label" for="category">Category: </label>
                     <div class="col-md-6 col-lg-6">
                         <select class="form-control" id="category" name="category" placeholder="Category" required="true">
-                            <option name="Birds">Birds</option>
-                            <option name = "Supplies">Supplies</option>
-                            <option name = "Clothing">Clothing</option>
-                            <option name = "Electronic">Electronic</option>
-                            <option name = "Books">Books</option>
+                            {% for key in category %}
+                                <option name={{ key.category }}>{{ key.category }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

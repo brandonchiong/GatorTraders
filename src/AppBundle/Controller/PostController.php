@@ -2,6 +2,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\UserInfo;
+
+use AppBundle\Entity\Category;
+
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +24,19 @@ class PostController extends Controller
         $post = new Post();
 
         $isUploaded = false;
+
+        $category_table = $this->getDoctrine()
+            ->getRepository('AppBundle:Category');
+
+        $category_query = $category_table->createQueryBuilder('c')
+            ->where('c.categoryid != :categoryid')
+            ->setParameter('categoryid', 1)
+            ->getQuery();
+
+        $category_query_result = $category_query->getResult();
+
+
+
 
         $posttitle = $_POST["itemName"];
         $price = $_POST["price"];
@@ -60,6 +77,10 @@ class PostController extends Controller
 
         $mysqlDate = date('Y-m-d H:i:s');
 
+        $userTable = $this->getDoctrine()
+            ->getRepository('AppBundle:Users')
+            ->findOneBy(array('studentemail' => $studentEmail));
+
 
         $post->setPosttitle($posttitle);
         $post->setDescription($description);
@@ -68,6 +89,7 @@ class PostController extends Controller
         $post->setImagepath($file_upload);
         $post->setDate(new \DateTime($mysqlDate));
         $post->setStudentemail($studentEmail);
+        $post->setUsername($userTable->getUsername());
 
 
         //$post->upload();
@@ -82,10 +104,11 @@ class PostController extends Controller
         $template = 'base_login.html.twig';
 
         if($isUploaded) {
-            return $this->render('gatortraders/welcome.html.twig', array('template' => $template));
+
+            return $this->redirectToRoute('welcome');
 
         }else {
-            return $this->render('gatortraders/postview.html.twig', array('template' => $template));
+            return $this->render('gatortraders/postview.html.twig', array('template' => $template, 'category' => $category_query_result));
         }
     }
 }

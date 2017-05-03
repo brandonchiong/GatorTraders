@@ -9,6 +9,217 @@
 <style>
     html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 
+    body {
+        padding-top: 100px;
+    }
+
+    .title {
+        margin-top: 70px;
+        margin-bottom: -80px;
+
+    }
+
+    body {
+        padding-top: 30px;
+    }
+
+    .message_button{
+        margin-left: 10px;
+    }
+
+    #custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+        padding-left: 100px;
+        padding-right: 100px;
+
+    }
+
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: rgba(7, 2, 4, 0.49);
+    }
+
+    .search-query:focus + button {
+        z-index: 3;
+    }
+    .btn-group .button3 {
+        background-color: #FFFFFF;
+        border: 1px solid white;
+        color: black;
+        padding: 20px 27px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        width: 300px;
+        display: block;
+    }
+    .btn-group .button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
+    }
+
+    .button-a {
+        background-color: #FFFFFF;
+        border: none;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        margin: auto;
+        cursor: pointer;
+        position: center;
+
+    }
+
+    .button16 {padding: 0px;}
+
+    #imaginary_container{
+        margin-top:20px;
+        margin-bottom: 50px;
+    }
+    .stylish-input-group .input-group-addon{
+        background: white !important;
+    }
+    .stylish-input-group .form-control{
+        border-right:0;
+        box-shadow:0 0 0;
+        border-color:#ccc;
+    }
+    .stylish-input-group button{
+        border:0;
+        background:transparent;
+    }
+
+
+    @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+    .mb20 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    hgroup {
+        padding-left: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    hgroup h1 {
+        font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+        color: #2a3644;
+        margin-top: 0;
+        line-height: 1.15;
+    }
+
+    hgroup h2.lead {
+        font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+        color: #2a3644;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+
+    .search-result .thumbnail {
+        border-radius: 0 !important;
+    }
+
+    .search-result:first-child {
+        margin-top: 0 !important;
+    }
+
+    .search-result {
+        margin-top: 20px;
+    }
+
+    .search-result .col-md-2 {
+        border-right: 1px dotted #ccc;
+        min-height: 140px;
+    }
+
+    .search-result ul {
+        padding-left: 0 !important;
+        list-style: none;
+    }
+
+    .search-result ul li {
+        font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+        line-height: 30px;
+    }
+
+    .search-result ul li i {
+        padding-right: 5px;
+    }
+
+    .search-result .col-md-7 {
+        position: relative;
+    }
+
+    .search-result h3 {
+        font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .search-result h3 > a, .search-result i {
+        color: #248dc1 !important;
+    }
+
+    .search-result p {
+        font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+    }
+
+    .list_container {
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
+    /*SEARCH BAR*/
+
+    .stylish-input-group .input-group-addon {
+        background: white !important;
+    }
+
+    .stylish-input-group .form-control {
+        border-right: 0;
+        box-shadow: 0 0 0;
+        border-color: #ccc;
+    }
+
+    .stylish-input-group button {
+        border: 0;
+        background: transparent;
+    }
+
+    #search_placement {
+        margin-top: -100px;
+    }
+
 </style>
 <body class="w3-theme-l5">
 
@@ -36,6 +247,21 @@
                     width: auto;
                     margin-top: -14px;
                 }
+
+                .logout-button {
+                    border: 0;
+                    background: none;
+                    margin-top: -16px;
+                }
+
+                .delete-button{
+                    margin-bottom: 10px;
+                    display:inline-block;
+                    margin-right:5px;
+
+
+                }
+
             </style>
 
         {% endblock %}
@@ -57,36 +283,17 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#"><img src="img/sfsu.jpg"></a>
-                    <a class="navbar-brand" href="#">GatorTraders</a>
+                    <a class="navbar-brand" href="welcome"><img src="img/sfsu.jpg"></a>
+                    <a class="navbar-brand" href="welcome">GatorTraders</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <a class="navbar-brand" href="register">Register</a>
                     <a class="navbar-brand" href="post">Post</a>
-                    <a class="navbar-brand" href="login">Login</a>
-
-                    {#
-                    <li class="dropdown">
-                         If the user is logged in the menu would change
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false"> Login to Post <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            {# User Name and Password
-                            <li>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Username"
-                                           aria-describedby="basic-addon2">
-                                    <span class="input-group-addon" id="basic-addon2">@mail.sfsu.com</span>
-                                </div>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Register</a></li>
-                            <li><a href="#">Post something...</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Log out</a></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>#}
+                    <a class="navbar-brand" href="profile">Profile</a>
+                    <a class="navbar-brand">
+                        <form action="welcome" method="get">
+                            <button class="logout-button" name="logout" value="1">Logout</button>
+                        </form>
+                    </a>
                 </ul>
             </div>
         </nav>
@@ -161,21 +368,85 @@
                 </div>
 
                 <div id="Posts" class="w3-container w3-border tab">
-                    <h2>Post</h2>
-                    <p>
+                    {% for key in postResults %}
 
-                    </p>
+                        <hgroup class="mb20">
+
+                        <form action=viewpost method=“POST”>
+                            <section class="col-xs-12 col-sm-6 col-md-12">
+                                <article class="search-result row">
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                                            <img width="110" height="90" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-2">
+                                        <ul class="meta-search">
+                                            <li class="text-danger"><span>{{ key.getCategory }}</span></li>
+                                            <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                            <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <h3><a type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
+                                        <p>{{ key.getDescription }}</p>
+                                    </div>
+                                </article>
+                            </section>
+                        </form>
+
+                        <form action=profile method=“get”>
+                            <button class="delete-button btn btn-danger" name="post_delete" value={{ key.getPostid }}>
+                                Delete
+                            </button>
+                        </form>
+                        </hgroup>
+
+                    {% endfor %}
                 </div>
 
+                
                 <div id="Messages" class="w3-container w3-border tab" style="display:none">
-                    <h2>Messages</h2>
-                    <p>
+                    {% for key in messageResults %}
 
-                    </p>
+                        <hgroup class="mb20">
+
+                            <section class="col-xs-12 col-sm-6 col-md-12">
+                                    <div class="col-md-3">
+                                        Subject:
+                                    </div>
+                                    <div class=".col-sm-8">
+                                        {{ key.getSubject }}
+                                    </div>
+                                </article>
+                            </section>
+                            <section class="col-xs-12 col-sm-6 col-md-12">
+                                <div class="col-md-3">
+                                    Message:
+                                </div>
+                                <div class=".col-sm-8">
+                                    {{ key.getMessage }}
+                                </div>
+                                </article>
+                            </section>
+
+
+                            <form action=reply method=“get”>
+
+                                <button class="delete-button btn btn-danger" name="message_replay" value={{ key.getIdmessage }}>
+                                    Reply
+                                </button>
+                            </form>
+                            <form action=profile method=“get”>
+                                <button class="delete-button btn btn-danger" name="message_delete" value={{ key.getIdmessage }}>
+                                    Delete
+                                </button>
+                            </form>
+                        </hgroup>
+
+                    {% endfor %}
                 </div>
 
 
-            </div>
 
             <script>
                 function openTab(evt, tabName) {

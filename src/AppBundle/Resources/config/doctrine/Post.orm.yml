@@ -55,4 +55,11 @@ AppBundle\Entity\Post:
         date:
             type: datetime
             nullable: true
+        username:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: userName
     lifecycleCallbacks: {  }

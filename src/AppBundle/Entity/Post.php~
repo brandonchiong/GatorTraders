@@ -42,6 +42,11 @@ class Post
      */
     private $imagepath;
 
+    /**
+     * @var \DateTime
+     */
+    private $date;
+
 
     /**
      * Get postid
@@ -196,5 +201,28 @@ class Post
     {
         return $this->imagepath;
     }
-}
 
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Post
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+}

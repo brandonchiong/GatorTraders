@@ -13,7 +13,7 @@
             }
 
             .title {
-                margin-top: 70px;
+                margin-top: 50px;
                 margin-bottom: -80px;
 
             }
@@ -226,7 +226,6 @@
 
     <body>
     <h1 class="title" align="center">GatorTraders</h1>
-
     {{ include('gatortraders/search.html.twig') }}
 
     <div class="list_container">
@@ -246,8 +245,9 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2">
                             <ul class="meta-search">
-                                <li><span>Post ID: {{ key.getPostid }}</span></li>
-                                <li><span>Price: ${{ key.getPrice }}</span></li>
+                                <li><span>Username: {{ key.getUsername }}</span></li>
+                                <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
@@ -255,11 +255,14 @@
                             <p>{{ key.getDescription }}</p>
                         </div>
 
-                        <button>
-                            Message seller
-                        </button>
                     </article>
                 </section>
+            </form>
+
+            <form action=message method="GET">
+                <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
+                    Message seller
+                </button>
             </form>
         {% endfor %}
 

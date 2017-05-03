@@ -225,5 +225,33 @@ class Post
     {
         return $this->date;
     }
-}
+    /**
+     * @var string
+     */
+    private $username;
 
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Post
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+}

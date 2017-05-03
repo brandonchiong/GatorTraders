@@ -196,5 +196,33 @@ class Users
     {
         return $this->verification;
     }
-}
+    /**
+     * @var string
+     */
+    private $username;
 
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Users
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+}

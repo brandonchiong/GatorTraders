@@ -2,10 +2,10 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\UserInfo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 use AppBundle\Entity\Users;
 
 class LoginController extends Controller
@@ -22,6 +22,8 @@ class LoginController extends Controller
         $username = $_GET["Studentemail"];
         $password = $_GET["Password"];
 
+        $error = "";
+
         $userdets = $this->getDoctrine()
            ->getRepository('AppBundle:Users')
            ->findAll();
@@ -33,17 +35,18 @@ class LoginController extends Controller
                // if (1==2)
            {
 
-
                $session = $request->getSession();
 
                $session->set('studentEmail', $username);
-               $template = 'base_login.html.twig';
-               return $this->render('gatortraders/welcome.html.twig', array('template' => $template));
 
-               }
+               return $this->redirectToRoute('welcome');
+
+           }elseif(isset($username) and isset($password)){
+               $error = 'Invalid user name and password';
+           }
         }
 
 
-       return $this->render('gatortraders/login.html.twig', array('viewUserDets' => $userdets));
+       return $this->render('gatortraders/login.html.twig', array('viewUserDets' => $userdets, 'error' => $error));
    }
 }
