@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block head %}
     {{ parent() }}
@@ -252,15 +252,14 @@
 
     <div class="container">
 
-    <
+        <form action=admin method="get">
         {% for key in viewUserDets %}
 
             <hgroup class="mb20">
-                <h2 class="lead"><strong class="text-danger">number</strong> results were found for the search for item id:
                     <strong class="text-danger">{{ key.category }}</strong></h2>
             </hgroup>
 
-            <form action=admin method=“POST”>
+
                 <section class="col-xs-12 col-sm-6 col-md-12">
                     <article class="search-result row">
                         <div class="col-xs-12 col-sm-12 col-md-3">
@@ -279,7 +278,9 @@
 
                                 <p>{{ key.getDescription }}</p>
 
-                                <input type="checkbox" name="delete_checkbox" value="1">Delete<br>
+                                <button class="delete_button btn btn-danger" name="post_delete" value={{ key.getPostid }}>
+                                    Delete
+                                </button>
                             </div>
 
                         </div>
@@ -288,13 +289,11 @@
                     </article>
                 </section>
 
-            </form>
 
         {% endfor %}
+        </form>
 
-        <button class="delete_button btn btn-danger">
-            Delete
-        </button>
+
 
 
     </div>
