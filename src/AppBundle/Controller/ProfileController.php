@@ -34,7 +34,10 @@ class ProfileController extends Controller
         $this->delete_message($message_delete);
 
         $studentEmail = $session->get('studentEmail');
+        $studentFirst = $session->get('firstName');
+        $studentLast = $session->get('lastName');
 
+        print $studentFirst;
 
         $postQuery = $postTable->createQueryBuilder('p')
             ->where('p.studentemail = :studentEmail')
@@ -53,7 +56,9 @@ class ProfileController extends Controller
         return $this->render('gatortraders/profile.html.twig', array(
             'postResults' => $postResults,
             'messageResults' => $messageResults,
-            'studentEmail' => $studentEmail)
+            'studentEmail' => $studentEmail,
+            'studentFirst' => $studentFirst,
+            'studentLast' => $studentLast)
         );
     }
 

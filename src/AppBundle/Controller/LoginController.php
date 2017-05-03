@@ -22,13 +22,13 @@ class LoginController extends Controller
         $username = $_GET["Studentemail"];
         $password = $_GET["Password"];
 
+
         $adminEmail = "admin@mail.sfsu.edu";
         $adminPassword = "1234";
 
         if($username == $adminEmail and $password == $adminPassword) {
             return $this->redirectToRoute('admin');
         }
-
 
 
         $error = "";
