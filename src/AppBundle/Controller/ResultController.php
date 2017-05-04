@@ -26,7 +26,6 @@ class ResultController extends Controller
             ->getRepository('AppBundle:Category')
             ->findAll();
 /**
->>>>>>> dev
         //images is now an array
         $images = array();
         foreach ($userdets as $key => $userdets1)
@@ -34,14 +33,6 @@ class ResultController extends Controller
             $images[$key] = base64_encode(stream_get_contents($userdets1->getImage()));
             print $images[$key];
         }
-<<<<<<< HEAD
-
-        return $this->render('gatortraders/result.html.twig', array(
-            'viewUserDets' => $userdets,
-            'searchkey' => $itemid,
-            'images' => $images,
-        ));
-=======
 */
         return $this->render('gatortraders/result.html.twig'
             , array('viewUserDets' => $userdets, 'category' => $category)

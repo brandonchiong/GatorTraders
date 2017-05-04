@@ -27,6 +27,11 @@ class Message
      */
     private $message;
 
+    /**
+     * @var string
+     */
+    private $subject;
+
 
     /**
      * Get idmessage
@@ -109,11 +114,6 @@ class Message
     {
         return $this->message;
     }
-    /**
-     * @var string
-     */
-    private $subject;
-
 
     /**
      * Set subject
@@ -139,3 +139,4 @@ class Message
         return $this->subject;
     }
 }
+

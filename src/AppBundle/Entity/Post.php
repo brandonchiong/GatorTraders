@@ -47,6 +47,11 @@ class Post
      */
     private $date;
 
+    /**
+     * @var string
+     */
+    private $username;
+
 
     /**
      * Get postid
@@ -225,11 +230,6 @@ class Post
     {
         return $this->date;
     }
-    /**
-     * @var string
-     */
-    private $username;
-
 
     /**
      * Set username
@@ -255,3 +255,4 @@ class Post
         return $this->username;
     }
 }
+
