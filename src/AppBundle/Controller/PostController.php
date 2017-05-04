@@ -1,18 +1,13 @@
 <?php
 namespace AppBundle\Controller;
-
 use AppBundle\UserInfo;
-
 use AppBundle\Entity\Category;
-
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Post;
 use Symfony\Component\Validator\Constraints\DateTime;
-
 class PostController extends Controller
 {
     /**
@@ -20,28 +15,19 @@ class PostController extends Controller
      */
     public function showAction(Request $request)
     {
-
         $post = new Post();
-
         $isUploaded = false;
-
         $category_table = $this->getDoctrine()
             ->getRepository('AppBundle:Category');
-
         $category_query = $category_table->createQueryBuilder('c')
             ->where('c.categoryid != :categoryid')
             ->setParameter('categoryid', 1)
             ->getQuery();
-
         $category_query_result = $category_query->getResult();
-
-
         $posttitle = $_POST["itemName"];
         $price = $_POST["price"];
         $description = $_POST["description"];
         $category = $_POST["category"];
-
-
         if(isset($_FILES['file']))
         {
             $file = $_FILES['file'];
@@ -69,18 +55,12 @@ class PostController extends Controller
                 }
             }
         }
-
-
         $session = $request->getSession();
         $studentEmail = $session->get('studentEmail');
-
         $mysqlDate = date('Y-m-d H:i:s');
-
         $userTable = $this->getDoctrine()
             ->getRepository('AppBundle:Users')
             ->findOneBy(array('studentemail' => $studentEmail));
-
-
         $post->setPosttitle($posttitle);
         $post->setDescription($description);
         $post->setCategory($category);
@@ -89,9 +69,6 @@ class PostController extends Controller
         $post->setDate(new \DateTime($mysqlDate));
         $post->setStudentemail($studentEmail);
         $post->setUsername($userTable->getUsername());
-
-
-
         $post->setPosttitle("lol");
         $post->setDescription("lol");
         $post->setCategory("lol");
@@ -101,29 +78,20 @@ class PostController extends Controller
         $post->setStudentemail("myemail");
         $post->setUsername("lol");
         //$post->upload();
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
-           // $em->flush($post);
-
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        // $em->flush($post);
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
-
         $template = 'base_login.html.twig';
-
-
         if($isUploaded) {
             return $this->redirectToRoute('welcome');
-
         }else {
             return $this->render('gatortraders/postview.html.twig', array('template' => $template, 'category' => $category_query_result));
-       }
-
+        }
         return $this->render('gatortraders/post.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
-
-
 }

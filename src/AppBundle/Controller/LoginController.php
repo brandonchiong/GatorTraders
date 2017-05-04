@@ -22,7 +22,6 @@ class LoginController extends Controller
         $username = $_GET["Studentemail"];
         $password = $_GET["Password"];
 
-
         $adminEmail = "admin@mail.sfsu.edu";
         $adminPassword = "p3tkovicrocks";
 
@@ -38,12 +37,11 @@ class LoginController extends Controller
            ->findAll();
 
 
-        foreach($userdets as $e)
-        {
+       foreach($userdets as $e)
+       {
            if ($e->getStudentemail() == $username && $e->getPassword() == $password )
                // if (1==2)
            {
-
                $session = $request->getSession();
 
                $session->set('studentEmail', $username);
@@ -54,7 +52,6 @@ class LoginController extends Controller
                $error = 'Invalid user name and password';
            }
         }
-
 
        return $this->render('gatortraders/login.html.twig', array('viewUserDets' => $userdets, 'error' => $error));
    }

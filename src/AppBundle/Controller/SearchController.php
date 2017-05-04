@@ -1,15 +1,17 @@
 <?php
 
 namespace AppBundle\Controller;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 964ce20e17900df55db3edbae07397715a271a2e
 use AppBundle\UserInfo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\User\User;
-
 use AppBundle\Entity\Post;
 use Appbundle\Entity\Category;
 
@@ -20,24 +22,19 @@ class SearchController extends Controller
      */
     public function showAction(Request $request)
     {
-
         $selectCategory = $_GET["category"];
         $search_term = $_GET["search_term"];
         $session = $request->getSession();
-
-
-
-
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
             ->findAll();
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 964ce20e17900df55db3edbae07397715a271a2e
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
-
-
-
         if ($search_term == null && $selectCategory != 'All') {
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.category = :category')
@@ -49,7 +46,6 @@ class SearchController extends Controller
                 ->setParameter('search_term', "%" . $search_term . "%")
                 ->getQuery();
         } else {
-
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.category = :category')
                 ->andWhere('p.posttitle LIKE :search_term')
@@ -57,18 +53,13 @@ class SearchController extends Controller
                 ->setParameter('search_term', "%" . $search_term . "%")
                 ->getQuery();
         }
-
         $trainings = $query->getResult();
-
         if($session->has('studentEmail')) {
             $template = 'base_login.html.twig';
         }else {
             $template = 'base.html.twig';
         }
-
         return $this->render('gatortraders/result.html.twig',
             array('viewUserDets' => $trainings, 'category' => $category, 'search_term' => $search_term, 'template' => $template));
-
     }
-
 }

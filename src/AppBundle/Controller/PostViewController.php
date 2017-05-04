@@ -18,21 +18,13 @@ class PostViewController extends Controller
     {
 
         $postId = $_GET["postId"];
-        $session = $request->getSession();
 
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
 
 
-        if($session->has('studentEmail')) {
-            $template = 'base_login.html.twig';
-        }else {
-            $template = 'base.html.twig';
-        }
-
-
-        return $this->render('gatortraders/post.html.twig', array( 'viewUserDets' => $userdets, 'searchkey' => $postId, 'template' => $template));
+        return $this->render('gatortraders/post.html.twig', array( 'viewUserDets' => $userdets, 'searchkey' => $postId));
 
     }
 }

@@ -1,4 +1,4 @@
-{% extends template %}
+{% extends "base.html.twig" %}
 
     {% block head %}
         {{ parent() }}
@@ -269,6 +269,18 @@
 
     </div>
     </body>
+
+    <div id="needHeader">
+        <h4 align="center">Need to post something?</h4>
+    </div>
+
+
+    <div id="regHeader">
+        <form action="register" method="POST">
+        <button type="submit" class="button-a button16">Register</button>
+        </form>
+    </div>
+
 
 
 {% endblock body %}

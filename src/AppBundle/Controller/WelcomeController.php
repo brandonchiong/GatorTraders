@@ -2,12 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\UserInfo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\User\User;
 
 use AppBundle\Entity\Post;
 use Appbundle\Entity\Category;
@@ -19,7 +16,6 @@ class WelcomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         $session = $request->getSession();
 
         $userdets = $this->getDoctrine()
