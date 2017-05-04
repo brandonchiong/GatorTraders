@@ -1,4 +1,4 @@
-{% extends template %}
+{% extends 'base_admin.html.twig' %}
 
 {% block head %}
     {{ parent() }}
@@ -211,15 +211,10 @@
         .search-result p {
             font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
         }
-<<<<<<< HEAD
-        body {
-            padding-top: 90px;
-=======
 
         .list_container {
             padding-left: 90px;
             padding-right: 90px;
->>>>>>> Pull_this_Kendrick
         }
 
         /*SEARCH BAR*/
@@ -243,6 +238,9 @@
             margin-top: -100px;
         }
 
+        .delete-button{
+            padding: 40px;
+        }
 
 
     </style>
@@ -252,100 +250,55 @@
 
     <body>
 
-    <h1 class="title" align="center">GatorTraders</h1>
-
-        {{ include('gatortraders/search.html.twig') }}
-
     <div class="container">
 
-        {% set counter= 0 %}
-
-
-        {% set counter = 0 %}
-
+        <form action=admin method="get">
         {% for key in viewUserDets %}
-            {% set counter = counter + 1 %}
+
+            <hgroup class="mb20">
+                    <strong class="text-danger">{{ key.category }}</strong></h2>
+            </hgroup>
+
+
+                <section class="col-xs-12 col-sm-6 col-md-12">
+                    <article class="search-result row">
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                                <img height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-2">
+                            <ul class="meta-search">
+                                <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
+                            </ul>
+                        </div>
+                        <div class="right-content">
+                            <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                <h3><a type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
+
+                                <p>{{ key.getDescription }}</p>
+
+                                <button class="delete_button btn btn-danger" name="post_delete" value={{ key.getPostid }}>
+                                    Delete
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </article>
+                </section>
+
+
         {% endfor %}
+        </form>
 
-<<<<<<< HEAD
-        {% if (searchkey == key.category) %}
 
-        {% set counter = counter + 1 %}
 
-=======
-            <h2 class="lead"><strong class="text-danger">{{ counter }}</strong> results were found for the search for {{ search_term}} :
 
-        </hgroup>
-        {% for key in viewUserDets %}
-        <hgroup class="mb20">
-
-                <strong class="text-danger">{{ key.category }}</strong></h2>
-        </hgroup>
->>>>>>> Pull_this_Kendrick
-
-        <form action=viewpost method=“POST”>
-        <section class="col-xs-12 col-sm-6 col-md-12">
-            <article class="search-result row">
-                <div class="col-xs-12 col-sm-12 col-md-3">
-<<<<<<< HEAD
-                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail"
-                    value={{ key.getPostid }}><img
-                                src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></a>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-2">
-                    <ul class="meta-search">
-                        <li><span>Post ID: {{ key.getPostid }}</span></li>
-                        <li><span>Price: ${{ key.getPrice }}</span></li>
-=======
-                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
-                        <img height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-2">
-                    <ul class="meta-search">
-                        <li><span>Price: $ {{ key.getPrice }}</span></li>
-                        <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
->>>>>>> Pull_this_Kendrick
-                    </ul>
-                </div>
-                <div class="right-content">
-                <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-<<<<<<< HEAD
-                    <h3><a href="viewpost" type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
-                    <p>{{ key.getDescription }}</p>
-                </div>
-=======
-                    <h3><a type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
-
-                    <p>{{ key.getDescription }}</p>
-                </div>
-
-                </div>
->>>>>>> Pull_this_Kendrick
-            </article>
-        </section>
-            </form>
     </div>
 
-<<<<<<< HEAD
-    {% endif %}
-=======
-         </form>
-        <form action=message method="GET">
-            <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
-                Message seller
-            </button>
-        </form>
-        {% endfor %}
->>>>>>> Pull_this_Kendrick
-
-    {% endfor %}
-
-    <hgroup class="mb20">
-        <h2 class="lead"><strong class="text-danger">{{ counter }}</strong> results were found for the search for item id:
-            <strong class="text-danger">{{ searchkey }}</strong></h2>
-    </hgroup>
 
     </body>
 
 {% endblock body %}
-

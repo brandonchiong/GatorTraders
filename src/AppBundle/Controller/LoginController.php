@@ -6,6 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use AppBundle\Entity\Users;
+
 class LoginController extends Controller
 {
 
@@ -20,7 +22,17 @@ class LoginController extends Controller
         $username = $_GET["Studentemail"];
         $password = $_GET["Password"];
 
-       $userdets = $this->getDoctrine()
+        $adminEmail = "admin@mail.sfsu.edu";
+        $adminPassword = "p3tkovicrocks";
+
+        if($username == $adminEmail and $password == $adminPassword) {
+            return $this->redirectToRoute('admin');
+        }
+
+
+        $error = "";
+
+        $userdets = $this->getDoctrine()
            ->getRepository('AppBundle:Users')
            ->findAll();
 
@@ -30,15 +42,17 @@ class LoginController extends Controller
            if ($e->getStudentemail() == $username && $e->getPassword() == $password )
                // if (1==2)
            {
+               $session = $request->getSession();
 
-               return $this->render('gatortraders/welcome.html.twig', [
-                   'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-               ]);
+               $session->set('studentEmail', $username);
 
-               }
-       }
+               return $this->redirectToRoute('welcome');
 
+           }elseif(isset($username) and isset($password)){
+               $error = 'Invalid user name and password';
+           }
+        }
 
-       return $this->render('gatortraders/login.html.twig', array('viewUserDets' => $userdets));
+       return $this->render('gatortraders/login.html.twig', array('viewUserDets' => $userdets, 'error' => $error));
    }
 }

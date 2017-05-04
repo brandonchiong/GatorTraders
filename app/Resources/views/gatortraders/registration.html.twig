@@ -90,6 +90,15 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label class="col-md-4 control-label">Username</label>
+                <div class="col-md-6  inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form_widget(form._userName) }}
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group has-feedback">
                 <label for="password" class="col-md-4 control-label">
                     Password
@@ -135,6 +144,17 @@
             </div>
         </fieldset>
 
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <label class="checkbox-inline"><input type="checkbox" value="">I agree to the terms and
+                    agreement</label>
+
+            </div>
+        </div>
+
+        <p>{{ error }}</p>
+        
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">

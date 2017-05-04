@@ -48,8 +48,18 @@ AppBundle\Entity\Post:
         imagepath:
             type: string
             nullable: true
-            length: 60
+            length: 100
             options:
                 fixed: false
             column: imagePath
+        date:
+            type: datetime
+            nullable: true
+        username:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: userName
     lifecycleCallbacks: {  }
