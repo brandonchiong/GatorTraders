@@ -31,7 +31,7 @@
 
 {% block body %}
 
-   <body>
+    <body>
     <div class='container'>
 
         <legend>Register Account</legend>
@@ -40,7 +40,7 @@
         {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
         {{ form_start(form, {'attr': {'id':'regForm',
-        'onsubmit':'return validateForm();'}} ) }}
+            'onsubmit':'return validateForm();'}} ) }}
 
         <!--, {'attr': {'id':'regForm',
                 'onsubmit':'return validateForm();-->
@@ -53,7 +53,7 @@
                 <div class="col-md-6  inputGroupContainer">
                     <div class="input-group"><span class="input-group-addon"><i
                                     class="glyphicon glyphicon-envelope"></i></span>
-                       {{ form_widget(form._studentEmail) }}
+                        {{ form_widget(form._studentEmail) }}
                         {{ form_errors(form._studentEmail) }}
 
                         <!--- <input name="email" id="inputEmail" placeholder="E-Mail Address" class="form-control"
@@ -86,6 +86,15 @@
 
                         <!--<input name="last_name" placeholder="Last Name"
                         class="form-control" type="text">-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Username</label>
+                <div class="col-md-6  inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form_widget(form._userName) }}
                     </div>
                 </div>
             </div>
@@ -132,13 +141,28 @@
                         <span class="help-block with-errors"></span>
                     </div>
                 </div>
+
             </div>
+
         </fieldset>
+
 
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">
-                <button type="submit" class="btn btn-warning" value="Submit">Register<span class="fa fa-lock"></span>
+                <label class="checkbox-inline"><input type="checkbox" value="">I agree to the terms and
+                    agreement</label>
+
+            </div>
+        </div>
+
+        <p>{{ error }}</p>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-warning" value="Submit">Register
+                    <span class="fa fa-lock"></span>
                 </button>
             </div>
         </div>
@@ -168,7 +192,7 @@
         <button type="submit" class="btn btn-success">Register <span class="fa fa-lock"></span></button>
         <br/>
         <a href="{{ path('post') }}">Already have an account? Log in.</a>
-        {{ form_end(form) }}
+    {{ form_end(form) }}
     </div>#}
 
 

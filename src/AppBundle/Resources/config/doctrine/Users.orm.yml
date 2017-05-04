@@ -39,12 +39,11 @@ AppBundle\Entity\Users:
             options:
                 fixed: false
             column: lastName
-        rating:
-            type: integer
+        username:
+            type: string
             nullable: true
+            length: 45
             options:
-                unsigned: false
-        verification:
-            type: boolean
-            nullable: false
+                fixed: false
+            column: userName
     lifecycleCallbacks: {  }

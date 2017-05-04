@@ -1,0 +1,97 @@
+{% extends 'base_login.html.twig' %}
+
+    {% block head %}
+        {{ parent() }}
+
+        {% block stylesheets %}
+            {{ parent() }}
+        {% endblock stylesheets %}
+
+        <style>
+
+            .messagecontainer{
+                padding-top: 70px;
+            }
+
+        </style>
+    {% endblock head %}
+
+
+
+{% block body %}
+
+<body>
+<div class="messagecontainer">
+
+    <div align="center">
+
+        <div class="container">
+
+            <div id="messagebox" style="margin-top:50px;"
+
+                 class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                        <div class="panel-title">Message seller</div>
+                    </div>
+
+                    <div style="padding-top:30px" class="panel-body">
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+
+                        <form action=message id="message_form" class="form-horizontal" role="form" method="get">
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="sender" type="text" class="form-control" name="sender" value="Sender: {{ sender }}" readonly>
+                            </div>
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="sender" type="text" class="form-control" name="sender" value="Receiver: Receiver" readonly>
+                            </div>
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <input id="sbuject" type="text" class="form-control" name="subject" value="I'm interested in your '{{ post.posttitle }}'" readonly>
+                            </div>
+
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <textarea id="sender_message" type="text" class="form-control" name="sender_message" placeholder="type your message here.."></textarea>
+                            </div>
+
+
+                            <div style="margin-top:10px" class="form-group">
+                                <!-- Button -->
+
+                                <div class="col-sm-12 controls">
+                                    <button id="btn-login" type="submit" class="btn btn-warning" name="postId" value={{ post.postid }} >Send</button>
+                                </div>
+
+                            </div>
+                            <p>{{ error }}</p>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}
+

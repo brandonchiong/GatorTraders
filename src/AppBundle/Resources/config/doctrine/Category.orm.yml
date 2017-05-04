@@ -1,21 +1,21 @@
-AppBundle\Entity\Test:
+AppBundle\Entity\Category:
     type: entity
-    table: test
+    table: Category
     id:
-        id:
+        categoryid:
             type: integer
             nullable: false
             options:
                 unsigned: false
             id: true
+            column: categoryId
             generator:
                 strategy: IDENTITY
     fields:
-        test:
+        category:
             type: string
-            nullable: false
+            nullable: true
             length: 45
             options:
                 fixed: false
-                default: WASUP
     lifecycleCallbacks: {  }

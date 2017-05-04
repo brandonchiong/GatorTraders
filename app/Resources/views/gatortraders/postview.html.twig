@@ -1,5 +1,5 @@
+{% extends template %}
 
-{% extends "base.html.twig" %}
     {% block head %}
         {{ parent() }}
         <title>{% block title %}Post Item{% endblock title %}</title>
@@ -44,10 +44,11 @@
         </style>
     {% endblock head %}
 {% block body %}
+
     <body>
     <h1 align="center">Post Item</h1>
     <div class="container">
-        <form name="postForm" enctype="multipart/form-data" action='post' id="postForm" method="post">
+        <form name="postForm" enctype="multipart/form-data" action='postExecute' id="postForm" method="post">
             <div class="col-md-6">
                 <div class="form-group row">
                     <label class="col-md-6 col-lg-6 control-label">Item Name: </label>
@@ -70,11 +71,9 @@
                     <label class="col-md-6 col-lg-6 control-label" for="category">Category: </label>
                     <div class="col-md-6 col-lg-6">
                         <select class="form-control" id="category" name="category" placeholder="Category" required="true">
-                            <option name="Birds">Birds</option>
-                            <option name = "Supplies">Supplies</option>
-                            <option name = "Clothing">Clothing</option>
-                            <option name = "Electronic">Electronic</option>
-                            <option name = "Books">Books</option>
+                            {% for key in category %}
+                                <option name={{ key.category }}>{{ key.category }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -181,9 +180,4 @@
         });
     </script>
 {% endblock javascripts %}
-{#
-<form action="postItems" method="post" enctype="multipart/form-data">
-    <input type="file" name="file">
-    <input type="submit" value="upload">
-</form>
-#}
+
