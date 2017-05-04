@@ -70,11 +70,10 @@ class MessageController extends Controller
         $receiver_user_name = $receiverTable->getUsername();
 
 
-
-
-
+        //if message is longer than 0 || if message is not empty
         if(strlen($sender_message) > 0 ) {
 
+            //store the required values to database
             $message->setReceiver($receiver);
             $message->setSender($studentEmail);
             $message->setSubject($subject);

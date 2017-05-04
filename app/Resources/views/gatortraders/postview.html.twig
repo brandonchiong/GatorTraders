@@ -2,182 +2,323 @@
 
     {% block head %}
         {{ parent() }}
-        <title>{% block title %}Post Item{% endblock title %}</title>
-        {% block stylesheets %}
-            {{ parent() }}
-        {% endblock stylesheets %}
+
+        <title>{% block title %}Post{% endblock title %}</title>
+
+
         <style>
             body {
-                padding-top: 90px;
+                padding-top: 80px;
             }
-            h1 {
-                padding-bottom: 50px;
+
+            .title {
+                margin-top: 50px;
+                margin-bottom: -80px;
             }
-            .text-left-imp .form-group .control-label {
-                text-align: left !important;
+
+            .list_container{
+                margin-top: 20px;
+                margin-left: 80px;
+                margin-right: 80px;
+
             }
-            <!--
-            css for the button
-            -->
-            .image-preview-input {
+
+            .title {
+                margin-top: 50px;
+                margin-bottom: -80px;
+
+            }
+
+            body {
+                padding-top: 30px;
+            }
+
+            .message_button{
+                margin-left: 10px;
+            }
+
+
+            #custom-search-input .search-query {
+                padding-right: 3px;
+                padding-right: 4px \9;
+                padding-left: 3px;
+                padding-left: 4px \9;
+                /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+                margin-bottom: 0;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+            }
+
+            #custom-search-input button {
+                border: 0;
+                background: none;
+                /** belows styles are working good */
+                padding: 2px 5px;
+                margin-top: 2px;
                 position: relative;
-                overflow: hidden;
-                margin: 0px;
-                color: #333;
-                background-color: #fff;
+                left: -28px;
+                /* IE7-8 doesn't have border-radius, so don't indent the padding */
+                margin-bottom: 0;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                color: rgba(7, 2, 4, 0.49);
+            }
+
+            .search-query:focus + button {
+                z-index: 3;
+            }
+
+
+            .btn-group .button {
+                background-color: #FFFFFF; /* Green */
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+
+
+            }
+
+            .btn-group .button1 {
+                background-color: #FFFFFF; /* Green */
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+
+
+            }
+
+            .btn-group .button2 {
+                background-color: #FFFFFF;
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+            }
+
+            .btn-group .button3 {
+                background-color: #FFFFFF;
+                border: 1px solid white;
+                color: black;
+                padding: 20px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 300px;
+                display: block;
+            }
+            .btn-group .button:not(:last-child) {
+                border-bottom: none; /* Prevent double borders */
+            }
+
+            .stylish-input-group .input-group-addon{
+                background: white !important;
+            }
+            .stylish-input-group .form-control{
+                border-right:0;
+                box-shadow:0 0 0;
+                border-color:#ccc;
+            }
+            .stylish-input-group button{
+                border:0;
+                background:transparent;
+            }
+
+
+            @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+            .mb20 {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            hgroup {
+                padding-left: 15px;
+                border-bottom: 1px solid #ccc;
+            }
+
+            hgroup h1 {
+                font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+                color: #2a3644;
+                margin-top: 0;
+                line-height: 1.15;
+            }
+
+            hgroup h2.lead {
+                font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+                color: #2a3644;
+                margin: 0;
+                padding-bottom: 10px;
+            }
+
+            .search-result .thumbnail {
+                border-radius: 0 !important;
+            }
+
+            .search-result:first-child {
+                margin-top: 0 !important;
+            }
+
+            .search-result {
+                margin-top: 20px;
+            }
+
+            .search-result .col-md-2 {
+                border-right: 1px dotted #ccc;
+                min-height: 140px;
+            }
+
+            .search-result ul {
+                padding-left: 0 !important;
+                list-style: none;
+            }
+
+            .search-result ul li {
+                font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+                line-height: 30px;
+            }
+
+            .search-result ul li i {
+                padding-right: 5px;
+            }
+
+            .search-result .col-md-7 {
+                position: relative;
+            }
+
+            .search-result h3 {
+                font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+                margin-top: 0 !important;
+                margin-bottom: 10px !important;
+            }
+
+            .search-result h3 > a, .search-result i {
+                color: #248dc1 !important;
+            }
+
+            .search-result p {
+                font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+            }
+
+            .list_container {
+                padding-left: 90px;
+                padding-right: 90px;
+            }
+
+            /*SEARCH BAR*/
+
+            .stylish-input-group .input-group-addon {
+                background: white !important;
+            }
+
+            .stylish-input-group .form-control {
+                border-right: 0;
+                box-shadow: 0 0 0;
                 border-color: #ccc;
             }
-            .image-preview-input input[type=file] {
-                position: absolute;
-                top: 0;
-                right: 0;
-                margin: 0;
-                padding: 0;
-                font-size: 20px;
-                cursor: pointer;
-                opacity: 0;
-                filter: alpha(opacity=0);
+
+            .stylish-input-group button {
+                border: 0;
+                background: transparent;
             }
-            .image-preview-input-title {
-                margin-left: 2px;
+
+            #search_placement {
+                margin-top: -100px;
             }
+
+            .lead{
+                padding-left: 1.5%;
+            }
+
+            .message_button{
+                margin-top:10%;
+            }
+
         </style>
     {% endblock head %}
+
+
 {% block body %}
 
+    <h1 class="title" align="center">GatorTraders</h1>
+    {{ include('gatortraders/search.html.twig') }}
+    <hr>
+    <br>
+
     <body>
-    <h1 align="center">Post Item</h1>
-    <div class="container">
-        <form name="postForm" enctype="multipart/form-data" action='postExecute' id="postForm" method="post">
+
+    <div class="list_container">
+
+        <div class="row">
+            <div class="col-lg-12">
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    {% for key in viewUserDets %}
+
+        {% if (searchkey == key.getPostid) %}
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
             <div class="col-md-6">
-                <div class="form-group row">
-                    <label class="col-md-6 col-lg-6 control-label">Item Name: </label>
-                    <div class="col-md-6 col-lg-6">
-                        <input type="text" class="form-control" name="itemName" placeholder="Item Name"
-                               required="true">
-                    </div>
-                </div>
+
+                <img class="img-responsive" height="360" width="360" src="{{ key.getImagePath()}}" alt="">
             </div>
-            <div class="col-md-6 text-left-imp">
-                <div class="form-group row">
-                    <label class="col-md-4 control-label">Price: </label>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" name="price" placeholder="Price" required="true">
-                    </div>
-                </div>
+
+            <div class="col-md-3">
+                <h3>{{ key.getPosttitle()}}</h3>
+                <h4>Price : ${{ key.getPrice }}</h4>
+                <p>Description : {{  key.getDescription }}</p>
             </div>
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label class="col-md-6 col-lg-6 control-label" for="category">Category: </label>
-                    <div class="col-md-6 col-lg-6">
-                        <select class="form-control" id="category" name="category" placeholder="Category" required="true">
-                            {% for key in category %}
-                                <option name={{ key.category }}>{{ key.category }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 text-left-imp">
-                <div class="form-group row">
-                    <label class="col-md-4 control-label">Upload Image: </label>
-                    <div class="col-xs-12 col-md-6 col-sm-8 ">
-                        <!-- image-preview-filename input [CUT FROM HERE]-->
-                        <div class="input-group image-preview">
-                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
-                            <!-- don't give a name === doesn't send on POST/GET -->
-                            <span class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
+
+            <div class="col-md-2">
+                <form action=message method="GET">
+                    <button type="submit" class="btn btn-warning message_button" name="postId" value={{ key.getPostId }}>
+                        Message seller
                     </button>
-                                <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <input type="file"  name="file"/>
-                        <!-- rename it -->
-                    </div>
-                            </span>
-                        </div><!-- /input-group image-preview [TO HERE]-->
-                    </div>
-                </div>
+                </form>
             </div>
-            <div class="col-md-11">
-                <div class="form-group">
-                    <label for="comment">Description:</label>
-                    <textarea class="form-control" rows="10" name="description" id="description"></textarea>
-                </div>
-            </div>
-            <div class="text-center">
-                <div class="offset-sm-2 col-sm-12">
-                    <button type="submit" value="Submit" name="submit" class="btn btn-primary">Post</button>
-                </div>
-            </div>
-        </form>
+        </div>
+
+
+        {% endif %}
+    {% endfor %}
+
+
+
     </div>
     </body>
+
 {% endblock body %}
+
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        $(document).on('click', '#close-preview', function () {
-            $('.image-preview').popover('hide');
-            // Hover befor close the preview
-            $('.image-preview').hover(
-                function () {
-                    $('.image-preview').popover('show');
-                },
-                function () {
-                    $('.image-preview').popover('hide');
-                }
-            );
-        });
-        $(function () {
-            // Create the close button
-            var closebtn = $('<button/>', {
-                type: "button",
-                text: 'x',
-                id: 'close-preview',
-                style: 'font-size: initial;',
-            });
-            closebtn.attr("class", "close pull-right");
-            // Set the popover default content
-            $('.image-preview').popover({
-                trigger: 'manual',
-                html: true,
-                title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
-                content: "There's no image",
-                placement: 'bottom'
-            });
-            // Clear event
-            $('.image-preview-clear').click(function () {
-                $('.image-preview').attr("data-content", "").popover('hide');
-                $('.image-preview-filename').val("");
-                $('.image-preview-clear').hide();
-                $('.image-preview-input input:file').val("");
-                $(".image-preview-input-title").text("Browse");
-            });
-            // Create the preview image
-            $(".image-preview-input input:file").change(function () {
-                var img = $('<img/>', {
-                    id: 'dynamic',
-                    width: 250,
-                    height: 200
-                });
-                var file = this.files[0];
-                var reader = new FileReader();
-                // Set preview image into the popover data-content
-                reader.onload = function (e) {
-                    $(".image-preview-input-title").text("Change");
-                    $(".image-preview-clear").show();
-                    $(".image-preview-filename").val(file.name);
-                    img.attr('src', e.target.result);
-                    $(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
-                }
-                reader.readAsDataURL(file);
-            });
-        });
-    </script>
-{% endblock javascripts %}
 
+{% endblock javascripts %}

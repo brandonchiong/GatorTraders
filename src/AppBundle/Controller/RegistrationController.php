@@ -19,6 +19,7 @@ class RegistrationController extends Controller
 
         $user = new Users();
 
+        //Create form
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -28,9 +29,9 @@ class RegistrationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $userEmail = $user->getStudentemail();
-            // 4) save the User!
             $em = $this->getDoctrine()->getManager();
 
+            //if user email is not valid form
             if(!$this->endsWith($userEmail, "@mail.sfsu.edu") )
             {
                 $error .= "It's not sfsu email.";
@@ -42,16 +43,19 @@ class RegistrationController extends Controller
 
             }
 
+            //if user name is already in database
             if($em->getRepository('AppBundle\Entity\Users')->findOneBy(array('studentemail' => $userEmail)) != null) {
                 $error = "The email existed already";
-
-
 
                 return $this->render(
                     'gatortraders/registration.html.twig'
                     ,array('form' => $form->createView(), 'error'=> $error)
                 );
             }
+
+            //set user name e.g. ckim4@mail.sfsu.edu -> username should be ckim4
+            $username = (explode("@", $userEmail))[0];
+            $user->setUsername($username);
 
 
             $em->persist($user);

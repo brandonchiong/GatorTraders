@@ -16,41 +16,40 @@ class LoginController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
 
-
-        $username = $_GET["Studentemail"];
+        //get student email and password from html
+        $studentemail = $_GET["Studentemail"];
         $password = $_GET["Password"];
 
         $adminEmail = "admin@mail.sfsu.edu";
         $adminPassword = "p3tkovicrocks";
 
-        if($username == $adminEmail and $password == $adminPassword) {
+        //if the email and password are matched then direct to admin page
+        if($studentemail == $adminEmail and $password == $adminPassword) {
             return $this->redirectToRoute('admin');
         }
 
-
+        //initial error
         $error = "";
 
-        $userdets = $this->getDoctrine()
-           ->getRepository('AppBundle:Users')
-           ->findAll();
+        //Find user that matches with input studentemail
+        $userTable = $this->getDoctrine()
+            ->getRepository('AppBundle:Users')
+            ->findOneBy(array('studentemail' => $studentemail));
 
 
-       foreach($userdets as $e)
-       {
-           if ($e->getStudentemail() == $username && $e->getPassword() == $password )
-               // if (1==2)
-           {
-               $session = $request->getSession();
+        //if userTable returns something and password matches then login succeed!
+        if($userTable != null) {
+            $userpassword = $userTable->getPassword();
+            if($userpassword == $password) {
+                $session = $request->getSession();
 
-               $session->set('studentEmail', $username);
+                $session->set('studentEmail', $studentemail);
 
-               return $this->redirectToRoute('welcome');
-
-           }elseif(isset($username) and isset($password)){
-               $error = 'Invalid user name and password';
-           }
+                return $this->redirectToRoute('welcome');
+            }
+        }elseif(isset($studentemail) and isset($password)) {
+            $error = 'Invalid user name and password';
         }
 
        return $this->render('gatortraders/login.html.twig', array('viewUserDets' => $userdets, 'error' => $error));

@@ -69,6 +69,7 @@ class PostExecuteController extends Controller
         $session = $request->getSession();
         $studentEmail = $session->get('studentEmail');
 
+
         $mysqlDate = date('Y-m-d H:i:s');
 
         $userTable = $this->getDoctrine()
@@ -86,17 +87,6 @@ class PostExecuteController extends Controller
         $post->setUsername($userTable->getUsername());
 
 
-        /*
-                $post->setPosttitle("lol");
-                $post->setDescription("lol");
-                $post->setCategory("lol");
-                $post->setPrice(23.01);
-                $post->setImagepath($file_upload);
-                $post->setDate(new \DateTime($mysqlDate));
-                $post->setStudentemail("myemail");
-                $post->setUsername("lol");
-                //$post->upload();
-        */
         $em = $this->getDoctrine()->getManager();
         $em->persist($post);
         $em->flush($post);
@@ -112,7 +102,7 @@ class PostExecuteController extends Controller
             return $this->redirectToRoute('welcome');
 
         } else {
-            return $this->render('gatortraders/postview.html.twig', array('template' => $template, 'category' => $category_query_result));
+            return $this->render('gatortraders/post.html.twig', array('template' => $template, 'category' => $category_query_result));
         }
 
     }

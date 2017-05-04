@@ -217,6 +217,26 @@
             #search_placement {
                 margin-top: -100px;
             }
+
+            .title_button{
+                background:none!important;
+                color:inherit;
+                border:none;
+                font: inherit;
+                padding-left: 0;
+                padding-bottom: 10px;
+                cursor: pointer;
+                font-size: large;
+                color: #843534;
+            }
+
+            .button-container{
+                margin-top: 5%;
+            }
+
+            .message_button{
+                width: 100%;
+            }
         </style>
     {% endblock head %}
 
@@ -232,39 +252,54 @@
     <div class="list_container">
 
         {% for key in viewUserDets %}
+            <div class="row">
+                <div class="col-md-9">
+                    <hgroup class="mb20">
+                        <strong class="text-danger">{{ key.category }}</strong></h3>
+                    </hgroup>
 
-            <hgroup class="mb20">
-                <strong class="text-danger">{{ key.category }}</strong></h2>
-            </hgroup>
+                    <section class="col-xs-12 col-sm-6 col-md-12">
+                        <article class="search-result row">
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <form action=viewpost method=“POST”>
+                                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                                        <img height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
+                                </form>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2">
+                                <ul class="meta-search">
+                                    <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                    <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
+                                </ul>
+                            </div>
 
-            <form action=viewpost method=“POST”>
-                <section class="col-xs-12 col-sm-6 col-md-12">
-                    <article class="search-result row">
-                        <div class="col-xs-12 col-sm-12 col-md-3">
-                            <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
-                                <img width="240" height="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-2">
-                            <ul class="meta-search">
-                                <li><span>Username: {{ key.getUsername }}</span></li>
-                                <li><span>Price: $ {{ key.getPrice }}</span></li>
-                                <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                            <h3><a type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
-                            <p>{{ key.getDescription }}</p>
-                        </div>
+                            <div class="right-content">
+                                <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
+                                    <form action=viewpost method=“POST”>
+                                        <button type="submit" title="Lorem ipsum" name = "postId" class="title_button" value={{ key.getPostid }}>
+                                            {{ key.getPosttitle }}</button>
+                                    </form>
+                                    <p>{{ key.getDescription }}</p>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
 
-                    </article>
-                </section>
-            </form>
-
-            <form action=message method="GET">
-                <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
-                    Message seller
-                </button>
-            </form>
+                </div>
+                <div class="col-md-2 button-container">
+                    <form action=message method="GET">
+                        <button type="submit" class="message_button btn btn-warning" name="postId" value={{ key.getPostId }}>
+                            Message seller
+                        </button>
+                    </form>
+                    <br>
+                    <form action=viewpost method=“POST”>
+                        <button type="submit" class="message_button btn btn-warning" name = "postId" value={{ key.getPostid }}>
+                            Detail
+                        </button>
+                    </form>
+                </div>
+            </div>
         {% endfor %}
 
     </div>

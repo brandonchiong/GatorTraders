@@ -34,7 +34,6 @@ class UserType extends AbstractType
             ))
             ->add('_firstName',TextType::class, array('label' => 'First Name'))
             ->add('_lastName',TextType::class, array('label' => 'Last Name'))
-            ->add('_userName',TextType::class, array('label' => 'Username'))
         ;
     }
 

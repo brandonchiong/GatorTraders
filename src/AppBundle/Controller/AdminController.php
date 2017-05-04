@@ -26,11 +26,12 @@ class AdminController extends Controller
         $session = $request->getSession();
         $adminEmail = $session->get('studentEmail');
 
+        //when user is not admin
         if($adminEmail != "admin@mail.sfsu.edu") {
             return $this->redirectToRoute('login');
         }
 
-        // replace this example code with whatever you need
+        //get all the post that is in post table
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
@@ -49,6 +50,8 @@ class AdminController extends Controller
     private function delete_post($post_delete)
     {
 
+        //if post_delete button is checked
+        //delete the post
         if($post_delete != null) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('AppBundle:Post')->findOneBy(array('postid' => $post_delete));

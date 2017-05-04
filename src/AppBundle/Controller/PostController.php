@@ -16,18 +16,28 @@ class PostController extends Controller
     public function showAction(Request $request)
     {
         $post = new Post();
+
         $isUploaded = false;
+
+        //Get all category columns from category table
         $category_table = $this->getDoctrine()
             ->getRepository('AppBundle:Category');
+
+
+        //run query to exclude 'All' category
         $category_query = $category_table->createQueryBuilder('c')
             ->where('c.categoryid != :categoryid')
             ->setParameter('categoryid', 1)
             ->getQuery();
         $category_query_result = $category_query->getResult();
+
+        //Store necessary information from post page
         $posttitle = $_POST["itemName"];
         $price = $_POST["price"];
         $description = $_POST["description"];
         $category = $_POST["category"];
+
+        //if file is posted then store it
         if(isset($_FILES['file']))
         {
             $file = $_FILES['file'];
@@ -38,6 +48,7 @@ class PostController extends Controller
             $file_ext = explode('.', $file_name);
             $file_ext = strtolower(end($file_ext));
             $allowed = array('jpg', 'png', 'jpeg');
+
             if(in_array($file_ext, $allowed))
             {
                 if($file_error ===0)
@@ -56,6 +67,7 @@ class PostController extends Controller
             }
         }
 
+        //Get current user's email
         $session = $request->getSession();
         $studentEmail = $session->get('studentEmail');
 
@@ -65,6 +77,7 @@ class PostController extends Controller
             ->findOneBy(array('studentemail' => $studentEmail));
 
 
+        //set values
         $post->setPosttitle($posttitle);
         $post->setDescription($description);
         $post->setCategory($category);
@@ -73,30 +86,19 @@ class PostController extends Controller
         $post->setDate(new \DateTime($mysqlDate));
         $post->setStudentemail($studentEmail);
         $post->setUsername($userTable->getUsername());
-        $post->setPosttitle("lol");
-        $post->setDescription("lol");
-        $post->setCategory("lol");
-        $post->setPrice(23.01);
-        $post->setImagepath($file_upload);
-        $post->setDate(new \DateTime($mysqlDate));
-        $post->setStudentemail("myemail");
-        $post->setUsername("lol");
-        //$post->upload();
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($post);
-        // $em->flush($post);
-        $userdets = $this->getDoctrine()
-            ->getRepository('AppBundle:Post')
-            ->findAll();
 
         $template = 'base_login.html.twig';
 
         if($isUploaded) {
             return $this->redirectToRoute('welcome');
         }else {
-            return $this->render('gatortraders/postview.html.twig', array('template' => $template, 'category' => $category_query_result));
+            return $this->render('gatortraders/post.html.twig', array('template' => $template, 'category' => $category_query_result));
         }
-        return $this->render('gatortraders/post.html.twig', [
+
+        return $this->render('gatortraders/postview.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }

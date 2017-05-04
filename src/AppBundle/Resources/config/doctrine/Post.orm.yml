@@ -13,9 +13,9 @@ AppBundle\Entity\Post:
                 strategy: IDENTITY
     fields:
         posttitle:
-            type: string
+            type: text
             nullable: true
-            length: 20
+            length: 65535
             options:
                 fixed: false
             column: postTitle
@@ -27,28 +27,28 @@ AppBundle\Entity\Post:
             options:
                 default: '0'
         description:
-            type: string
+            type: text
             nullable: true
-            length: 100
+            length: 65535
             options:
                 fixed: false
         category:
             type: string
             nullable: true
-            length: 20
+            length: 50
             options:
                 fixed: false
         studentemail:
             type: string
             nullable: true
-            length: 20
+            length: 50
             options:
                 fixed: false
             column: studentEmail
         imagepath:
-            type: string
+            type: text
             nullable: true
-            length: 100
+            length: 65535
             options:
                 fixed: false
             column: imagePath

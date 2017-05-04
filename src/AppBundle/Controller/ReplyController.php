@@ -25,13 +25,17 @@ class ReplyController extends Controller
         $session = $request->getSession();
 
         $message = new Message();
+
+        //get current user email
         $studentEmail = $session->get('studentEmail');
         $error = "";
 
+        //set messageid, subject and meesage
         $idMessage = $_GET['message_replay'];
         $subject = $_GET['subject'];
         $sender_message = $_GET['sender_message'];
 
+        //Get message column that matches with input message id
         $messageTable = $this->getDoctrine()
             ->getRepository('AppBundle:Message')
             ->findOneBy(array('idmessage' => $idMessage));
@@ -49,6 +53,7 @@ class ReplyController extends Controller
         $receiver = $messageTable->getSender();
 
 
+        //if message is not empty
         if(strlen($sender_message) > 0 ) {
 
 

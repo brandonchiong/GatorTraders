@@ -138,4 +138,33 @@ class Message
     {
         return $this->subject;
     }
+    /**
+     * @var string
+     */
+    private $senderusername;
+
+
+    /**
+     * Set senderusername
+     *
+     * @param string $senderusername
+     *
+     * @return Message
+     */
+    public function setSenderusername($senderusername)
+    {
+        $this->senderusername = $senderusername;
+
+        return $this;
+    }
+
+    /**
+     * Get senderusername
+     *
+     * @return string
+     */
+    public function getSenderusername()
+    {
+        return $this->senderusername;
+    }
 }

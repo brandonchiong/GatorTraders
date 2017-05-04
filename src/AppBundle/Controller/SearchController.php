@@ -17,24 +17,38 @@ class SearchController extends Controller
      */
     public function showAction(Request $request)
     {
+
+        //Set filter
         $selectCategory = $_GET["category"];
         $search_term = $_GET["search_term"];
+
         $session = $request->getSession();
+
+        //Get all columns from category table
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
             ->findAll();
+
+        //Get all post columns from post table
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
+
+        //if search tem is not defined and category is something other than All
         if ($search_term == null && $selectCategory != 'All') {
+
+            //Run query to find that is matching with given category field
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.category = :category')
                 ->setParameter('category', $selectCategory)
                 ->getQuery();
+
+        //if search category is 'All' or is not defined and search term is defined
         } else if ($selectCategory == null || $selectCategory == 'All') {
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.posttitle LIKE :search_term')
                 ->setParameter('search_term', "%" . $search_term . "%")
                 ->getQuery();
+        //if search category is defined and search term is defined
         } else {
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.category = :category')
@@ -44,6 +58,8 @@ class SearchController extends Controller
                 ->getQuery();
         }
         $trainings = $query->getResult();
+
+
         if($session->has('studentEmail')) {
             $template = 'base_login.html.twig';
         }else {
