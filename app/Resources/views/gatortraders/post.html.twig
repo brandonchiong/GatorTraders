@@ -30,7 +30,7 @@
 {% block body %}
 
     <h1 class="title" align="center">GatorTraders</h1>
-    {{ include('gatortraders/search.html.twig') }}
+
     <body>
 
     <div class="list_container">
@@ -60,9 +60,15 @@
             </div>
         </div>
 
+            <form action=message method="GET">
+                <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
+                    Message seller
+                </button>
+            </form>
         {% endif %}
-
     {% endfor %}
+
+
 
     </div>
     </body>

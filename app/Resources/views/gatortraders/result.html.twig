@@ -256,13 +256,16 @@
 
         {% set counter= 0 %}
 
-
-
-
         {% for key in viewUserDets %}
             {% set counter = counter + 1 %}
+        {% endfor %}
+
+            <h2 class="lead"><strong class="text-danger">{{ counter }}</strong> results were found for the search for {{ search_term}} :
+
+        </hgroup>
+        {% for key in viewUserDets %}
         <hgroup class="mb20">
-            <h2 class="lead"><strong class="text-danger">{{ counter }}</strong> results were found for the search for item id:
+
                 <strong class="text-danger">{{ key.category }}</strong></h2>
         </hgroup>
 
@@ -286,15 +289,16 @@
                     <p>{{ key.getDescription }}</p>
                 </div>
 
-                <button class="message_button">
-                    Message seller
-                </button>
                 </div>
             </article>
         </section>
 
          </form>
-
+        <form action=message method="GET">
+            <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
+                Message seller
+            </button>
+        </form>
         {% endfor %}
 
     </div>
