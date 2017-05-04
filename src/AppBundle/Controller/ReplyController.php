@@ -36,11 +36,18 @@ class ReplyController extends Controller
             ->getRepository('AppBundle:Message')
             ->findOneBy(array('idmessage' => $idMessage));
 
-        $receiver = $messageTable->getSender();
-        $receiverTable = $this->getDoctrine()
+        //get current user's information
+        $userTable = $this->getDoctrine()
             ->getRepository('AppBundle:Users')
-            ->findOneBy(array('studentemail' => $receiver));
-        $sender_user_name = $receiverTable->getUsername();
+            ->findOneBy(array('studentemail' => $studentEmail));
+
+        //get current user's username
+        $sender_user_name = $userTable->getUsername();
+
+
+        //whoever sends the message is the receiver
+        $receiver = $messageTable->getSender();
+
 
         if(strlen($sender_message) > 0 ) {
 
@@ -67,6 +74,7 @@ class ReplyController extends Controller
 
         return $this->render('gatortraders/reply.html.twig',
             array('idMessage' => $idMessage
+                , 'senderUsername' =>$sender_user_name
                 , 'messageTable' => $messageTable
                 , 'error' => $error
             ));
