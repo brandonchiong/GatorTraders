@@ -24,7 +24,7 @@ class LoginController extends Controller
 
 
         $adminEmail = "admin@mail.sfsu.edu";
-        $adminPassword = "1234";
+        $adminPassword = "p3tkovicrocks";
 
         if($username == $adminEmail and $password == $adminPassword) {
             return $this->redirectToRoute('admin');
