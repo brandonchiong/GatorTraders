@@ -16,6 +16,7 @@ class WelcomeController extends Controller
      */
     public function indexAction(Request $request)
     {
+
         $session = $request->getSession();
 
         $userdets = $this->getDoctrine()
@@ -32,6 +33,7 @@ class WelcomeController extends Controller
             }
         }
 
+        print("Hello?");
 
         if($session->has('studentEmail')) {
             $template = 'base_login.html.twig';
@@ -44,10 +46,10 @@ class WelcomeController extends Controller
             ->setMaxResults(5)
             ->getQuery();
 
-
         $trainings = $query->getResult();
 
-        // replace this example code with whatever you need
+        print("HMM?");
+
         return $this->render('gatortraders/welcome.html.twig', array('viewUserDets' => $trainings, 'template' => $template, 'category' => $category));
     }
 }

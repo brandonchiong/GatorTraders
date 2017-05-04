@@ -37,6 +37,10 @@ class ReplyController extends Controller
             ->findOneBy(array('idmessage' => $idMessage));
 
         $receiver = $messageTable->getSender();
+        $receiverTable = $this->getDoctrine()
+            ->getRepository('AppBundle:Users')
+            ->findOneBy(array('studentemail' => $receiver));
+        $sender_user_name = $receiverTable->getUsername();
 
         if(strlen($sender_message) > 0 ) {
 
@@ -45,6 +49,7 @@ class ReplyController extends Controller
             $message->setSender($studentEmail);
             $message->setSubject($subject);
             $message->setMessage($sender_message);
+            $message->setSenderusername($sender_user_name);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);

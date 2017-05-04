@@ -33,14 +33,9 @@ class Users
     private $lastname;
 
     /**
-     * @var integer
+     * @var string
      */
-    private $rating;
-
-    /**
-     * @var boolean
-     */
-    private $verification;
+    private $username;
 
 
     /**
@@ -148,59 +143,6 @@ class Users
     {
         return $this->lastname;
     }
-
-    /**
-     * Set rating
-     *
-     * @param integer $rating
-     *
-     * @return Users
-     */
-    public function setRating($rating)
-    {
-        $this->rating = $rating;
-
-        return $this;
-    }
-
-    /**
-     * Get rating
-     *
-     * @return integer
-     */
-    public function getRating()
-    {
-        return $this->rating;
-    }
-
-    /**
-     * Set verification
-     *
-     * @param boolean $verification
-     *
-     * @return Users
-     */
-    public function setVerification($verification)
-    {
-        $this->verification = $verification;
-
-        return $this;
-    }
-
-    /**
-     * Get verification
-     *
-     * @return boolean
-     */
-    public function getVerification()
-    {
-        return $this->verification;
-    }
-    /**
-     * @var string
-     */
-    private $username;
-
 
     /**
      * Set username

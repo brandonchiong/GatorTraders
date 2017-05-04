@@ -55,12 +55,16 @@ class PostController extends Controller
                 }
             }
         }
+
         $session = $request->getSession();
         $studentEmail = $session->get('studentEmail');
+
         $mysqlDate = date('Y-m-d H:i:s');
         $userTable = $this->getDoctrine()
             ->getRepository('AppBundle:Users')
             ->findOneBy(array('studentemail' => $studentEmail));
+
+
         $post->setPosttitle($posttitle);
         $post->setDescription($description);
         $post->setCategory($category);
@@ -84,7 +88,9 @@ class PostController extends Controller
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
+
         $template = 'base_login.html.twig';
+
         if($isUploaded) {
             return $this->redirectToRoute('welcome');
         }else {

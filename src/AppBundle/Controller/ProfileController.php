@@ -34,10 +34,8 @@ class ProfileController extends Controller
         $this->delete_message($message_delete);
 
         $studentEmail = $session->get('studentEmail');
-        $studentFirst = $session->get('firstName');
-        $studentLast = $session->get('lastName');
 
-        print $studentFirst;
+
 
         $postQuery = $postTable->createQueryBuilder('p')
             ->where('p.studentemail = :studentEmail')
@@ -49,16 +47,20 @@ class ProfileController extends Controller
             ->setParameter('studentEmail', $studentEmail)
             ->getQuery();
 
+        $userTable = $this->getDoctrine()
+            ->getRepository('AppBundle:Users')
+            ->findOneBy(array('studentemail' => $studentEmail));
+
 
         $postResults = $postQuery->getResult();
         $messageResults = $messageQuery->getResult();
 
+
         return $this->render('gatortraders/profile.html.twig', array(
             'postResults' => $postResults,
             'messageResults' => $messageResults,
-            'studentEmail' => $studentEmail,
-            'studentFirst' => $studentFirst,
-            'studentLast' => $studentLast)
+            'userResults' => $userTable,
+            'studentEmail' => $studentEmail)
         );
     }
 

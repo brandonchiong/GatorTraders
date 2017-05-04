@@ -36,4 +36,11 @@ AppBundle\Entity\Message:
             length: 65535
             options:
                 fixed: false
+        senderusername:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: senderUsername
     lifecycleCallbacks: {  }

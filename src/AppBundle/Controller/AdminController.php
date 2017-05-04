@@ -22,6 +22,14 @@ class AdminController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+        $session = $request->getSession();
+        $adminEmail = $session->get('studentEmail');
+
+        if($adminEmail != "admin@mail.sfsu.edu") {
+            return $this->redirectToRoute('login');
+        }
+
         // replace this example code with whatever you need
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post')

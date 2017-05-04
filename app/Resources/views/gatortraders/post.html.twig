@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends template %}
 
     {% block head %}
         {{ parent() }}
@@ -37,34 +37,36 @@
 
         <div class="row">
             <div class="col-lg-12">
+
             </div>
         </div>
         <!-- /.row -->
 
-    {% for key in viewUserDets %}
 
-        {% if (searchkey == key.getPostid) %}
-        <!-- Portfolio Item Row -->
-        <div class="row">
+        {% for key in viewUserDets %}
 
-            <div class="col-md-8">
-                <img class="img-responsive" height="360" width="360" src="{{ key.getImagePath()}}" alt="">
-            </div>
+            {% if (searchkey == key.getPostid) %}
+                <!-- Portfolio Item Row -->
+                <div class="row">
 
-            <div>
-                <h3>{{ key.getPosttitle()}}</h3>
-                <h4>Price : ${{ key.getPrice }}</h4>
-                <p>Description : {{  key.getDescription }}</p>
-            </div>
-        </div>
+                    <div class="col-md-8">
+                        <img class="img-responsive" height="360" width="360" src="{{ key.getImagePath()}}" alt="">
+                    </div>
 
-            <form action=message method="GET">
-                <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
-                    Message seller
-                </button>
-            </form>
-        {% endif %}
-    {% endfor %}
+                    <div>
+                        <h3>{{ key.getPosttitle()}}</h3>
+                        <h4>Price : ${{ key.getPrice }}</h4>
+                        <p>Description : {{  key.getDescription }}</p>
+                    </div>
+                </div>
+
+                <form action=message method="GET">
+                    <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
+                        Message seller
+                    </button>
+                </form>
+            {% endif %}
+        {% endfor %}
 
 
 

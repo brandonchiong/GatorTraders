@@ -39,21 +39,37 @@ class MessageController extends Controller
 
         $message = new Message();
 
+        //current user's email
         $studentEmail = $session->get('studentEmail');
 
 
+        //get post that user wants to send message
         $postTable = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findOneBy(array('postid' => $postId));
 
+        //create default subject
         $subject = "I'm interested in your '". $postTable->getPosttitle(). "'.";
+
+        //receiver user name is username of one who posts
         $receiver = "". $postTable->getStudentemail() . "";
 
+        //get current user's information
         $userTable = $this->getDoctrine()
             ->getRepository('AppBundle:Users')
             ->findOneBy(array('studentemail' => $studentEmail));
 
-        $receiver_user_name = $userTable->getUsername();
+
+        //get current user's username
+        $sender_user_name = $userTable->getUsername();
+
+        //get receiver's username
+        $receiverTable = $this->getDoctrine()
+            ->getRepository('AppBundle:Users')
+            ->findOneBy(array('studentemail' => $receiver));
+        $receiver_user_name = $receiverTable->getUsername();
+
+
 
 
 
@@ -63,6 +79,7 @@ class MessageController extends Controller
             $message->setSender($studentEmail);
             $message->setSubject($subject);
             $message->setMessage($sender_message);
+            $message->setSenderusername($sender_user_name);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
@@ -76,8 +93,8 @@ class MessageController extends Controller
 
 
         return $this->render('gatortraders/message.html.twig',
-            array('sender' => $studentEmail, 'post' => $postTable,
-                'message' => $message, 'error' => $error, 'username' => $receiver_user_name));
+            array('sender' => $sender_user_name, 'post' => $postTable, 'receiver' => $receiver_user_name,
+                'message' => $message, 'error' => $error));
 
     }
 }

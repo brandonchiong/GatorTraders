@@ -27,6 +27,11 @@ class Message
      */
     private $message;
 
+    /**
+     * @var string
+     */
+    private $subject;
+
 
     /**
      * Get idmessage
@@ -109,11 +114,6 @@ class Message
     {
         return $this->message;
     }
-    /**
-     * @var string
-     */
-    private $subject;
-
 
     /**
      * Set subject
@@ -137,5 +137,34 @@ class Message
     public function getSubject()
     {
         return $this->subject;
+    }
+    /**
+     * @var string
+     */
+    private $senderusername;
+
+
+    /**
+     * Set senderusername
+     *
+     * @param string $senderusername
+     *
+     * @return Message
+     */
+    public function setSenderusername($senderusername)
+    {
+        $this->senderusername = $senderusername;
+
+        return $this;
+    }
+
+    /**
+     * Get senderusername
+     *
+     * @return string
+     */
+    public function getSenderusername()
+    {
+        return $this->senderusername;
     }
 }

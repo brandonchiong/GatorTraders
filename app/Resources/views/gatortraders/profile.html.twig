@@ -332,9 +332,10 @@
                 <div class="w3-container">
                     <h4 class="w3-center">My Profile</h4>
                     <hr>
-                    {#<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ studentFirst }} </p> #}
-                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ studentEmail }} </p>
-                    {#<p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{ studentEmail }} </p> #}
+                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> @{{ userResults.username }} </p>
+                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ userResults.firstname }} {{ userResults.lastname }} </p>
+                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ userResults.studentEmail }} </p>
+
                 </div>
             </div>
             <br>
@@ -386,7 +387,8 @@
                                         </ul>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                                        <h3><a type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
+                                        <h3 class="text-danger">{{ key.getPosttitle }}</h3>
+                                        <br/>
                                         <p>{{ key.getDescription }}</p>
                                     </div>
                                 </article>
@@ -409,6 +411,15 @@
 
                         <hgroup class="mb20">
 
+                            <section class="col-xs-12 col-sm-6 col-md-12">
+                                <div class="col-md-3">
+                                    Sender:
+                                </div>
+                                <div class=".col-sm-8">
+                                    {{ key.getSenderusername }}
+                                </div>
+                                </article>
+                            </section>
                             <section class="col-xs-12 col-sm-6 col-md-12">
                                     <div class="col-md-3">
                                         Subject:

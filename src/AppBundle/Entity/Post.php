@@ -37,6 +37,12 @@ class Post
      * @var \DateTime
      */
     private $date;
+
+    /**
+     * @var string
+     */
+    private $username;
+
     /**
      * Get postid
      *
@@ -193,14 +199,6 @@ class Post
     {
         return $this->date;
     }
-    /**
-     * @var string
-     */
-    private $username;
-<<<<<<< HEAD
-
-=======
->>>>>>> 964ce20e17900df55db3edbae07397715a271a2e
     /**
      * Set username
      *

@@ -15,7 +15,7 @@ AppBundle\Entity\Users:
         studentemail:
             type: string
             nullable: false
-            length: 20
+            length: 45
             options:
                 fixed: false
             column: studentEmail
