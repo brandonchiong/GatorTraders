@@ -8,20 +8,30 @@
         {% endblock stylesheets %}
 
         <style>
-
-            h1 {
-                padding-top: 50px;
-            }
             body {
-                padding-top: 50px;
+                padding-top: 100px;
+            }
+
+            .title {
+                margin-top: 50px;
+                margin-bottom: -80px;
+
+            }
+
+            body {
+                padding-top: 30px;
+            }
+
+            .message_button{
+                margin-left: 10px;
             }
 
             #custom-search-input {
                 margin:0;
                 margin-top: 10px;
                 padding: 0;
-                padding-left: 200px;
-                padding-right: 200px;
+                padding-left: 100px;
+                padding-right: 100px;
 
             }
 
@@ -56,56 +66,6 @@
 
             .search-query:focus + button {
                 z-index: 3;
-            }
-
-            #regHeader {
-                padding-left: 00px;
-            }
-
-            .btn-group .button {
-                background-color: #FFFFFF; /* Green */
-                border: 1px solid white;
-                color: black;
-                padding: 20px 27px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                cursor: pointer;
-                width: 300px;
-                display: block;
-
-
-            }
-
-            .btn-group .button1 {
-                background-color: #FFFFFF; /* Green */
-                border: 1px solid white;
-                color: black;
-                padding: 20px 27px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                cursor: pointer;
-                width: 300px;
-                display: block;
-
-
-            }
-
-            .btn-group .button2 {
-                background-color: #FFFFFF;
-                border: 1px solid white;
-                color: black;
-                padding: 20px 27px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                cursor: pointer;
-                width: 300px;
-                display: block;
             }
 
             .btn-group .button3 {
@@ -157,6 +117,108 @@
                 border:0;
                 background:transparent;
             }
+
+
+            @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+            .mb20 {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            hgroup {
+                padding-left: 15px;
+                border-bottom: 1px solid #ccc;
+            }
+
+            hgroup h1 {
+                font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+                color: #2a3644;
+                margin-top: 0;
+                line-height: 1.15;
+            }
+
+            hgroup h2.lead {
+                font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+                color: #2a3644;
+                margin: 0;
+                padding-bottom: 10px;
+            }
+
+            .search-result .thumbnail {
+                border-radius: 0 !important;
+            }
+
+            .search-result:first-child {
+                margin-top: 0 !important;
+            }
+
+            .search-result {
+                margin-top: 20px;
+            }
+
+            .search-result .col-md-2 {
+                border-right: 1px dotted #ccc;
+                min-height: 140px;
+            }
+
+            .search-result ul {
+                padding-left: 0 !important;
+                list-style: none;
+            }
+
+            .search-result ul li {
+                font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+                line-height: 30px;
+            }
+
+            .search-result ul li i {
+                padding-right: 5px;
+            }
+
+            .search-result .col-md-7 {
+                position: relative;
+            }
+
+            .search-result h3 {
+                font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+                margin-top: 0 !important;
+                margin-bottom: 10px !important;
+            }
+
+            .search-result h3 > a, .search-result i {
+                color: #248dc1 !important;
+            }
+
+            .search-result p {
+                font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+            }
+
+            .list_container {
+                padding-left: 90px;
+                padding-right: 90px;
+            }
+
+            /*SEARCH BAR*/
+
+            .stylish-input-group .input-group-addon {
+                background: white !important;
+            }
+
+            .stylish-input-group .form-control {
+                border-right: 0;
+                box-shadow: 0 0 0;
+                border-color: #ccc;
+            }
+
+            .stylish-input-group button {
+                border: 0;
+                background: transparent;
+            }
+
+            #search_placement {
+                margin-top: -100px;
+            }
         </style>
     {% endblock head %}
 
@@ -164,57 +226,48 @@
 {% block body %}
 
     <body>
-    <h1 align="center">GatorTraders</h1>
+    <h1 class="title" align="center">GatorTraders</h1>
+    {{ include('gatortraders/search.html.twig') }}
 
-    <div class="container">
+    <div class="list_container">
 
-        <div class="row">
-            <form action="results" method="get">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control" name="category" placeholder="Search">
-                            <span class="input-group-addon">
-                        <button type="submit">
-                        </button>
-                    </span>
+        {% for key in viewUserDets %}
+
+            <hgroup class="mb20">
+                    <strong class="text-danger">{{ key.category }}</strong></h2>
+            </hgroup>
+
+            <form action=viewpost method=“POST”>
+                <section class="col-xs-12 col-sm-6 col-md-12">
+                    <article class="search-result row">
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                                <img width="240" height="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
                         </div>
-                    </div>
-                </div>
+                        <div class="col-xs-12 col-sm-12 col-md-2">
+                            <ul class="meta-search">
+                                <li><span>Username: {{ key.getUsername }}</span></li>
+                                <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                            <h3><a type="submit" value={{ key.getPostid }} title="">{{ key.getPosttitle }}</a></h3>
+                            <p>{{ key.getDescription }}</p>
+                        </div>
+
+                    </article>
+                </section>
             </form>
-        </div>
+
+            <form action=message method="GET">
+                <button type="submit" class="message_button" name="postId" value={{ key.getPostId }}>
+                    Message seller
+                </button>
+            </form>
+        {% endfor %}
+
     </div>
-
-    <h3 align="center">Categories</h3>
-        <form action="results" method="get">
-            <div class="btn-group">
-                <button type="submit" name="category" value="Arts" class="button">Arts</button>
-                <button type="submit" name="category" value="Books" class="button">Books</button>
-                <button type="submit" name="category" value="Cars" class="button">Cars</button>
-                <button type="submit" name="category" value="Computers" class="button">Computers</button>
-            </div>
-
-            <div class="btn-group">
-                <button type="submit" name="category" value="Drinkware" class="button1">Drinkware</button>
-                <button type="submit" name="category" value="Electronics" class="button1">Electronics</button>
-                <button type="submit" name="category" value="Free-stuff" class="button1">Free Stuff</button>
-                <button type="submit" name="category" value="Furniture" class="button1">Furniture</button>
-            </div>
-
-            <div class="btn-group">
-                <button type="submit" name="category" value="Gaming-consoles" class="button2">Gaming Consoles</button>
-                <button type="submit" name="category" value="Hardware" class="button2">Hardware</button>
-                <button type="submit" name="category" value="Home" class="button2">Home</button>
-                <button type="submit" name="category" value="Movies" class="button2">Movies</button>
-            </div>
-
-            <div class="btn-group">
-                <button type="submit" name="category" value="Music" class="button3">Music</button>
-                <button type="submit" name="category" value="Pet-supplies" class="button3">Pet Supplies</button>
-                <button type="submit" name="category" value="Supplies" class="button3">Supplies</button>
-                <button type="submit" name="category" value="Etc" class="button3">ETC</button>
-            </div>
-    </form>
     </body>
 
     <div id="needHeader">

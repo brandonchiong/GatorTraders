@@ -1,0 +1,39 @@
+AppBundle\Entity\Message:
+    type: entity
+    table: Message
+    id:
+        idmessage:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idMessage
+            generator:
+                strategy: IDENTITY
+    fields:
+        sender:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        receiver:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        message:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        subject:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
