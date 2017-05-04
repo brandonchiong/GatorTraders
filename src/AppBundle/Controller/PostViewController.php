@@ -16,6 +16,7 @@ class PostViewController extends Controller
      */
     public function indexAction(Request $request)
     {
+        /*
         $postId = $_GET["postId"];
         $session = $request->getSession();
 
@@ -32,6 +33,6 @@ class PostViewController extends Controller
 
 
         return $this->render('gatortraders/post.html.twig', array( 'viewUserDets' => $userdets, 'searchkey' => $postId, 'template' => $template));
-
+*/
     }
 }

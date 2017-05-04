@@ -2,13 +2,15 @@
 
 namespace AppBundle\Controller;
 
-
-use AppBundle\Entity\Post;
-
+use AppBundle\UserInfo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\User\User;
+
+use AppBundle\Entity\Post;
+use Appbundle\Entity\Category;
 
 class SearchController extends Controller
 {
@@ -18,21 +20,30 @@ class SearchController extends Controller
     public function showAction(Request $request)
     {
 
-        $category = $_GET["category"];
+        $selectCategory = $_GET["category"];
         $search_term = $_GET["search_term"];
         $session = $request->getSession();
+
+
+
+
+        $category = $this->getDoctrine()
+            ->getRepository('AppBundle:Category')
+            ->findAll();
+
 
 
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
 
 
-        if ($search_term == null && $category != 'All') {
+
+        if ($search_term == null && $selectCategory != 'All') {
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.category = :category')
-                ->setParameter('category', $category)
+                ->setParameter('category', $selectCategory)
                 ->getQuery();
-        } else if ($category == null || $category == 'All') {
+        } else if ($selectCategory == null || $selectCategory == 'All') {
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.posttitle LIKE :search_term')
                 ->setParameter('search_term', "%" . $search_term . "%")
@@ -42,7 +53,7 @@ class SearchController extends Controller
             $query = $userdets->createQueryBuilder('p')
                 ->where('p.category = :category')
                 ->andWhere('p.posttitle LIKE :search_term')
-                ->setParameter('category', $category)
+                ->setParameter('category', $selectCategory)
                 ->setParameter('search_term', "%" . $search_term . "%")
                 ->getQuery();
         }

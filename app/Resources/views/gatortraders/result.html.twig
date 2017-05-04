@@ -1,3 +1,4 @@
+
 {% extends template %}
 
 {% block head %}
@@ -253,13 +254,15 @@
 
     <div class="container">
 
+        {% set counter= 0 %}
+
 
 
 
         {% for key in viewUserDets %}
-
+            {% set counter = counter + 1 %}
         <hgroup class="mb20">
-            <h2 class="lead"><strong class="text-danger">number</strong> results were found for the search for item id:
+            <h2 class="lead"><strong class="text-danger">{{ counter }}</strong> results were found for the search for item id:
                 <strong class="text-danger">{{ key.category }}</strong></h2>
         </hgroup>
 
@@ -300,3 +303,4 @@
     </body>
 
 {% endblock body %}
+
