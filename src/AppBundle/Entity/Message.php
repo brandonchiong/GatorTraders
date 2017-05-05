@@ -1,0 +1,170 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * Message
+ */
+class Message
+{
+    /**
+     * @var integer
+     */
+    private $idmessage;
+
+    /**
+     * @var string
+     */
+    private $sender;
+
+    /**
+     * @var string
+     */
+    private $receiver;
+
+    /**
+     * @var string
+     */
+    private $message;
+
+    /**
+     * @var string
+     */
+    private $subject;
+
+
+    /**
+     * Get idmessage
+     *
+     * @return integer
+     */
+    public function getIdmessage()
+    {
+        return $this->idmessage;
+    }
+
+    /**
+     * Set sender
+     *
+     * @param string $sender
+     *
+     * @return Message
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
+
+        return $this;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return string
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * Set receiver
+     *
+     * @param string $receiver
+     *
+     * @return Message
+     */
+    public function setReceiver($receiver)
+    {
+        $this->receiver = $receiver;
+
+        return $this;
+    }
+
+    /**
+     * Get receiver
+     *
+     * @return string
+     */
+    public function getReceiver()
+    {
+        return $this->receiver;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     *
+     * @return Message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set subject
+     *
+     * @param string $subject
+     *
+     * @return Message
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Get subject
+     *
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+    /**
+     * @var string
+     */
+    private $senderusername;
+
+
+    /**
+     * Set senderusername
+     *
+     * @param string $senderusername
+     *
+     * @return Message
+     */
+    public function setSenderusername($senderusername)
+    {
+        $this->senderusername = $senderusername;
+
+        return $this;
+    }
+
+    /**
+     * Get senderusername
+     *
+     * @return string
+     */
+    public function getSenderusername()
+    {
+        return $this->senderusername;
+    }
+}

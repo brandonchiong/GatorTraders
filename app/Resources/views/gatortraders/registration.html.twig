@@ -1,0 +1,190 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+
+    <title>{% block title %}Registration{% endblock title %}</title>
+
+    {% block stylesheets %}
+        {{ parent() }}
+
+
+    {% endblock stylesheets %}
+
+    <style>
+        body {
+            padding-top: 90px;
+        }
+
+        legend {
+            padding-top: 16px;
+        }
+
+        .form-group {
+            padding-bottom: 30px;
+        }
+
+    </style>
+
+{% endblock head %}
+
+
+{% block body %}
+
+    <body>
+    <div class='container'>
+
+        <legend>Register Account</legend>
+
+        <!--<form name="regForm" action="#" id="regForm" onsubmit="return validateForm();" method="POST">-->
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+        {{ form_start(form, {'attr': {'id':'regForm',
+            'onsubmit':'return validateForm();'}} ) }}
+
+        <!--, {'attr': {'id':'regForm',
+                'onsubmit':'return validateForm();-->
+
+        <fieldset>
+
+            <div class="form-group">
+
+                <label for="inputEmail" class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-6  inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                    class="glyphicon glyphicon-envelope"></i></span>
+                        {{ form_widget(form._studentEmail) }}
+                        {{ form_errors(form._studentEmail) }}
+
+                        <!--- <input name="email" id="inputEmail" placeholder="E-Mail Address" class="form-control"
+                               type="email"> -->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">First Name</label>
+                <div class="col-md-6  inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                    class="glyphicon glyphicon-user"></i></span>
+                        {{ form_widget(form._firstName) }}
+
+                        <!--<input name="first_name" placeholder="First Name"
+                        class="form-control" type="text">-->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Last Name</label>
+                <div class="col-md-6  inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                    class="glyphicon glyphicon-user"></i></span>
+                        {{ form_widget(form._lastName) }}
+
+                        <!--<input name="last_name" placeholder="Last Name"
+                        class="form-control" type="text">-->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group has-feedback">
+                <label for="password" class="col-md-4 control-label">
+                    Password
+                </label>
+                <div class="col-md-6  inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                    class="glyphicon glyphicon-home"></i></span>
+
+                        {{ form_widget(form._password.first) }}
+
+                        <!--<input class="form-control" id="userPw" type="password" placeholder="Password"
+                               name="password" data-minLength="6"
+                               data-error="some error"
+                               required/>-->
+
+                        <span class="glyphicon form-control-feedback"></span>
+                        <span class="help-block with-errors"></span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="confirmPassword" class="col-md-4 control-label">
+                    Confirm Password
+                </label>
+                <div class="col-md-6  inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                                    class="glyphicon glyphicon-home"></i></span>
+
+                        {{ form_widget(form._password.second) }}
+
+                        <!--<input class="form-control {$borderColor}" id="inputConfirmPassword" type="password"
+                           placeholder="Confirm password"
+                           name="confirmPassword" data-match="#confirmPassword" data-minLength="6"
+                           data-match-error="some error 2"
+                           required/>-->
+
+                        <span class="glyphicon form-control-feedback"></span>
+                        <span class="help-block with-errors"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <label class="checkbox-inline"><input type="checkbox" value="">I agree to the terms and
+                    agreement</label>
+
+            </div>
+        </div>
+
+        <p>{{ error }}</p>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-warning" value="Submit">Register
+                    <span class="fa fa-lock"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <div style="font-size: 80%; position: relative; top: 10px"><a href="{{ path('login') }}">Already have an account? Log in</a></div>
+
+            </div>
+        </div>
+
+
+        {{ form_end(form) }}
+
+    </div>
+    </body>
+
+
+{% endblock body %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="/code_examples/passtest.js"></script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+
+
+{% endblock javascripts %}
+

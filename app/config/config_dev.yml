@@ -11,6 +11,11 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
+doctrine:
+  orm:
+    mappings:
+      AppBundle: ~
+
 monolog:
     handlers:
         main:
