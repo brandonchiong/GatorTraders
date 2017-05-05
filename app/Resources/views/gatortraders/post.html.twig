@@ -1,0 +1,187 @@
+{% extends 'base_login.html.twig' %}
+
+    {% block head %}
+        {{ parent() }}
+        <title>{% block title %}Post Item{% endblock title %}</title>
+        {% block stylesheets %}
+            {{ parent() }}
+        {% endblock stylesheets %}
+        <style>
+            body {
+                padding-top: 90px;
+            }
+            h1 {
+                padding-bottom: 50px;
+            }
+            .text-left-imp .form-group .control-label {
+                text-align: left !important;
+            }
+            <!--
+            css for the button
+            -->
+            .image-preview-input {
+                position: relative;
+                overflow: hidden;
+                margin: 0px;
+                color: #333;
+                background-color: #fff;
+                border-color: #ccc;
+            }
+            .image-preview-input input[type=file] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+            .image-preview-input-title {
+                margin-left: 2px;
+            }
+
+            .post_button{
+                width: 20%;
+            }
+        </style>
+    {% endblock head %}
+{% block body %}
+
+    <body>
+    <h1 align="center">Post Item</h1>
+    <div class="container">
+        <form name="postForm" enctype="multipart/form-data" action='postExecute' id="postForm" method="post">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-md-6 col-lg-6 control-label">Item Name: </label>
+                    <div class="col-md-6 col-lg-6">
+                        <input type="text" class="form-control" name="itemName" placeholder="Item Name"
+                               required="true">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-left-imp">
+                <div class="form-group row">
+                    <label class="col-md-4 control-label">Price: </label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="price" placeholder="Price" required="true">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-md-6 col-lg-6 control-label" for="category">Category: </label>
+                    <div class="col-md-6 col-lg-6">
+                        <select class="form-control" id="category" name="category" placeholder="Category" required="true">
+                            {% for key in category %}
+                                <option name={{ key.category }}>{{ key.category }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-left-imp">
+                <div class="form-group row">
+                    <label class="col-md-4 control-label">Upload Image: </label>
+                    <div class="col-xs-12 col-md-6 col-sm-8 ">
+                        <!-- image-preview-filename input [CUT FROM HERE]-->
+                        <div class="input-group image-preview">
+                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                            <!-- don't give a name === doesn't send on POST/GET -->
+                            <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                                <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file"  name="file"/>
+                        <!-- rename it -->
+                    </div>
+                            </span>
+                        </div><!-- /input-group image-preview [TO HERE]-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <label for="comment">Description:</label>
+                    <textarea class="form-control" rows="10" name="description" id="description"></textarea>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="offset-sm-2 col-sm-12">
+                    <button type="submit" value="Submit" name="submit" class="btn btn-warning post_button">Post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </body>
+{% endblock body %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).on('click', '#close-preview', function () {
+            $('.image-preview').popover('hide');
+            // Hover befor close the preview
+            $('.image-preview').hover(
+                function () {
+                    $('.image-preview').popover('show');
+                },
+                function () {
+                    $('.image-preview').popover('hide');
+                }
+            );
+        });
+        $(function () {
+            // Create the close button
+            var closebtn = $('<button/>', {
+                type: "button",
+                text: 'x',
+                id: 'close-preview',
+                style: 'font-size: initial;',
+            });
+            closebtn.attr("class", "close pull-right");
+            // Set the popover default content
+            $('.image-preview').popover({
+                trigger: 'manual',
+                html: true,
+                title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
+                content: "There's no image",
+                placement: 'bottom'
+            });
+            // Clear event
+            $('.image-preview-clear').click(function () {
+                $('.image-preview').attr("data-content", "").popover('hide');
+                $('.image-preview-filename').val("");
+                $('.image-preview-clear').hide();
+                $('.image-preview-input input:file').val("");
+                $(".image-preview-input-title").text("Browse");
+            });
+            // Create the preview image
+            $(".image-preview-input input:file").change(function () {
+                var img = $('<img/>', {
+                    id: 'dynamic',
+                    width: 250,
+                    height: 200
+                });
+                var file = this.files[0];
+                var reader = new FileReader();
+                // Set preview image into the popover data-content
+                reader.onload = function (e) {
+                    $(".image-preview-input-title").text("Change");
+                    $(".image-preview-clear").show();
+                    $(".image-preview-filename").val(file.name);
+                    img.attr('src', e.target.result);
+                    $(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+{% endblock javascripts %}
+
