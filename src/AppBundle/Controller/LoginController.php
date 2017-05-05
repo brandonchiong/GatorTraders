@@ -26,6 +26,8 @@ class LoginController extends Controller
 
         //if the email and password are matched then direct to admin page
         if($studentemail == $adminEmail and $password == $adminPassword) {
+            $session = $request->getSession(); 
+            $session->set('studentEmail', $studentemail);
             return $this->redirectToRoute('admin');
         }
 
