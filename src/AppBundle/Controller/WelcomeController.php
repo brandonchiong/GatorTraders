@@ -50,6 +50,8 @@ class WelcomeController extends Controller
         $trainings = $query->getResult();
 
 
-        return $this->render('gatortraders/welcome.html.twig', array('viewUserDets' => $trainings, 'template' => $template, 'category' => $category));
+        return $this->render('gatortraders/welcome.html.twig',
+            array('viewUserDets' => $trainings, 'template' => $template,
+                'category' => $category));
     }
 }
