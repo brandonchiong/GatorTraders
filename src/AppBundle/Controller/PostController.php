@@ -56,8 +56,8 @@ class PostController extends Controller
                     if($file_size <= 2097152)
                     {
                         $file_name_new = uniqid('', true) . '.' .  $file_ext;
-                        $file_destination = './img' . $file_name_new;
-                        $file_upload = './img' . $file_name_new;
+                        $file_destination = './img/' . $file_name_new;
+                        $file_upload = './img/' . $file_name_new;
                         if(move_uploaded_file($file_tmp, $file_destination))
                         {
                             $isUploaded = true;
