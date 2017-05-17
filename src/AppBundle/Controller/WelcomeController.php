@@ -13,8 +13,6 @@ class WelcomeController extends Controller
     public function indexAction(Request $request)
     {
         $postflagId =  $_GET["postId"];
-        print $postflagId;
-        print "Hello";
         $session = $request->getSession();
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
@@ -28,18 +26,16 @@ class WelcomeController extends Controller
                     ->getRepository('AppBundle:Post')
                     ->findOneBy(array('postid' => $postId));
         */
-//        foreach ($userdets as $post) {
+        foreach ($userdets1 as $post) {
+
+            if ($postflagId == $post.getPostid()) {
+                $post->setFlag(1);
+            }
+        }
 //
-//            $postflagId =  $_GET["postId"];
-//
-//            if ($postflagId == $post.getPostid()) {
-//                $post->setFlag(1);
-//            }
-//        }
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $em->persist($userdets);
-//        $em->flush($userdets);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($userdets1);
+        $em->flush($userdets1);
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
