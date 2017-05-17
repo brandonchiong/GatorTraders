@@ -29,15 +29,15 @@ class WelcomeController extends Controller
         */
         foreach ($userdets1 as $post) {
 
-//            if ($postflagId == $post.getPostid()) {
-  //              $post->setFlag(1);
-             //   print"Hello2";
-  //          }
+            if ($postflagId == $post.getPostid()) {
+                $post->setFlag(1);
+                print"Hello2";
+            }
         }
 //
- //       $em = $this->getDoctrine()->getManager();
-  //      $em->persist($userdets1);
- //       $em->flush($userdets1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($userdets1);
+        $em->flush($userdets1);
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')

@@ -220,4 +220,33 @@ class Post
     {
         return $this->username;
     }
+    /**
+     * @var integer
+     */
+    private $flag = '0';
+
+
+    /**
+     * Set flag
+     *
+     * @param integer $flag
+     *
+     * @return Post
+     */
+    public function setFlag($flag)
+    {
+        $this->flag = $flag;
+
+        return $this;
+    }
+
+    /**
+     * Get flag
+     *
+     * @return integer
+     */
+    public function getFlag()
+    {
+        return $this->flag;
+    }
 }
