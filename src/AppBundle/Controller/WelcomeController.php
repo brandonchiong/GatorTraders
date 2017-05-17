@@ -28,11 +28,14 @@ class WelcomeController extends Controller
                     ->findOneBy(array('postid' => $postId));
         */
         foreach ($userdets1 as $post) {
-
+            
+            echo $post;
+            /*
             if ($postflagId == $post.getPostid()) {
-          //      $post->setFlag(1);
+                $post->setFlag(1);
                 print"Hello2";
             }
+            */
         }
 //
         $em = $this->getDoctrine()->getManager();
