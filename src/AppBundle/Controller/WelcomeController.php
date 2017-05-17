@@ -18,10 +18,11 @@ class WelcomeController extends Controller
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
 
+        /*
         $userdets1 = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
-
+*/
         /*
                 $postTable = $this->getDoctrine()
                     ->getRepository('AppBundle:Post')
