@@ -32,10 +32,10 @@ class WelcomeController extends Controller
 
         //    echo $post;
 
-            if ($postflagId == $post.getPostid()) {
+          //  if ($postflagId == $post.getPostid()) {
             //    $post->setFlag(1);
                 print"Hello2";
-            }
+           // }
 
         }
 //
