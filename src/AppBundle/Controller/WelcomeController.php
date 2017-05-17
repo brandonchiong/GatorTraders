@@ -18,17 +18,17 @@ class WelcomeController extends Controller
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
 
-        /*
+
         $userdets1 = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
-*/
+
         /*
                 $postTable = $this->getDoctrine()
                     ->getRepository('AppBundle:Post')
                     ->findOneBy(array('postid' => $postId));
         */
-      //  foreach ($userdets1 as $post) {
+        foreach ($userdets1 as $post) {
 
         //    echo $post;
             /*
@@ -37,11 +37,11 @@ class WelcomeController extends Controller
                 print"Hello2";
             }
             */
-        //}
+        }
 //
         $em = $this->getDoctrine()->getManager();
-        $em->persist($userdets1);
-        $em->flush($userdets1);
+      //  $em->persist($userdets1);
+       // $em->flush($userdets1);
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
