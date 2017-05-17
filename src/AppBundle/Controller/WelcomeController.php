@@ -14,6 +14,7 @@ class WelcomeController extends Controller
     {
         $postflagId =  $_GET["postId"];
         print $postflagId;
+        print "Hello";
         $session = $request->getSession();
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
