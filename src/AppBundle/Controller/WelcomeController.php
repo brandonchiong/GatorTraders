@@ -1,14 +1,10 @@
 <?php
-
 namespace AppBundle\Controller;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use AppBundle\Entity\Post;
 use Appbundle\Entity\Category;
-
 class WelcomeController extends Controller
 {
     /**
@@ -16,17 +12,37 @@ class WelcomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-
+        $postflagId =  $_GET["postId"];
+        print $postflagId;
         $session = $request->getSession();
-
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
 
+        $userdets1 = $this->getDoctrine()
+            ->getRepository('AppBundle:Post')
+            ->findAll();
+
+        /*
+                $postTable = $this->getDoctrine()
+                    ->getRepository('AppBundle:Post')
+                    ->findOneBy(array('postid' => $postId));
+        */
+//        foreach ($userdets as $post) {
+//
+//            $postflagId =  $_GET["postId"];
+//
+//            if ($postflagId == $post.getPostid()) {
+//                $post->setFlag(1);
+//            }
+//        }
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $em->persist($userdets);
+//        $em->flush($userdets);
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
             ->findAll();
-
         //if user click logout, session is cleared
         if(isset($_GET["logout"]))
         {
@@ -34,22 +50,17 @@ class WelcomeController extends Controller
                 $session->clear();
             }
         }
-
         if($session->has('studentEmail')) {
             $template = 'base_login.html.twig';
         }else {
             $template = 'base.html.twig';
         }
-
         //Run query to get five most recent posted posts.
         $query = $userdets->createQueryBuilder('p')
             ->orderBy('p.date', 'DESC')
             ->setMaxResults(5)
             ->getQuery();
-
         $trainings = $query->getResult();
-
-
         return $this->render('gatortraders/welcome.html.twig',
             array('viewUserDets' => $trainings, 'template' => $template,
                 'category' => $category));
