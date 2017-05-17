@@ -30,7 +30,7 @@ class WelcomeController extends Controller
         foreach ($userdets1 as $post) {
 
             if ($postflagId == $post.getPostid()) {
-                $post->setFlag(1);
+          //      $post->setFlag(1);
                 print"Hello2";
             }
         }
