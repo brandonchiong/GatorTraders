@@ -13,6 +13,7 @@ class ResultController extends Controller
     /**
      * @Route("/results")
      */
+    /*
     public function showAction()
     {
 
@@ -25,5 +26,5 @@ class ResultController extends Controller
         return $this->render('gatortraders/result.html.twig', array('viewUserDets' => $userdets, 'searchkey' => $itemid));
 
     }
-
+*/
 }
