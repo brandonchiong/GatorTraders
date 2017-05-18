@@ -15,7 +15,6 @@ class PostController extends Controller
      */
     public function showAction(Request $request)
     {
-        /*
         $post = new Post();
 
         $isUploaded = false;
@@ -98,7 +97,7 @@ class PostController extends Controller
         }else {
             return $this->render('gatortraders/post.html.twig', array('template' => $template, 'category' => $category_query_result));
         }
-*/
+
         return $this->render('gatortraders/postview.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
