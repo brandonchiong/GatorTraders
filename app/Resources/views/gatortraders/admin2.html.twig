@@ -500,7 +500,7 @@
 
 
                     {% for key in viewUserDets %}
-
+                    {% if ( key.getFlag == 1) %}
                         <hgroup class="mb20">
                             <strong class="text-danger">{{ key.category }}</strong></h2>
                         </hgroup>
@@ -542,7 +542,7 @@
                             </article>
                         </section>
 
-
+                    {% endif %}
                     {% endfor %}
                     </form>
 
