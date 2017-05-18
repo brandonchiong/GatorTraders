@@ -28,6 +28,7 @@ class WelcomeController extends Controller
                     ->getRepository('AppBundle:Post')
                     ->findOneBy(array('postid' => $postId));
         */
+      /*
         foreach ($userdets1 as $post) {
 
         //    echo $post;
@@ -39,9 +40,10 @@ class WelcomeController extends Controller
 
         }
 //
+      */
         $em2 = $this->getDoctrine()->getManager();
-        //$em2->persist($userdets1);
-        //$em2->flush($userdets1);
+        $em2->persist($userdets1);
+        $em2->flush($userdets1);
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
