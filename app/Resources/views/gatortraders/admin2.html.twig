@@ -401,7 +401,7 @@
                 <div class="w3-bar w3-white">
                     <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'Posts')">Posts</button>
                     <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Users')">Users</button>
-
+                    <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Flagged Items')">Flagged Items</button>
                 </div>
 
                 <div id="Posts" class="w3-container w3-border tab">
@@ -496,6 +496,58 @@
                     {% endfor %}
                 </div>
 
+                <div id="Flagged Items" class="w3-container w3-border tab">
+
+
+                    {% for key in viewUserDets %}
+                    {% if ( key.getFlag == 1) %}
+                        <hgroup class="mb20">
+                            <strong class="text-danger">{{ key.category }}</strong></h2>
+                        </hgroup>
+
+
+                        <section class="col-xs-12 col-sm-6 col-md-12">
+                            <article class="search-result row">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <form action=viewpost method=“POST”>
+                                        <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                                            <img height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
+                                    </form>
+
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-2">
+                                    <ul class="meta-search">
+                                        <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                        <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <form action=viewpost method=“POST”>
+                                            <button type="submit" title="Lorem ipsum" name = "postId" class="title_button" value={{ key.getPostid }}>
+                                                {{ key.getPosttitle }}</button>
+                                        </form>
+                                        <p>{{ key.getDescription }}</p>
+
+                                        <form action=admin method="get">
+                                            <button class="delete_button btn btn-danger" name="post_delete" value={{ key.getPostid }}>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+
+                            </article>
+                        </section>
+
+                    {% endif %}
+                    {% endfor %}
+                    </form>
+
+
+                </div>
 
 
                 <script>

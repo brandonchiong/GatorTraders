@@ -62,4 +62,11 @@ AppBundle\Entity\Post:
             options:
                 fixed: false
             column: userName
+        flag:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: Flag
     lifecycleCallbacks: {  }
