@@ -34,14 +34,14 @@ class WelcomeController extends Controller
 
             if ($postflagId == $post->getPostid()) {
                 $post->setFlag(1);
-                print"Hello2";
+                print $post->getFlag();
             }
 
         }
 //
         $em = $this->getDoctrine()->getManager();
         $em->persist($userdets1);
-        $em->flush($userdets1);
+       // $em->flush($userdets1);
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
