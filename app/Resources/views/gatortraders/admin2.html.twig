@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+
+    body {
+        padding-top: 100px;
+    }
+
+    .title {
+        margin-top: 70px;
+        margin-bottom: -80px;
+
+    }
+
+    body {
+        padding-top: 30px;
+    }
+
+    .message_button{
+        margin-left: 10px;
+    }
+
+    #custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+        padding-left: 100px;
+        padding-right: 100px;
+
+    }
+
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: rgba(7, 2, 4, 0.49);
+    }
+
+    .search-query:focus + button {
+        z-index: 3;
+    }
+    .btn-group .button3 {
+        background-color: #FFFFFF;
+        border: 1px solid white;
+        color: black;
+        padding: 20px 27px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        width: 300px;
+        display: block;
+    }
+    .btn-group .button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
+    }
+
+    .button-a {
+        background-color: #FFFFFF;
+        border: none;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        margin: auto;
+        cursor: pointer;
+        position: center;
+
+    }
+
+    .button16 {padding: 0px;}
+
+    #imaginary_container{
+        margin-top:20px;
+        margin-bottom: 50px;
+    }
+    .stylish-input-group .input-group-addon{
+        background: white !important;
+    }
+    .stylish-input-group .form-control{
+        border-right:0;
+        box-shadow:0 0 0;
+        border-color:#ccc;
+    }
+    .stylish-input-group button{
+        border:0;
+        background:transparent;
+    }
+
+
+    @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+    .mb20 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    hgroup {
+        padding-left: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    hgroup h1 {
+        font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+        color: #2a3644;
+        margin-top: 0;
+        line-height: 1.15;
+    }
+
+    hgroup h2.lead {
+        font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+        color: #2a3644;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+
+    .search-result .thumbnail {
+        border-radius: 0 !important;
+    }
+
+    .search-result:first-child {
+        margin-top: 0 !important;
+    }
+
+    .search-result {
+        margin-top: 20px;
+    }
+
+    .search-result .col-md-2 {
+        border-right: 1px dotted #ccc;
+        min-height: 140px;
+    }
+
+    .search-result ul {
+        padding-left: 0 !important;
+        list-style: none;
+    }
+
+    .search-result ul li {
+        font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+        line-height: 30px;
+    }
+
+    .search-result ul li i {
+        padding-right: 5px;
+    }
+
+    .search-result .col-md-7 {
+        position: relative;
+    }
+
+    .search-result h3 {
+        font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .search-result h3 > a, .search-result i {
+        color: #248dc1 !important;
+    }
+
+    .search-result p {
+        font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+    }
+
+    .list_container {
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
+    /*SEARCH BAR*/
+
+    .stylish-input-group .input-group-addon {
+        background: white !important;
+    }
+
+    .stylish-input-group .form-control {
+        border-right: 0;
+        box-shadow: 0 0 0;
+        border-color: #ccc;
+    }
+
+    .stylish-input-group button {
+        border: 0;
+        background: transparent;
+    }
+
+    #search_placement {
+        margin-top: -100px;
+    }
+
+
+</style>
+<body class="w3-theme-l5">
+
+<head>
+    {% block head %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}My Profile{% endblock %}</title>
+
+        {% block stylesheets %}
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                  crossorigin="anonymous">
+
+            <style>
+
+                .dropdown-menu {
+                    width: 245px;
+                }
+
+                .navbar-brand>img {
+                    height:49px;
+                    width: auto;
+                    margin-top: -14px;
+                }
+
+                .logout-button {
+                    border: 0;
+                    background: none;
+                    margin-top: -16px;
+                }
+
+                .delete-button{
+                    margin-bottom: 10px;
+                    display:inline-block;
+                    margin-right:5px;
+                    width: 100%;
+
+
+                }
+
+                .title_button{
+                    background:none!important;
+                    color:inherit;
+                    border:none;
+                    font: inherit;
+                    padding-left: 0;
+                    padding-bottom: 10px;
+                    cursor: pointer;
+                    font-size: large;
+                    color: #843534;
+                }
+
+                .button-container{
+                    margin-top: 9%;
+                }
+
+                .message-container{
+                    padding: 2%;
+                }
+
+                .message-content{
+                    padding-left:6%;
+                    width: 100%;
+                }
+
+
+                textarea::-webkit-input-placeholder {
+                    text-color: #000000;
+                }
+                textarea:-moz-placeholder {
+                    /* FF 4-18 */
+                    color: #000000;
+                }
+                textarea::-moz-placeholder {
+                    /* FF 19+ */
+                    color: #000000;
+                }
+                textarea:-ms-input-placeholder {
+                    /* IE 10+ */
+                    color: #000000;
+                }
+
+
+            </style>
+
+        {% endblock %}
+        {# browswer favicon setting #}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% endblock head %}
+</head>
+<nav>
+    {% block nav %}
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="welcome"><img src="img/sfsu.jpg"></a>
+                    <a class="navbar-brand" href="welcome">GatorTraders</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="navbar-brand" href="post">Post</a>
+                    <a class="navbar-brand" href="profile">Profile</a>
+                    <a class="navbar-brand">
+                        <form action="welcome" method="get">
+                            <button class="logout-button" name="logout" value="1">Logout</button>
+                        </form>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+</nav>
+
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+    <!-- The Grid -->
+    <div class="w3-row">
+        <!-- Left Column -->
+        <div class="w3-col m3">
+            <!-- Profile -->
+            <div class="w3-card-2 w3-round w3-white">
+                <div class="w3-container">
+                    <h4 class="w3-center">My Profile</h4>
+                    <hr>
+                    <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> @Admin </p>
+                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> admin@mail.sfsu.edu </p>
+
+                </div>
+            </div>
+            <br>
+
+
+            <br>
+
+
+            <br>
+
+
+            <!-- End Left Column -->
+        </div>
+
+        <!-- Middle Column -->
+        <div class="w3-col m7">
+
+
+
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <body>
+
+            <div class="w3-container">
+
+
+                <div class="w3-bar w3-white">
+                    <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'Posts')">Posts</button>
+                    <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Users')">Users</button>
+                    <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Flagged Items')">Flagged Items</button>
+                </div>
+
+                <div id="Posts" class="w3-container w3-border tab">
+
+
+                    {% for key in viewUserDets %}
+
+                        <hgroup class="mb20">
+                            <strong class="text-danger">{{ key.category }}</strong></h2>
+                        </hgroup>
+
+
+                        <section class="col-xs-12 col-sm-6 col-md-12">
+                            <article class="search-result row">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <form action=viewpost method=“POST”>
+                                    <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                                        <img height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
+                                    </form>
+
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-2">
+                                    <ul class="meta-search">
+                                        <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                        <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <form action=viewpost method=“POST”>
+                                        <button type="submit" title="Lorem ipsum" name = "postId" class="title_button" value={{ key.getPostid }}>
+                                            {{ key.getPosttitle }}</button>
+                                        </form>
+                                        <p>{{ key.getDescription }}</p>
+
+                                        <form action=admin method="get">
+                                        <button class="delete_button btn btn-danger" name="post_delete" value={{ key.getPostid }}>
+                                            Delete
+                                        </button>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+
+                                </article>
+                            </section>
+
+
+                        {% endfor %}
+                    </form>
+
+
+                </div>
+
+
+                <div id="Users" class="w3-container w3-border tab" style="display:none">
+                    {% for key in userResults %}
+
+                        <div class="row message-container">
+                            <div class="col-md-10">
+                                <section class="col-xs-12 col-sm-6 col-md-12">
+                                    <div class="col-md-4">
+                                        <strong><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>Email </strong>
+                                    </div>
+                                    <div class=".col-sm-7">
+                                        {{ key.getStudentemail }}
+                                    </div>
+                                </section>
+                                <section class="col-xs-12 col-sm-6 col-md-12">
+                                    <div class="col-md-4">
+                                        <strong><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Username </strong>
+                                    </div>
+                                    <div class=".col-sm-7">
+                                        {{ key.getUsername}}
+                                    </div>
+                                </section>
+
+                            </div>
+
+                            <div class="col-md-2">
+
+                                <form action=admin method=“get”>
+                                    <button class="delete-button btn btn-danger" name="user_delete" value={{ key.getStudentemail }}>
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+
+                <div id="Flagged Items" class="w3-container w3-border tab">
+
+
+                    {% for key in viewUserDets %}
+                    {% if ( key.getFlag == 1) %}
+                        <hgroup class="mb20">
+                            <strong class="text-danger">{{ key.category }}</strong></h2>
+                        </hgroup>
+
+
+                        <section class="col-xs-12 col-sm-6 col-md-12">
+                            <article class="search-result row">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <form action=viewpost method=“POST”>
+                                        <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
+                                            <img height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
+                                    </form>
+
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-2">
+                                    <ul class="meta-search">
+                                        <li><span>Price: $ {{ key.getPrice }}</span></li>
+                                        <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                        <form action=viewpost method=“POST”>
+                                            <button type="submit" title="Lorem ipsum" name = "postId" class="title_button" value={{ key.getPostid }}>
+                                                {{ key.getPosttitle }}</button>
+                                        </form>
+                                        <p>{{ key.getDescription }}</p>
+
+                                        <form action=admin method="get">
+                                            <button class="delete_button btn btn-danger" name="post_delete" value={{ key.getPostid }}>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+
+                            </article>
+                        </section>
+
+                    {% endif %}
+                    {% endfor %}
+                    </form>
+
+
+                </div>
+
+
+                <script>
+                    function openTab(evt, tabName) {
+                        var i, x, tablinks;
+                        x = document.getElementsByClassName("tab");
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                        }
+                        tablinks = document.getElementsByClassName("tablink");
+                        for (i = 0; i < x.length; i++) {
+                            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+                        }
+                        document.getElementById(tabName).style.display = "block";
+                        evt.currentTarget.className += " w3-red";
+                    }
+                </script>
+
+
+
+                <!-- End Middle Column -->
+            </div>
+
+
+
+            <!-- End Grid -->
+        </div>
+
+        <!-- End Page Container -->
+    </div>
+    <br>
+
+
+
+    <script>
+        // Accordion
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme-d1";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+            }
+        }
+
+        // Used to toggle the menu on smaller screens when clicking on the menu button
+        function openNav() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>

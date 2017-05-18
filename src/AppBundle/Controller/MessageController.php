@@ -34,7 +34,7 @@ class MessageController extends Controller
 
         if(!$session->has('studentEmail')) {
 
-            return $this->render('gatortraders/login.html.twig');
+            return $this->redirectToRoute('register');
         }
 
         $message = new Message();

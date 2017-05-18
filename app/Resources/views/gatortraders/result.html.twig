@@ -303,6 +303,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2">
                             <ul class="meta-search">
+                                <li><span>Username: {{ key.getUsername }}</span></li>
                                 <li><span>Price: $ {{ key.getPrice }}</span></li>
                                 <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
                             </ul>
@@ -333,6 +334,12 @@
                     Detail
                 </button>
             </form>
+                <br>
+                <form action=welcome method=“POST”>
+                    <button type="submit" class="message_button btn btn-warning" name = "postId" value={{ key.getPostid }}>
+                        Flag user
+                    </button>
+                </form>
             </div>
         </div>
         {% endfor %}
