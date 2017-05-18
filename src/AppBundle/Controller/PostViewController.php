@@ -24,6 +24,24 @@ class PostViewController extends Controller
             ->getRepository('AppBundle:Post')
             ->findAll();
 
+        $userdets1 = $this->getDoctrine()
+            ->getRepository('AppBundle:Post')
+            ->findAll();
+
+        foreach ($userdets1 as $post) {
+
+            if ($postId == $post->getPostid()) {
+                $post->setFlag(1);
+                print $post->getFlag();
+                print $post->getPosttitle();
+            }
+        }
+
+
+        $em2 = $this->getDoctrine()->getManager();
+        //$em2->persist($userdets1);
+        $em2->flush();
+
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')

@@ -310,6 +310,11 @@
                     <button type="submit" class="btn btn-warning message_button" name="postId" value={{ key.getPostId }}>
                         Message seller
                     </button>
+                    <form action=viewpost method="GET">
+                        <button type="submit" class="message_button btn btn-warning" name="postId" value={{ key.getPostId }}>
+                            Flag user
+                        </button>
+                    </form>
                 </form>
             </div>
         </div>
