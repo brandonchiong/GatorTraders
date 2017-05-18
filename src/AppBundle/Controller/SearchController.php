@@ -17,7 +17,24 @@ class SearchController extends Controller
      */
     public function showAction(Request $request)
     {
+        $postflagId =  $_GET["postId"];
 
+        $userdets1 = $this->getDoctrine()
+            ->getRepository('AppBundle:Post')
+            ->findAll();
+
+        foreach ($userdets1 as $post) {
+
+            if ($postflagId == $post->getPostid()) {
+                $post->setFlag(1);
+                print $post->getFlag();
+                print $post->getPosttitle();
+            }
+        }
+
+        $em2 = $this->getDoctrine()->getManager();
+        $em2->flush();
+        
         //Set filter
         $selectCategory = $_GET["category"];
         $search_term = $_GET["search_term"];
