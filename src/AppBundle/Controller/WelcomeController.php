@@ -39,9 +39,9 @@ class WelcomeController extends Controller
 
         }
 //
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($userdets1);
-       // $em->flush($userdets1);
+        $em2 = $this->getDoctrine()->getManager();
+        $em2->persist($userdets1);
+        $em2->flush();
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
