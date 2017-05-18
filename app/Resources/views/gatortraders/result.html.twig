@@ -328,6 +328,11 @@
                     Message seller
                 </button>
             </form>
+                <form action=results method="GET">
+                    <button type="submit" class="message_button btn btn-warning" name="postId" value={{ key.getPostId }}>
+                        Flag user
+                    </button>
+                </form>
                 <br>
             <form action=viewpost method=“POST”>
                 <button type="submit" class="message_button btn btn-warning" name = "postId" value={{ key.getPostid }}>
