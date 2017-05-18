@@ -34,7 +34,7 @@ class SearchController extends Controller
 
         $em2 = $this->getDoctrine()->getManager();
         $em2->flush();
-        
+
         //Set filter
         $selectCategory = $_GET["category"];
         $search_term = $_GET["search_term"];
