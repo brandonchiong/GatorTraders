@@ -402,7 +402,6 @@
                     <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'Posts')">Posts</button>
                     <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Users')">Users</button>
                     <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Flagged Items')">Flagged Items</button>
-                    <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Analytics')">Analytics</button>
                 </div>
 
                 <div id="Posts" class="w3-container w3-border tab">
@@ -497,9 +496,6 @@
                     {% endfor %}
                 </div>
 
-                <div id="Analytics" class="w3-container w3-border tab" style="display:none">
-                    {% extends '::base_analytics_html.twig'%}
-                </div>
 
                 <div id="Flagged Items" class="w3-container w3-border tab">
 
