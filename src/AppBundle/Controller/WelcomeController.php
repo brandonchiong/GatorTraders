@@ -28,22 +28,20 @@ class WelcomeController extends Controller
                     ->getRepository('AppBundle:Post')
                     ->findOneBy(array('postid' => $postId));
         */
-      /*
-        foreach ($userdets1 as $post) {
 
-        //    echo $post;
+        foreach ($userdets1 as $post) {
 
             if ($postflagId == $post->getPostid()) {
                 $post->setFlag(1);
                 print $post->getFlag();
+                print $post->getPosttitle();
             }
-
         }
-//
-      */
+
+
         $em2 = $this->getDoctrine()->getManager();
-        $em2->persist($userdets1);
-        $em2->flush($userdets1);
+        //$em2->persist($userdets1);
+        $em2->flush();
         //Get all columns from Category
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
