@@ -23,15 +23,12 @@ class LoginController extends Controller
         //Create form
         $form = $this->createForm(UserType::class, $user);
 
-
         //get student email and password from html
         $studentemail = $_GET["Studentemail"];
         $password = $_GET["Password"];
 
-
         $adminEmail = "admin@mail.sfsu.edu";
         $adminPassword = "p3tkovicrocks";
-
 
         //if the email and password are matched then direct to admin page
         if($studentemail == $adminEmail and $password == $adminPassword) {
@@ -40,16 +37,13 @@ class LoginController extends Controller
             return $this->redirectToRoute('admin');
         }
 
-
         //initial error
         $error = "";
-
 
         //Find user that matches with input studentemail
         $userTable = $this->getDoctrine()
             ->getRepository('AppBundle:Users')
             ->findOneBy(array('studentemail' => $studentemail));
-
 
 
         //if userTable returns something and password matches then login succeed!
@@ -69,12 +63,10 @@ class LoginController extends Controller
             $error = 'Invalid user name and password';
         }
 
-
         return $this->render(
             'gatortraders/registration.html.twig'
             ,array('form' => $form->createView(), 'loginError'=> $error
             )
         );
-        //return $this->redirectToRoute('register', array('loginError' => $error));
    }
 }
