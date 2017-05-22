@@ -18,16 +18,9 @@ class WelcomeController extends Controller
         $userdets = $this->getDoctrine()
             ->getRepository('AppBundle:Post');
 
-
         $userdets1 = $this->getDoctrine()
             ->getRepository('AppBundle:Post')
             ->findAll();
-
-        /*
-                $postTable = $this->getDoctrine()
-                    ->getRepository('AppBundle:Post')
-                    ->findOneBy(array('postid' => $postId));
-        */
 
         foreach ($userdets1 as $post) {
 
@@ -37,7 +30,6 @@ class WelcomeController extends Controller
                 print $post->getPosttitle();
             }
         }
-
 
         $em2 = $this->getDoctrine()->getManager();
         $em2->flush();
