@@ -25,7 +25,6 @@ class RegistrationController extends Controller
 
         $error = "";
 
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             $userEmail = $user->getStudentemail();
@@ -39,8 +38,6 @@ class RegistrationController extends Controller
                     'gatortraders/registration.html.twig'
                     ,array('form' => $form->createView(), 'error'=> $error)
                 );
-            }else {
-
             }
 
             //if user name is already in database
@@ -56,7 +53,6 @@ class RegistrationController extends Controller
             //set user name e.g. ckim4@mail.sfsu.edu -> username should be ckim4
             $username = (explode("@", $userEmail))[0];
             $user->setUsername($username);
-
 
             $em->persist($user);
             $em->flush();
