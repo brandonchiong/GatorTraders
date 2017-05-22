@@ -39,7 +39,6 @@ class RegistrationSubmitController extends Controller
 
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
-        //em.getTransaction().commit();
 
         return $this->render('gatortraders/accountCreate.html.twig');
     }
