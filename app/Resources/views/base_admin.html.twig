@@ -15,8 +15,8 @@
 
             <style>
 
-                .navbar-brand>img {
-                    height:49px;
+                .navbar-brand > img {
+                    height: 49px;
                     width: auto;
                     margin-top: -14px;
                 }
@@ -26,6 +26,11 @@
                     background: none;
                     margin-top: -16px;
                 }
+
+                .demo {
+                    padding-top: 25px;
+                }
+
             </style>
 
         {% endblock %}
@@ -37,6 +42,15 @@
 <nav>
     {% block nav %}
         <!-- Fixed navbar -->
+        {#
+        <nav class="navbar navbar-default">
+            <div class="demo">
+                <div class="nav navbar-nav">
+                    SFSU Software Engineering Project, Spring 2017. For Demonstration Only
+                </div>
+            </div>
+        </nav>#}
+
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -49,7 +63,9 @@
                     </button>
 
                     <a class="navbar-brand" href="welcome"><img src="img/sfsu.jpg"></a>
-                    <a class="navbar-brand" href="welcome"><img src="http://i213.photobucket.com/albums/cc317/randell24682/149542210639920_zps3znrgimr.png" alt="GatorTraders" style="width:100px;height:30px;"></a>
+                    <a class="navbar-brand" href="welcome"><img
+                                src="http://i213.photobucket.com/albums/cc317/randell24682/149542210639920_zps3znrgimr.png"
+                                alt="GatorTraders" style="width:100px;height:30px;"></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <a class="navbar-brand">

@@ -36,6 +36,11 @@
                     background: none;
                     margin-top: -5px;
                 }
+
+                .demo {
+                    padding-top: 25px;
+                }
+
             </style>
 
         {% endblock %}
@@ -47,6 +52,15 @@
 <nav>
     {% block nav %}
         <!-- Fixed navbar -->
+        {#
+        <nav class="navbar navbar-default">
+            <div class="demo">
+                <div class="nav navbar-nav">
+                    SFSU Software Engineering Project, Spring 2017. For Demonstration Only
+                </div>
+            </div>
+        </nav>#}
+
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
