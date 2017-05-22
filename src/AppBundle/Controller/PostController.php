@@ -22,8 +22,7 @@ class PostController extends Controller
         //Get all category columns from category table
         $category_table = $this->getDoctrine()
             ->getRepository('AppBundle:Category');
-
-
+        
         //run query to exclude 'All' category
         $category_query = $category_table->createQueryBuilder('c')
             ->where('c.categoryid != :categoryid')
@@ -75,7 +74,6 @@ class PostController extends Controller
         $userTable = $this->getDoctrine()
             ->getRepository('AppBundle:Users')
             ->findOneBy(array('studentemail' => $studentEmail));
-
 
         //set values
         $post->setPosttitle($posttitle);
