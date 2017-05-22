@@ -41,11 +41,27 @@ class AdminController extends Controller
             ->getRepository('AppBundle:Users')
             ->findAll();
 
+        $userdets1 = $this->getDoctrine()
+            ->getRepository('AppBundle:Post')
+            ->findAll();
+
         $post_delete = $_GET['post_delete'];
+        $postflagId = $_GET['post_unflag'];
         $this->delete_post($post_delete);
+
+        foreach ($userdets1 as $post) {
+
+            if ($postflagId == $post->getPostid()) {
+                $post->setFlag(0);
+            }
+        }
+
+        $em2 = $this->getDoctrine()->getManager();
+        $em2->flush();
 
         $user_delete = $_GET['user_delete'];
         $this->delete_user($user_delete);
+
 
         if(isset($post_delete)) {
             return $this->redirectToRoute('admin');

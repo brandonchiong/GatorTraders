@@ -332,8 +332,6 @@
                     <a class="navbar-brand" href="welcome">GatorTraders</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <a class="navbar-brand" href="post">Post</a>
-                    <a class="navbar-brand" href="profile">Profile</a>
                     <a class="navbar-brand">
                         <form action="welcome" method="get">
                             <button class="logout-button" name="logout" value="1">Logout</button>
@@ -534,6 +532,13 @@
                                                 Delete
                                             </button>
                                         </form>
+                                        <br>
+                                        <form action=admin method="get">
+                                            <button class="delete_button btn btn-danger" name="post_unflag" value={{ key.getPostid }}>
+                                                Unflag
+                                            </button>
+                                        </form>
+                                        <br>
                                     </div>
 
                                 </div>
