@@ -75,8 +75,7 @@ class SearchController extends Controller
                 ->getQuery();
         }
         $trainings = $query->getResult();
-
-
+        
         if($session->has('studentEmail')) {
             $template = 'base_login.html.twig';
         }else {
