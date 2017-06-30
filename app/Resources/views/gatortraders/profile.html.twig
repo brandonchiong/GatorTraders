@@ -220,6 +220,7 @@
         margin-top: -100px;
     }
 
+
 </style>
 <body class="w3-theme-l5">
 
@@ -289,6 +290,23 @@
                 }
 
 
+                textarea::-webkit-input-placeholder {
+                    text-color: #000000;
+                }
+                textarea:-moz-placeholder {
+                    /* FF 4-18 */
+                    color: #000000;
+                }
+                textarea::-moz-placeholder {
+                    /* FF 19+ */
+                    color: #000000;
+                }
+                textarea:-ms-input-placeholder {
+                    /* IE 10+ */
+                    color: #000000;
+                }
+
+
             </style>
 
         {% endblock %}
@@ -311,7 +329,7 @@
                     </button>
 
                     <a class="navbar-brand" href="welcome"><img src="img/sfsu.jpg"></a>
-                    <a class="navbar-brand" href="welcome">GatorTraders</a>
+                    <a class="navbar-brand" href="welcome"><img src="http://i213.photobucket.com/albums/cc317/randell24682/149542210639920_zps3znrgimr.png" alt="GatorTraders" style="width:100px;height:30px;"></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <a class="navbar-brand" href="post">Post</a>
@@ -340,13 +358,6 @@
 {% endblock %}
 </body>
 
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
-</div>
 
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
@@ -408,7 +419,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-3">
                                             <form action=viewpost method=“POST”>
                                                 <button type="submit" title="Lorem ipsum" name = "postId" class="thumbnail" value={{ key.getPostid }}>
-                                                    <img height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
+                                                    <img class="img-responsive" height="240" width="240" src="{{ key.getImagePath()}}" alt="Lorem ipsum"/></button></img>
                                             </form>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-3">
@@ -495,6 +506,7 @@
                         </div>
 
                     </div>
+                        <hr>
                     {% endfor %}
                 </div>
 

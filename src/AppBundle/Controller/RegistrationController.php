@@ -65,12 +65,16 @@ class RegistrationController extends Controller
             // maybe set a "flash" success message for the user
             print($user->getStudentemail());
 
-            return $this->redirectToRoute('login');
+            $session = $request->getSession();
+            $session->set('studentEmail', $userEmail);
+
+            return $this->redirectToRoute('welcome');
         }
 
         return $this->render(
             'gatortraders/registration.html.twig'
-            ,array('form' => $form->createView(), 'error'=> $error)
+            ,array('form' => $form->createView(), 'error'=> $error
+                )
         );
     }
 

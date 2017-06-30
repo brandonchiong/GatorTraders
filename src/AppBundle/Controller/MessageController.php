@@ -24,24 +24,21 @@ class MessageController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         $session = $request->getSession();
 
         $sender_message = $_GET["sender_message"];
         $postId = $_GET["postId"];
         $error = "";
 
-
         if(!$session->has('studentEmail')) {
 
-            return $this->render('gatortraders/login.html.twig');
+            return $this->redirectToRoute('register');
         }
 
         $message = new Message();
 
         //current user's email
         $studentEmail = $session->get('studentEmail');
-
 
         //get post that user wants to send message
         $postTable = $this->getDoctrine()
@@ -59,7 +56,6 @@ class MessageController extends Controller
             ->getRepository('AppBundle:Users')
             ->findOneBy(array('studentemail' => $studentEmail));
 
-
         //get current user's username
         $sender_user_name = $userTable->getUsername();
 
@@ -68,7 +64,6 @@ class MessageController extends Controller
             ->getRepository('AppBundle:Users')
             ->findOneBy(array('studentemail' => $receiver));
         $receiver_user_name = $receiverTable->getUsername();
-
 
         //if message is longer than 0 || if message is not empty
         if(strlen($sender_message) > 0 ) {
@@ -90,10 +85,8 @@ class MessageController extends Controller
             $error = "Your message shouldn't be empty";
         }
 
-
         return $this->render('gatortraders/message.html.twig',
             array('sender' => $sender_user_name, 'post' => $postTable, 'receiver' => $receiver_user_name,
                 'message' => $message, 'error' => $error));
-
     }
 }

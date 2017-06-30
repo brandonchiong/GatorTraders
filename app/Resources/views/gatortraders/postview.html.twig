@@ -1,5 +1,6 @@
 {% extends template %}
 
+
     {% block head %}
         {{ parent() }}
 
@@ -258,6 +259,12 @@
                 margin-top:10%;
             }
 
+            .Image-border
+            {
+                border-width: 1px;
+                border-color: Black;
+            }
+
         </style>
     {% endblock head %}
 
@@ -287,13 +294,13 @@
         <!-- Portfolio Item Row -->
         <div class="row">
 
-            <div class="col-md-6">
-
-                <img class="img-responsive" height="360" width="360" src="{{ key.getImagePath()}}" alt="">
+            <div class="col-md-5">
+                <img style='border:1px solid #D3D3D3' class="img-responsive" height="360" width="360" src="{{ key.getImagePath()}}" alt="">
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <h3>{{ key.getPosttitle()}}</h3>
+                <h4>Username: {{ key.getUsername }}</h4>
                 <h4>Price : ${{ key.getPrice }}</h4>
                 <p>Description : {{  key.getDescription }}</p>
             </div>
@@ -303,6 +310,7 @@
                     <button type="submit" class="btn btn-warning message_button" name="postId" value={{ key.getPostId }}>
                         Message seller
                     </button>
+
                 </form>
             </div>
         </div>

@@ -1,52 +1,42 @@
 {% extends template %}
     {% block head %}
-        {{ parent() }}
 
+        {{ parent() }}
         {% block stylesheets %}
             {{ parent() }}
         {% endblock stylesheets %}
-
         <style>
             body {
                 padding-top: 100px;
             }
-
             .title {
                 margin-top: 50px;
                 margin-bottom: -80px;
-
             }
-
             body {
                 padding-top: 30px;
             }
-
             .message_button{
                 margin-left: 10px;
             }
-
             #custom-search-input {
                 margin:0;
                 margin-top: 10px;
                 padding: 0;
                 padding-left: 100px;
                 padding-right: 100px;
-
             }
-
             #custom-search-input .search-query {
                 padding-right: 3px;
                 padding-right: 4px \9;
                 padding-left: 3px;
                 padding-left: 4px \9;
                 /* IE7-8 doesn't have border-radius, so don't indent the padding */
-
                 margin-bottom: 0;
                 -webkit-border-radius: 3px;
                 -moz-border-radius: 3px;
                 border-radius: 3px;
             }
-
             #custom-search-input button {
                 border: 0;
                 background: none;
@@ -62,7 +52,6 @@
                 border-radius: 3px;
                 color: rgba(7, 2, 4, 0.49);
             }
-
             .search-query:focus + button {
                 z-index: 3;
             }
@@ -82,7 +71,6 @@
             .btn-group .button:not(:last-child) {
                 border-bottom: none; /* Prevent double borders */
             }
-
             .button-a {
                 background-color: #FFFFFF;
                 border: none;
@@ -94,11 +82,8 @@
                 margin: auto;
                 cursor: pointer;
                 position: center;
-
             }
-
             .button16 {padding: 0px;}
-
             #imaginary_container{
                 margin-top:20px;
                 margin-bottom: 50px;
@@ -115,109 +100,85 @@
                 border:0;
                 background:transparent;
             }
-
-
             @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
-
             .mb20 {
                 margin-top: 20px;
                 margin-bottom: 20px;
             }
-
             hgroup {
                 padding-left: 15px;
                 border-bottom: 1px solid #ccc;
             }
-
             hgroup h1 {
                 font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
                 color: #2a3644;
                 margin-top: 0;
                 line-height: 1.15;
             }
-
             hgroup h2.lead {
                 font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
                 color: #2a3644;
                 margin: 0;
                 padding-bottom: 10px;
             }
-
             .search-result .thumbnail {
                 border-radius: 0 !important;
             }
-
             .search-result:first-child {
                 margin-top: 0 !important;
             }
-
             .search-result {
                 margin-top: 20px;
             }
-
             .search-result .col-md-2 {
                 border-right: 1px dotted #ccc;
                 min-height: 140px;
             }
-
             .search-result ul {
                 padding-left: 0 !important;
                 list-style: none;
             }
-
             .search-result ul li {
                 font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
                 line-height: 30px;
             }
-
             .search-result ul li i {
                 padding-right: 5px;
             }
-
             .search-result .col-md-7 {
                 position: relative;
             }
-
             .search-result h3 {
                 font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
                 margin-top: 0 !important;
                 margin-bottom: 10px !important;
             }
-
             .search-result h3 > a, .search-result i {
                 color: #248dc1 !important;
             }
-
             .search-result p {
                 font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
             }
-
             .list_container {
                 padding-left: 90px;
                 padding-right: 90px;
             }
-
             /*SEARCH BAR*/
-
             .stylish-input-group .input-group-addon {
                 background: white !important;
             }
-
             .stylish-input-group .form-control {
                 border-right: 0;
                 box-shadow: 0 0 0;
                 border-color: #ccc;
             }
-
             .stylish-input-group button {
                 border: 0;
                 background: transparent;
             }
-
             #search_placement {
                 margin-top: -100px;
             }
-
             .title_button{
                 background:none!important;
                 color:inherit;
@@ -229,35 +190,25 @@
                 font-size: large;
                 color: #843534;
             }
-
             .button-container{
                 margin-top: 5%;
             }
-
             .message_button{
                 width: 100%;
             }
         </style>
     {% endblock head %}
-
-
 {% block body %}
-
     <body>
-
-
-    <h1 class="title" align="center">GatorTraders</h1>
+    <h1 class="title" align="center"><img src="http://i213.photobucket.com/albums/cc317/randell24682/149542210639920_zps3znrgimr.png" alt="GatorTraders" style="width:500px;height:150px;"></h1>
     {{ include('gatortraders/search.html.twig') }}
-
     <div class="list_container">
-
         {% for key in viewUserDets %}
             <div class="row">
                 <div class="col-md-9">
                     <hgroup class="mb20">
                         <strong class="text-danger">{{ key.category }}</strong></h3>
                     </hgroup>
-
                     <section class="col-xs-12 col-sm-6 col-md-12">
                         <article class="search-result row">
                             <div class="col-xs-12 col-sm-12 col-md-4">
@@ -268,11 +219,11 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-2">
                                 <ul class="meta-search">
+                                    <li><span>Username: {{ key.getUsername }}</span></li>
                                     <li><span>Price: $ {{ key.getPrice }}</span></li>
                                     <li><span>{{ key.getDate|date('Y-m-d') }}</span></li>
                                 </ul>
                             </div>
-
                             <div class="right-content">
                                 <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
                                     <form action=viewpost method=“POST”>
@@ -284,12 +235,17 @@
                             </div>
                         </article>
                     </section>
-
                 </div>
                 <div class="col-md-2 button-container">
                     <form action=message method="GET">
                         <button type="submit" class="message_button btn btn-warning" name="postId" value={{ key.getPostId }}>
                             Message seller
+                        </button>
+                    </form>
+                    <br>
+                    <form action=welcome method="GET">
+                        <button type="submit" class="message_button btn btn-warning" name="postId" value={{ key.getPostId }}>
+                            Flag user
                         </button>
                     </form>
                     <br>
@@ -301,14 +257,9 @@
                 </div>
             </div>
         {% endfor %}
-
     </div>
     </body>
-
-
 {% endblock body %}
-
 {% block javascripts %}
     {{ parent() }}
-
 {% endblock javascripts %}

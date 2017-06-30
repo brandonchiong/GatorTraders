@@ -16,8 +16,6 @@ This specific web application based project is to provide a source for San Franc
  
 * **Kendrick Kwok**     —     *Back End Developer*
  
-* **Javier Kirksey**    —     *Front End Developer*
- 
 * **Marc Panlilio**     —     *Front End Developer*
  
 * **Ramsey Wong**       —     *Front End Developer*

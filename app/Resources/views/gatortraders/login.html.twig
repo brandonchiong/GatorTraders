@@ -53,7 +53,6 @@
 
                             <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-
                             <form action="login" id="loginform" class="form-horizontal" role="form" method="get">
 
                                 <div style="margin-bottom: 25px" class="input-group">
@@ -68,8 +67,8 @@
                                            placeholder="Password">
                                 </div>
 
-
                                  <p>{{ error }}</p>
+
                                 <div class="input-group">
                                     <div class="checkbox">
                                         <label>
@@ -79,16 +78,17 @@
                                     </div>
                                 </div>
 
-
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
 
-                                    <div class="col-sm-12 controls">
-                                        <button id="btn-login" type="submit" class="btn btn-warning">Login </button>
-                                    </div>
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <button id="btn-login" type="submit" class="btn btn-warning">Login</button>
 
-                                    <div style="font-size: 80%; position: relative; top: 10px"><a href="{{ path('register') }}">Doesn't have account yet?</a></div>
+                                    </div>
                                 </div>
+
+                                <div style="font-size: 80%; position: relative; "><a href="{{ path('register') }}">Don't have an account?</a></div>
+
                             </form>
 
                         </div>
